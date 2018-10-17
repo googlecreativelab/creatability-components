@@ -1,0 +1,16 @@
+doc/
+es2015/
+dist/
+assets/bundle.js
+assets/style.css
+node_modules/
+.DS_Store
+.sass-cache
+*.swp
+.idea/
+
+*-error.log
+*-debug.log
+
+.js
+package-lock.json

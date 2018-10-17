@@ -1,4 +1,4 @@
-# Creatability Accessibe Web Components
+# Accessible Creativity Web Components
 
 
 ## Setup an Input
@@ -85,20 +85,6 @@ All Input types contain the following methods:
 * `input.stop()` can be used to stop the input
 
 
-## Splash
-
-The Splash Screen is controlled by the `<acc-splash>` element.
-
-```
-<acc-splash
-    image="assets/splash.png"
-    label="Word Synth"
-    subtitle="A fun way to play with speech and music.">
-    <!-- Any inner text in the element is rendered as the bottom blurb -->
-    Explore More Experiments at the <a href="/">Creatability Site</a>
-</acc-splash>
-```
-
 ## Tutorial
 
 The tutorial element gives you a simple slide show. It extends AbstractModal so it can be added to the screen by adding an "open" attribute. Each of the `<acc-slide>` children will be rendered as a slide-show. The Splash page will automatically open this tutorial as will the `<acc-learn-more-group>`
@@ -121,30 +107,10 @@ The tutorial element gives you a simple slide show. It extends AbstractModal so 
 </acc-tutorial>
 ```
 
-## Shortcuts
 
-The `acc-shortcut-group` will render the shortcuts at the bottom of the page.
 
-```
-<acc-shortcut-group>
-    <acc-shortcut-item key="Shift+M" command="Mute"></acc-shortcut-item>
-    <acc-shortcut-item key="Shift+Spacebar" command="Pause"></acc-shortcut-item>
-</acc-shortcut-group>
-```
 
-## Learn More
+_This is not an official Google product_
 
-The `acc-learn-more-group` will render add an acc-group with a link to the about page and a button to open the tutorial screen.
 
-```
-<acc-learn-more-group>
-</acc-learn-more-group>
-```
 
-## Fallback Screen
-
-To throw a fallback screen if _any_ of the technologies is not supported:
-
-```
-<acc-fallback webaudio webgl usermedia></acc-fallback>
-```

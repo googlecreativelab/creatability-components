@@ -1,0 +1,19 @@
+{
+    "compilerOptions": {
+      "outDir": "./es2015/",
+      "experimentalDecorators": true,
+      "sourceMap": true,
+      "noImplicitAny": true,
+      "module": "commonjs",
+      "target": "es2015",
+      "jsx": "react",
+      "allowJs": true
+    },
+    "include": [
+        "src/**/*"
+    ],
+    "exclude": [
+        "node_modules",
+        "**/*.spec.ts"
+    ]
+  }
