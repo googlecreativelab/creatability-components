@@ -2,6 +2,8 @@
 
 [Creatability](https://experiments.withgoogle.com/collection/creatability) is a set of experiments made in collaboration with creators and allies in the accessibility community. They explore how creative tools – drawing, music, and more – can be made more accessible using web and AI technology. We hope they inspire others to make new projects, so we've started open-sourcing components here for anyone to use. Note this repo is under development. Contributions welcome!
 
+![Animated Gif of Black and white web camera feed of woman with a blue cursor mapped to her nose. Colorful musical keys with their notes displayed is overlaid. As she rotates her head, the cursor moves over notes that animate and become brighter.](https://storage.googleapis.com/creatability-github/Irene_Keyboard.gif)
+
 
 # Creatability Accessible Web Components
 
