@@ -1,6 +1,6 @@
 # About
 
-[Creatability](https://experiments.withgoogle.com/collection/creatability) is a set of experiments made in collaboration with creators and allies in the accessibility community. They explore how creative tools – drawing, music, and more – can be made more accessible using web and AI technology. We hope the experiments inspire other developers to make their own projects. That's why we've started open-sourcing components here in this Github repo. We hope to add more over time.
+[Creatability](https://experiments.withgoogle.com/collection/creatability) is a set of experiments made in collaboration with creators and allies in the accessibility community. They explore how creative tools – drawing, music, and more – can be made more accessible using web and AI technology. We hope they inspire others to make new projects, so we've started open-sourcing components here for anyone to use. Note this repo is under development. Contributions welcome!
 
 
 # Creatability Accessible Web Components
