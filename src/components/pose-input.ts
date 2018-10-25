@@ -1,3 +1,5 @@
+import { backgroundColor } from './styles';
+import { computeStyleResult, cssColorToArray } from './../utils';
 // Copyright 2018 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -31,6 +33,9 @@ const animitter = require('animitter');
 interface KeypointMap {
     [name: string]: vec2;
 }
+
+const canFocusHeader = (c:any): c is { focusHeader: ()=>void } =>
+    typeof c.focusHeader === 'function';
 
 const isPixelResolutionElement = (v: any): v is { width: number, height: number } =>
     typeof v.width === 'number' && v.height === 'number';
@@ -89,22 +94,22 @@ export const transformCameraPoints = (
 
 const keypointPartsMap: any = {
     'nose': 'Nose',
-    'leftEye': 'Left Eye',
-    'rightEye': 'Right Eye',
-    'leftEar': 'Left Ear',
-    'rightEar': 'Right Ear',
-    'leftShoulder': 'Left Shoulder',
-    'rightShoulder': 'Right Shoulder',
-    'leftElbow': 'Left Elbow',
-    'rightElbow': 'Right Elbow',
-    'leftWrist': 'Left Wrist',
-    'rightWrist':'Right Wrist',
-    'leftHip': 'Left Hip',
-    'rightHip': 'Right Hip',
-    'leftKnee': 'Left Knee',
-    'rightKnee': 'Right Knee',
-    'leftAnkle': 'Left Ankle',
-    'rightAnkle': 'Right Ankle'
+    'leftEye': 'Right Eye',
+    'rightEye': 'Left Eye',
+    'leftEar': 'Right Ear',
+    'rightEar': 'Left Ear',
+    'leftShoulder': 'Right Shoulder',
+    'rightShoulder': 'Left Shoulder',
+    'leftElbow': 'Right Elbow',
+    'rightElbow': 'Left Elbow',
+    'leftWrist': 'Right Wrist',
+    'rightWrist':'Left Wrist',
+    'leftHip': 'Right Hip',
+    'rightHip': 'Left Hip',
+    'leftKnee': 'Right Knee',
+    'rightKnee': 'Left Knee',
+    'leftAnkle': 'Right Ankle',
+    'rightAnkle': 'Left Ankle'
 };
 
 //pre-defined parts that come with posenet
@@ -140,6 +145,8 @@ const selectableParts = [
     'leftAnkle',
     'rightAnkle'
 ];
+
+const selectablePartsDisplay = selectableParts.map(key=> keypointPartsMap[key]);
 
 //all parts
 export const parts = keypointParts;
@@ -223,6 +230,10 @@ export class PoseInputElement extends AbstractInputElement {
 
     constructor(){
         super();
+        /**
+         * this input has a cointrols panel
+         */
+        this.hasControls = true;
         this._handleNewFrame = this._handleNewFrame.bind(this);
         this._handleStop = this._handleStop.bind(this);
         this._loop.on('update', this._handleNewFrame);
@@ -360,6 +371,7 @@ export class PoseInputElement extends AbstractInputElement {
         super._propertiesChanged(props, changed, prev);
         if(changed && changed.hasOwnProperty('help')) {
             setBooleanAttribute(this, 'help', props.help);
+            this._dispatchChange();
         }
     }
 
@@ -581,18 +593,35 @@ export class PoseInputElement extends AbstractInputElement {
     }
 
     _didRender(props: any, changed: any, prev: any) {
-        if(changed && changed.controls) {
-            const control = this.shadowRoot!.querySelector('acc-pose-input-calibration') as HTMLElement;
-            if (control) {
-                control.focus();
-            }
+        if(changed && changed.hasOwnProperty('controls') && changed.controls) {
+            setTimeout(()=> {
+                const controls = this.shadowRoot.querySelector('acc-pose-input-calibration');
+                if(controls && canFocusHeader(controls)) {
+                    controls.focusHeader();
+                }
+            }, 16);
+
         }
         return super._didRender(props, changed, prev);
     }
 
     _render({ amplification, controls, help, imageScaleFactor, part, smoothing }:any){
+        let isDark = false;
+        //calculate if a dark background is set by computing the color and seeing if its average color is more than half way
+        const computed = computeStyleResult(this.shadowRoot, 'color', backgroundColor);
+        if(computed) {
+            const color = cssColorToArray(computed);
+            if(color) {
+                isDark = ((color[0] + color[1] + color[2]) / 3) < 128;
+            }
+        }
+
+        const postFix = isDark ? '-dark' : '';
+
         return html`
-            <style></style>
+            <style>
+
+            </style>
             <acc-pose-input-calibration
                 closable
                 tabIndex="0"
@@ -601,56 +630,62 @@ export class PoseInputElement extends AbstractInputElement {
                 amplification="${amplification}"
                 imageScaleFactor="${imageScaleFactor}"
                 smoothing="${smoothing}"
-                parts="${selectableParts.map(key=> keypointPartsMap[key])}"
-                part="${part}"
+                parts="${selectablePartsDisplay}"
+                part="${keypointPartsMap[part]}"
                 open?=${controls}
                 fullscreen
                 on-change=${(evt:any)=>{
-                    const findPartId = (displayName: string) => {
-                        for(let key in keypointPartsMap) {
-                            if(keypointPartsMap[key] === displayName) {
-                                if(key.indexOf('right') > -1) {
-                                    key = key.replace('right','left');
-                                } else {
-                                    key = key.replace('left', 'right');
-                                }
-                                return key;
+                    const findPartId = () => {
+                        for(let prop in keypointPartsMap) {
+                            if(keypointPartsMap[prop] === evt.detail.part) {
+                                return prop;
                             }
                         }
                     }
                     this.amplification = evt.detail.amplification;
-                    this.part = findPartId(evt.detail.part);
+                    this.part = findPartId(); //evt.detail.part;
                     this.imageScaleFactor = evt.detail.imageScaleFactor;
                     this.smoothing = evt.detail.smoothing;
+
+                    this._dispatchChange();
                 }}
                 on-help=${()=> this.help = true}
                 on-close=${()=>{ console.log("POSE INPUT CONTROLS ON CLOSE"); this.controls = false; }}
                 on-close-click=${()=>this.controls = false}>
             </acc-pose-input-calibration>
             <acc-tutorial
+                dark?=${isDark}
+                closebutton="Back to settings"
                 aria-live="polite"
                 aria-atomic="true"
                 on-close=${() => this.help = false}
                 open?=${help}>
                 <acc-slide
-                    video="//storage.googleapis.com/acc-components/camera-tutorial-01.mp4"
+                    video="//storage.googleapis.com/acc-components/camera-tutorial-01${postFix}.mp4"
                     alt="Animation demonstrating moving your nose to control the cursor."
                     caption="Here's how to use your camera. A blue dot will follow the position of your nose."></acc-slide>
                 <acc-slide
-                    video="//storage.googleapis.com/acc-components/camera-tutorial-02.mp4"
+                    video="//storage.googleapis.com/acc-components/camera-tutorial-02${postFix}.mp4"
                     alt="Animation showing how to use the slider to amplify your cursors movement."
                     caption="Use the slider to help reach all parts of the screen. This works best if you're centered."></acc-slide>
                 <acc-slide
-                    video="//storage.googleapis.com/acc-components/camera-tutorial-03.mp4"
+                    video="//storage.googleapis.com/acc-components/camera-tutorial-03${postFix}.mp4"
                     alt="Animation demonstrating how the centerpoint works and how to move it."
                     caption="Or, you can move the centerpoint to you."></acc-slide>
                 <acc-slide
-                    video="//storage.googleapis.com/acc-components/camera-tutorial-04.mp4"
+                    video="//storage.googleapis.com/acc-components/camera-tutorial-04${postFix}.mp4"
                     alt="Animation of using the pop up button to select a different body part to track."
                     caption="You can also track different parts of your body, like your wrist or shoulder."></acc-slide>
             </acc-tutorial>
         `;
     }
+
+    // _shouldRender(props: any, changed: any, prev: any) {
+    //     if(changed && (changed.part || changed.amplification)) {
+    //         return false;
+    //     }
+    //     return super._shouldRender(props, changed, prev);
+    // }
 }
 
 

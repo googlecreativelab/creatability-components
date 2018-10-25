@@ -85,8 +85,8 @@ class PoseInputCalibrationElement extends AbstractModalElement {
         this._onTick = this._onTick.bind(this);
     }
 
-    focus() {
-        super.focus();
+
+    focusHeader() {
         const header = this.shadowRoot.querySelector('#header') as HTMLElement;
         if (header) {
             header.focus();
@@ -151,6 +151,12 @@ class PoseInputCalibrationElement extends AbstractModalElement {
             content.inputElement = this.parentNode.host as PoseInputElement;
         }
         const canvas = this.shadowRoot!.querySelector('#input-visualization')! as HTMLCanvasElement;
+        if(changed && changed.amplification) {
+            const range = this.shadowRoot.querySelector('acc-range') as HTMLElement;
+            if(range) {
+                range.focus();
+            }
+        }
         if(!canvas) {
             return;
         }
@@ -162,16 +168,19 @@ class PoseInputCalibrationElement extends AbstractModalElement {
 
         const self:PoseInputCalibrationElement = this;
 
-        const dispatch = (eventType: string= 'change') =>{
+        const dispatch = (eventType: string= 'change', composed: boolean = false) =>{
             self.dispatchEvent(new CustomEvent(eventType, {
-                detail: {
-                    target: self,
-                    part: self.part,
-                    amplification: self.amplification,
-                    imageScaleFactor: self.imageScaleFactor,
-                    smoothing: self.smoothing
+                    detail: {
+                        target: self,
+                        part: self.part,
+                        amplification: self.amplification,
+                        imageScaleFactor: self.imageScaleFactor,
+                        smoothing: self.smoothing
+                    },
+                    composed,
+                    bubbles: composed
                 }
-            }));
+            ));
         }
 
         function onSelectInput(e:CustomEvent){
@@ -198,12 +207,18 @@ class PoseInputCalibrationElement extends AbstractModalElement {
         }
 
         function onAmplification(e:Event) {
-            self.amplification = Number(this.value);
+            self.amplification = parseFloat(this.value);
             dispatch();
+
+            const ampEl = self.shadowRoot.querySelector('.amp-value') as HTMLElement;
+            if(ampEl) {
+                ampEl.innerHTML = `${self.amplification.toFixed(1)}x`;
+            }
         }
 
         return html`
             <style>
+
 
                 @media ( max-height: 640px ) {
                     acc-content {
@@ -232,12 +247,9 @@ class PoseInputCalibrationElement extends AbstractModalElement {
                     font-family: ${bodyFontFamily};
                 }
 
-                :host .container {
-                    background-color: white;
+                .container {
+                    background-color: ${backgroundColor};
                     text-align: center;
-                }
-
-                ::slotted(*) {
                 }
 
 
@@ -249,6 +261,7 @@ class PoseInputCalibrationElement extends AbstractModalElement {
                 h2 {
                     font-family: ${bodyFontFamily};
                     color: ${labelColor};
+                    display: inline-block;
                 }
 
                 h4 {
@@ -259,7 +272,9 @@ class PoseInputCalibrationElement extends AbstractModalElement {
                 }
 
                 :host([debug]) .controls-row,
-                :host([debug]) .controls-row-item {
+                :host([debug]) .controls-row-item,
+                *[debug] .controls-row,
+                *[debug] .controls-row-item {
                     border: 1px solid red;
                 }
 
@@ -273,23 +288,27 @@ class PoseInputCalibrationElement extends AbstractModalElement {
                 .controls-row {
                     display: flex;
                     flex-direction: row;
-                    flex-wrap: no-wrap;
-                    width: 960px;
+                    flex-wrap: wrap;
+                    max-width: 960px;
                     margin: 0 auto;
+                    padding: 8px;
+                }
+
+                .box {
+                    box-sizing: border-box;
+                    border: 1px solid black;
                 }
 
                 .controls-row-item {
-                    align-self: center;
+                    align-self: baseline;
+                    display: inline-flex;
                     order: 1;
                     flex-basis: auto;
                     flex-grow: 1;
                     flex-shrink: 1;
+                    text-align: center;
                 }
 
-                #part {
-                    position: relative;
-                    top: -10px;
-                }
 
                 a.reset-centerpoint {
                     font-family: ${bodyFontFamily};
@@ -300,12 +319,21 @@ class PoseInputCalibrationElement extends AbstractModalElement {
 
                 .amp-value {
                     color: ${labelColor};
+                    padding-left: 8px;
+                    min-width: 24px;
                 }
 
                 .done {
                     --background-color: ${accentColor}:
                     --accent-color: ${backgroundColor};
                     width: 100px;
+                }
+
+                *[inline] .centerpoint-buttons {
+                    display: flex;
+                    flex-direction: row;
+                    flex-shrink: 1;
+                    flex-basis: auto;
                 }
 
                 .centerpoint-button {
@@ -327,7 +355,7 @@ class PoseInputCalibrationElement extends AbstractModalElement {
                     position: absolute;
                     top: 16px;
                     right: 16px;
-                    font-size: 14px;
+                    font-size: 18px;
                     color: ${accentColor};
                     font-weight: bold;
                     width: 80px;
@@ -338,7 +366,7 @@ class PoseInputCalibrationElement extends AbstractModalElement {
 
                 .help-container svg {
                     position: absolute;
-                    top: -2px;
+                    top: 0;
                     left: 0;
                 }
 
@@ -352,6 +380,31 @@ class PoseInputCalibrationElement extends AbstractModalElement {
                     fill: ${accentColor};
                 }
 
+                .control-pairing {
+                    display: inline-flex;
+                    flex-direction: row;
+                    align-items: baseline;
+                    margin: auto;
+                }
+
+                .control-pairing label {
+                    flex-direction: row;
+                    flex-basis: auto;
+                }
+
+
+                .centerpoint-buttons {
+                    flex-direction: row;
+                    flex-basis: auto;
+                }
+
+                .centerpoint-divider {
+                    align-items: baseline;
+                }
+
+                #part {
+                    margin: auto;
+                }
 
 
                 .close {
@@ -374,31 +427,38 @@ class PoseInputCalibrationElement extends AbstractModalElement {
                 </acc-content>
                 <div class="controls-row">
                     <div class="controls-row-item">
-                        <acc-select label="Body Part" id="part" on-change=${onSelectInput} inline>
+                        <acc-select label="Body Part:" id="part" on-change=${onSelectInput} inline>
                             ${options(this.parts, this.part)}
                         </acc-select>
                     </div>
                     <div class="controls-row-item">
-                        <acc-range
-                            min="1"
-                            max="10"
-                            step="0.1"
-                            label="Amplification"
-                            value="${this.amplification}"
-                            on-input="${onAmplification}"
-                            inline></acc-range>
-                        <span class="amp-value">${this.amplification}x</span>
+                        <div class="control-pairing">
+                            <acc-range
+                                min="1"
+                                max="6"
+                                step="0.1"
+                                label="Amplification:"
+                                value="${this.amplification}"
+                                on-input="${onAmplification}"
+                                inline></acc-range>
+                            <span class="amp-value">${this.amplification.toFixed(1)}x</span>
+                        </div>
                     </div>
                     <div class="controls-row-item">
-                        <label style="font-size: 18px;">Centerpoint:</label>
-                        <acc-button
-                            class="centerpoint-button"
-                            label="Use current position"
-                            on-click=${()=> dispatch('center')}></acc-button> |
-                        <acc-button
-                            class="centerpoint-button"
-                            label="Reset"
-                            on-click=${()=> dispatch('resetcenter')}></acc-button>
+                        <div class="control-pairing">
+                            <label style="font-size: 18px;">Centerpoint:</label>
+                            <span class="centerpoint-buttons">
+                                <acc-button
+                                    class="centerpoint-button"
+                                    label="Use current position"
+                                    on-click=${()=> dispatch('center', true)}></acc-button>
+                                    <span class="centerpoint-divider"> | </span>
+                                <acc-button
+                                    class="centerpoint-button"
+                                    label="Reset"
+                                    on-click=${()=> dispatch('resetcenter', true)}></acc-button>
+                            </span>
+                        </div>
                     </div>
                 </div>
                 <acc-button class="close" label="Done" on-click=${()=>this._handleCloseClick()}></acc-button>
@@ -410,6 +470,19 @@ class PoseInputCalibrationElement extends AbstractModalElement {
                 Help
             </button>
         `;
+    }
+
+    _shouldRender(props: any, changed: any, prev: any) {
+        if(!changed){
+            return super._shouldRender(props, changed, prev);
+        }
+        const keys = Object.keys(changed);
+        const justAmp = (keys.length === 1 && changed.amplification);
+        if(justAmp || (keys.length < 3 && changed.part && changed.amplification)) {
+            return false;
+        }
+
+        return super._shouldRender(props, changed, prev);
     }
 
 }
