@@ -95,16 +95,7 @@ export class ContentElement extends LitElement {
         };
         poll();
 
-        this.__shortcutObserver = new KeyboardShortcutObserver(this.shortcut, ()=> {
-            for(let child of this.children) {
-                if(isFocusable(child)) {
-                    child.focus();
-                    return;
-                }
-            }
-            //found none, so focus itself
-            this.focus();
-        }, 'content focus');
+        this.__shortcutObserver = new KeyboardShortcutObserver(this.shortcut, this._handleShortcut, 'content focus');
         window.addEventListener('resize', this._onResize);
 
         super.connectedCallback();
@@ -114,6 +105,19 @@ export class ContentElement extends LitElement {
         this.__shortcutObserver.disconnect();
         window.removeEventListener('resize', this._onResize);
         super.disconnectedCallback();
+    }
+
+    @autobind
+    _handleShortcut() {
+        for(let child of this.children) {
+            if(isFocusable(child)) {
+                child.focus();
+                return;
+            }
+        }
+        //found none, so focus itself
+        this.focus();
+        this.dispatchEvent(new CustomEvent('shortcut'));
     }
 
 

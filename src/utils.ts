@@ -168,3 +168,37 @@ export const setBooleanAttribute = (el: Element, attr: string, isTrue: boolean)=
  */
 export const camelCaseToHyphenated = ( camelString: string ) =>
     camelString.replace( /([a-z])([A-Z])/g, '$1-$2' ).toLowerCase();
+
+
+
+export const computeStyleResult = (parent: Element | ShadowRoot, styleKey: string, value: string) => {
+    const tmp = document.createElement('div');
+    tmp.style.display = 'none';
+    tmp.style[styleKey as any] = value;
+    parent.appendChild(tmp);
+    const computed = window.getComputedStyle(tmp);
+    const computedValue = computed[styleKey as any];
+    tmp.parentElement && tmp.parentElement.removeChild(tmp);
+    return computedValue;
+};
+
+export const cssColorToArray = (css: string) => {
+    function digits(){
+        //hack off the trailing )
+        var str = css.substr(0, css.length-1);
+        //hack off rgb(, rgba(, hsl(, hsla(
+        const fnStartIndex = str.indexOf('(');
+        return str.substr( fnStartIndex + 1, str.length).split(',');
+    }
+    function makeNumbers( digitStrings: string[]){
+        let i=0, l = digitStrings.length;
+        const digits: number[] = [];
+        for ( i=0; i<l; i++){
+            //cast to numbers from Strings
+            digits[i] = parseFloat( digitStrings[i] );
+        }
+        return digits;
+    }
+
+    return makeNumbers( digits() );
+}

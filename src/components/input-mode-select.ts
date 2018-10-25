@@ -22,12 +22,13 @@ import {getLabelTemplate} from "./label";
 
 
 interface InputModeElement extends SelectableElement {
-    contentSelector:string;
-    contentElement:HTMLElement | null;
-    inputType:string;
-    initialize:Function;
-    controls:boolean;
-    inputName:string;
+    contentSelector: string;
+    contentElement: HTMLElement | null;
+    hasControls: boolean;
+    inputType: string;
+    initialize: Function;
+    controls: boolean;
+    inputName: string;
 }
 
 interface UIElements {
@@ -57,6 +58,14 @@ export class InputModeSelectElement extends AbstractSelectLitElement {
         super();
         this._nodeChildSelector = '*';
     }
+
+    // focus() {
+    //     super.focus();
+    //     const select = this.shadowRoot.querySelector('select');
+    //     if(select) {
+    //         select.focus();
+    //     }
+    // }
 
 
     set contentElement(element: HTMLElement | null) {
@@ -127,6 +136,7 @@ export class InputModeSelectElement extends AbstractSelectLitElement {
 
     _render({label}:UIElements){
         const sI = this.selectedIndex;
+        const hasControls = this.selected && this.selected.hasControls;
 
         const self = this;
         function onSelectInput(e:Event){
@@ -218,8 +228,8 @@ export class InputModeSelectElement extends AbstractSelectLitElement {
 
             <slot></slot>
             <acc-button
-                disabled?="${this.selectedIndex === 0}"
-                tabIndex$="${(this.selectedIndex === 0) ? '-1' : '0'}"
+                aria-hidden$="${!hasControls}"
+                disabled?="${!hasControls}"
                 class="settings"
                 label="Body Tracking Settings"
                 on-click="${()=>this._handleOptionsClicked()}"></acc-button>

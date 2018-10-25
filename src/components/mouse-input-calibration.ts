@@ -20,8 +20,10 @@ class MouseInputCalibrationElement extends AbstractModalElement {
 
     _renderModalBody(props:any){
         return html`
-            <h3>Mouse Input</h3>
-            <p>placeholder</p>
+            <div style="display: none;">
+                <h3>Mouse Input</h3>
+                <p>placeholder</p>
+            </div>
         `;
     }
 }

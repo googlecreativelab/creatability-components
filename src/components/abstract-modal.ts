@@ -223,7 +223,10 @@ export abstract class AbstractModalElement extends LitElement {
     }
 
     _propertiesChanged(props: any, changed: any, prev: any) {
-        if (changed.hasOwnProperty('open') || changed.hasOwnProperty('exclusive')){
+        if (
+            (changed && changed.hasOwnProperty('open')) ||
+            (changed && changed.hasOwnProperty('exclusive'))
+        ){
             if (props.open){
                 this._open();
             } else {
@@ -256,7 +259,7 @@ export abstract class AbstractModalElement extends LitElement {
             }
             </style>
             ${this.open ? html`
-                <div tabindex="0" aria-label="Overlay Content" class="container" style="display: ${props.open ? 'block' : 'none'}; : ''}">
+                <div tabindex="0" class="container" style="display: ${props.open ? 'block' : 'none'}; : ''}">
                     ${this._renderModalBody(props)}
                 </div>
             ` : html``}

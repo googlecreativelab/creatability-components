@@ -41,7 +41,10 @@ export class ButtonElement extends LitElement {
 
     connectedCallback() {
         super.connectedCallback();
-        this.__shortcutObserver = new KeyboardShortcutObserver(this.shortcut, ()=> this._dispatchClick());
+        this.__shortcutObserver = new KeyboardShortcutObserver(this.shortcut, ()=> {
+            this.dispatchEvent(new CustomEvent('shortcut', {bubbles : true, composed : true}))
+            this._dispatchClick()
+        });
     }
 
     disconnectedCallback() {
@@ -69,8 +72,11 @@ export class ButtonElement extends LitElement {
     }
 
     focus(){
-        super.focus()
-        this.shadowRoot.querySelector('button').focus()
+        super.focus();
+        const button = this.shadowRoot.querySelector('button');
+        if(button) {
+            button.focus();
+        }
     }
 
     _render({label, icon}:ButtonElementProperties){
@@ -135,7 +141,7 @@ export class ButtonElement extends LitElement {
             </style>
             <button
                 disabled?="${this.disabled}"
-                tabindex$="0"
+                tabindex="${this.disabled ? -1 : 0}"
                 aria-label="${label}">
                 <img class="icon" aria-hidden="true" src="${icon}" style="display: ${icon === '' ? 'none' : 'block'}"
                 <span class="label">${label}</span>

@@ -18,6 +18,7 @@ import { ButtonElementProperties } from './button';
 import { html, LitElement } from '@polymer/lit-element';
 import { property } from './decorators';
 import { setBooleanAttribute } from '../utils';
+import autobind from 'autobind-decorator';
 
 
 export class ToggleElement extends LitElement {
@@ -42,7 +43,7 @@ export class ToggleElement extends LitElement {
 
     connectedCallback() {
         super.connectedCallback();
-        this.__shortcutObserver = new KeyboardShortcutObserver(this.shortcut, _=> this.checked = !this.checked, this.label);
+        this.__shortcutObserver = new KeyboardShortcutObserver(this.shortcut, this._handleShortcut, this.label);
     }
 
     disconnectedCallback() {
@@ -53,6 +54,12 @@ export class ToggleElement extends LitElement {
     focus(){
         super.focus()
         this.shadowRoot.querySelector('button').focus()
+    }
+
+    @autobind
+    _handleShortcut() {
+        this.checked = !this.checked;
+        this.dispatchEvent(new CustomEvent('shortcut'));
     }
 
     _render({ label, shortcut, checked }:any){
@@ -120,7 +127,7 @@ export class ToggleElement extends LitElement {
 
 
             </style>
-                <button disabled?="${this.disabled}" title="${title}" on-click=${()=> this.checked = !this.checked}>
+                <button role="checkbox" aria-checked$="${this.checked}" disabled?="${this.disabled}" title="${title}" on-click=${()=> this.checked = !this.checked}>
                 <span class="title">${label||value}</span>
                 <div class="indicator">
                     <svg id="off-indicator" style$="display: ${this.checked ? 'none' : 'block'}"
