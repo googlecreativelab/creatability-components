@@ -54,6 +54,11 @@ type InputEventInit = CustomEventInit<InputEventDetails>;
  */
 export class ACCInputEvent extends CustomEvent<InputEventDetails> {
     /**
+     * Dispatched when an inputs properties have changed
+     * @event
+     */
+    public static CHANGE: string = 'change';
+    /**
      * Dispatched when the input is beginning to initialize and load itself
      * @event
      */
@@ -146,6 +151,7 @@ export abstract class AbstractInputElement extends LitElement {
     ///////////////////////////////////
 
 
+    public hasControls: boolean = false;
 
     /**
      * the type of input this instance is, i.e. 'mouse', 'pose'
@@ -304,6 +310,10 @@ export abstract class AbstractInputElement extends LitElement {
     //overriding to ensure consistent event types
     dispatchEvent(evt:ACCInputEvent){
         return super.dispatchEvent(evt);
+    }
+
+    protected _dispatchChange(): void {
+        this.dispatchEvent(this._createEvent(ACCInputEvent.CHANGE));
     }
 
     /**
