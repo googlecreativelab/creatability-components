@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Components</title>
+    <meta name="viewport" content="width=device-width, user-scalable=yes">
+    <link href="https://fonts.googleapis.com/css?family=Karla:400,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:700" rel="stylesheet">
+    <style>
+
+        html {
+            --background-color: #ffffff;
+            --label-color: black;
+            --fill-color: black;
+        }
+        body {
+            background-color: white;
+            font-family: 'Karla', sans-serif;
+        }
+
+        #cursor {
+            position: relative;
+            width: 50px;
+            height: 50px;
+            background-color: rgba(0, 0, 255, 0.5);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/webcomponentsjs/2.0.2/webcomponents-loader.js"></script>
+    <script src="/dist/acc-components.js"></script>
+</head>
+<body>
+
+<acc-side-panel label="Example">
+    <acc-group label="Tracking Group" hidelabel>
+        <acc-input-mode-select>
+            <acc-mouse-input amplification="10"></acc-mouse-input>
+            <acc-pose-input amplification="2" smoothing="0.5"></acc-pose-input>
+        </acc-input-mode-select>
+    </acc-group>
+    <acc-group label="Range Group">
+        <acc-range label="Range test" value="5" min="0" max="10" step="0.1"></acc-range>
+        <acc-range label="Range test disabled" value="5" min="0" max="10" step="0.1" disabled></acc-range>
+    </acc-group>
+    <acc-group label="Button Group">
+        <acc-button label="Test button"></acc-button>
+        <acc-button label="Test button disabled" disabled></acc-button>
+    </acc-group>
+    <acc-group label="Toggle Group">
+        <acc-toggle label="Test toggle" checked></acc-toggle>
+        <acc-toggle label="Test toggle disabled" disabled></acc-toggle>
+    </acc-group>
+    <acc-group label="Select Group">
+        <acc-select label="Test Select">
+            <acc-optgroup label="Option Group 1">
+                <acc-item label="Option 1"></acc-item>
+                <acc-item label="Option 2"></acc-item>
+                <acc-item label="Option 3"></acc-item>
+            </acc-optgroup>
+            <acc-optgroup label="Option Group 2" disabled>
+                <acc-item label="Option 1"></acc-item>
+                <acc-item label="Option 2"></acc-item>
+                <acc-item label="Option 3"></acc-item>
+            </acc-optgroup>
+        </acc-select>
+        <acc-select label="Test Select" disabled>
+            <acc-item label="Option 1"></acc-item>
+            <acc-item label="Option 2"></acc-item>
+            <acc-item label="Option 3"></acc-item>
+        </acc-select>
+    </acc-group>
+
+
+</acc-side-panel>
+<acc-content webcamopacity="0.25" grayscale mounted>
+    <div id="cursor"></div>
+</acc-content>
+
+
+<script type="text/javascript">
+    const inputModeSelect = document.querySelector('acc-input-mode-select');
+    const cursor = document.querySelector('#cursor');
+    const cursorSize = cursor.clientWidth;
+
+    inputModeSelect.addEventListener('input', function(event) {
+        const input = event.target;
+        cursor.style.left = `${input.targetPosition[0] - (cursorSize/2)}px`;
+        cursor.style.top = `${input.targetPosition[1] - (cursorSize/2)}px`;
+    });
+
+</script>
+</body>
+</html>

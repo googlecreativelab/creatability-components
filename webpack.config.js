@@ -23,7 +23,7 @@ const config = {
 	entry : './src/index.ts',
 	output : {
 		path : outputPath,
-		filename : 'components.bundle.js'
+		filename : 'acc-components.js'
 	},
 	mode : 'development',
 	module : {

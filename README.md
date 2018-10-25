@@ -1,18 +1,20 @@
-# About
+# Creatability Accessible Web Components
+_in active development_
 
 [Creatability](https://experiments.withgoogle.com/collection/creatability) is a set of experiments made in collaboration with creators and allies in the accessibility community. They explore how creative tools – drawing, music, and more – can be made more accessible using web and AI technology. We hope they inspire others to make new projects, so we've started open-sourcing components here for anyone to use. Note this repo is under development. Contributions welcome!
 
-![alt text](https://storage.googleapis.com/creatability-github/Irene_Keyboard_shorter.gif)
+![using input tracking](https://storage.googleapis.com/creatability-github/Irene_Keyboard_shorter.gif)
 
-
-# Creatability Accessible Web Components
 
 
 ## Setup an Input
 
-_the simplest example of using an input_
+A simple example of toggling between mouse/keyboard and body tracking input.
 ```html
-<acc-pose-input oninput="onInput" selected></acc-pose-input>
+<acc-input-mode-select oninput="onInput">
+    <acc-mouse-input amplification="10"></acc-mouse-input>
+    <acc-pose-input smoothing="0.5" selected></acc-pose-input>
+</acc-input-mode-select>
 
 <script>
     function onInput(event){
@@ -40,25 +42,6 @@ input.initialize();
 ```
 
 
-### Enabling Selection of multiple Input modes
-
-The following example will render an UI component to enable the selection between each type of input inside its tags.
-In this example `<acc-pose-input selected>` starts `selected`, if that attribute was not present it would select the first node.
-```html
-<acc-input-mode-select oninput="onInput">
-    <acc-face-rotation-input wasmsrc="./brfv4.wasm"></acc-face-rotation-input>
-    <acc-pose-input selected></acc-pose-input>
-    <acc-mouse-input></acc-mouse-input>
-</acc-input-mode-select>
-
-<script>
-    function onInput(event){
-        const input = event.target;
-        console.log(input.position);
-    }
-</script>
-```
-
 You can of course bind the event the same way with javascript:
 ```js
 const inputSelector = document.querySelector('acc-input-mode-select');
@@ -76,13 +59,7 @@ All input types dispatch the following events:
 * `'ready'` when the input has completed initializing and is now operating
 * `'input'` dispatched every time the input has a new value
 * `'stop'` dispatched if the input has stopped such as by switching inputs or calling `input.stop()`.
-
-
-### Input attributes
-All Input types contain the following attributes:
-
-* `selected` if the input is the currently selected node out of the list
-* `controls` when true the input will display its calibration panel.
+* `'change'` dispatched when an attribute/property changes values
 
 
 ### Input methods
@@ -94,9 +71,9 @@ All Input types contain the following methods:
 
 ## Tutorial
 
-The tutorial element gives you a simple slide show. It extends AbstractModal so it can be added to the screen by adding an "open" attribute. Each of the `<acc-slide>` children will be rendered as a slide-show. The Splash page will automatically open this tutorial as will the `<acc-learn-more-group>`
+The tutorial element gives you a simple slide show. It extends `AbstractModal` so it can be added to the screen by adding an "open" attribute. Each of the `<acc-slide>` children will be rendered as a slide-show.
 
-```
+```html
 <acc-tutorial>
     <acc-slide
         video="assets/s1.mp4"
@@ -114,6 +91,10 @@ The tutorial element gives you a simple slide show. It extends AbstractModal so 
 </acc-tutorial>
 ```
 
+## Contributors
+* [Kyle Phillips](https://github.com/hapticdata)
+* [Yotam Mann](https://github.com/tambien)
+* [Use All 5](https://github.com/useallfive)
 
 
 
