@@ -17,23 +17,21 @@
  * each one of these modules represents a corresponding HTML tag
  * i.e. <acc-mouse-input/>
  */
-import './components/item';
-import './components/optgroup';
 import './components/button';
-import './components/toggle';
+import './components/content';
 import './components/input-mode-select';
-import './components/select';
-import './components/range';
-
+import './components/item';
 import './components/mouse-input';
 import './components/mouse-input-calibration';
-
+import './components/optgroup';
 import './components/pose-input';
 import './components/pose-input-calibration';
-
+import './components/range';
+import './components/side-panel';
+import './components/select';
 import './components/snackbar';
+import './components/toggle';
 
-import './components/content';
 
 import './components/slide';
 import './components/tutorial';
