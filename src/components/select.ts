@@ -65,7 +65,7 @@ export class SelectElement extends AbstractSelectLitElement  {
         this.shadowRoot.querySelector('select').focus()
     }
 
-    _render() {
+    _render({ label}: any) {
         const sI = this.selectedIndex;
 
         //are any icons present?
@@ -129,6 +129,7 @@ export class SelectElement extends AbstractSelectLitElement  {
         }
         return html`
         <style>
+
             :host {
                 padding: 5px;
             }
@@ -137,7 +138,9 @@ export class SelectElement extends AbstractSelectLitElement  {
             }
 
             :host([inline]) .select-style,
-            :host([inline]) label {
+            :host([inline]) label,
+            *[inline] .select-style,
+            *[inline] label {
                 display: inline-block;
                 width: auto;
             }
@@ -149,25 +152,38 @@ export class SelectElement extends AbstractSelectLitElement  {
                 opacity: 0.25;
             }
 
-            :host([inline]) label {
+            :host([inline]) label,
+            *[inline] label {
                 padding: 0 8px 0 0;
             }
 
-            :host([inline]) .select-style {
-                transform: translate(0, 38%);
-            }
-
-            :host([inline]) select {
+            :host([inline]) select,
+            *[inline] select {
                 width: auto;
                 display: inline-block;
                 padding: 0 30px 0 0;
             }
 
+            :host([inline]) .container,
+            *[inline] .container {
+                display: flex;
+                align-items: baseline;
+            }
             .container {
                 display: inline-block;
                 width: 100%;
             }
 
+            label {
+                font-family: ${bodyFontFamily};
+                font-size: 18px;
+                padding: 0px 0px 20px 0px;
+                font-weight: 700;
+                text-transform: capitalize;
+                display: block;
+                cursor: pointer;
+                color: ${labelColor};
+            }
 
             select {
                 width: 100%;
@@ -180,7 +196,7 @@ export class SelectElement extends AbstractSelectLitElement  {
                 font-family: ${bodyFontFamily};
                 text-transform: capitalize;
                 color: ${labelColor};
-                background-color: transparent;
+                background-color: ${backgroundColor};
                 -moz-appearance:none; /* Firefox */
                 -webkit-appearance:none; /* Safari and Chrome */
                 appearance:none;
@@ -188,7 +204,8 @@ export class SelectElement extends AbstractSelectLitElement  {
             }
 
             select option,  select optgroup{
-                color: initial;
+                color: black;
+                background-color: white;
             }
 
             .select-style {
@@ -242,7 +259,7 @@ export class SelectElement extends AbstractSelectLitElement  {
             }
         </style>
         <div class="container">
-            ${this.labelHtml}
+            <label for="select-ui">${label}</label>
             <div class="select-style">
                 ${ hasIcons ? html`
                     <div class="icon" style$="background-image: url(${this.selected && this.selected.icon}); display: ${ hasIcons ? 'flex' : 'none'}">
@@ -250,7 +267,7 @@ export class SelectElement extends AbstractSelectLitElement  {
                     ` : ''
                 }
                 <select
-                    id$="${this.id}"
+                    id="select-ui"
                     class="accessibility-selector"
                     disabled?="${this.disabled}"
                     on-input="${onSelectInput}" id="select">

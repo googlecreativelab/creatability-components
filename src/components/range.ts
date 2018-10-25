@@ -126,21 +126,31 @@ class RangeElement extends LitElement {
         return html`
             <style>
 
-            :host([inline]) {
+            :host([inline]), [inline] {
                 display: inline-block;
             }
 
             :host([inline]) .range-slider label,
-            :host([inline]) input[type="range"] {
+            :host([inline]) input[type="range"],
+            *[inline] .range-slider label,
+            *[inline] input[type="range"] {
                 display: inline-block;
                 max-width: 50%;
                 vertical-align: middle;
             }
 
-            :host([inline]) .range-slider label {
-                float: none;
+            :host([inline]) .range-slider label,
+            *[inline] .range-slider label {
                 padding: 0;
+                padding-right: 4px;
+                flex-shrink: 1;
+                display: flex;
+                align-self: flex-start;
             }
+
+
+
+
             input[type="range"]{
                 -webkit-appearance: none;
                 -moz-apperance: none;
@@ -188,10 +198,20 @@ class RangeElement extends LitElement {
                 float: left;
                 display: ${this.inlineLabel ? "inline-block" : "block"};
                 color: ${labelColor};
+                flex-shrink: auto;
             }
 
+            [inline] #input-container {
+                display: flex;
+                flex-direction: row;
+                flex-shrink: auto;
+            }
 
-            span {
+            [inline] input[type="range"] {
+                padding-right: 16px;
+            }
+
+            #input-container {
                 position: relative;
                 height: 30px;
                 display: block;
@@ -209,7 +229,7 @@ class RangeElement extends LitElement {
 
             <div class="range-slider">
                 ${this.labelHtml}
-                ${this.inlineLabel ? html`<span>${inputHtml}</span>` : inputHtml}
+                ${this.inlineLabel ? html`<span id="input-container">${inputHtml}</span>` : inputHtml}
             </div>
         `;
 
