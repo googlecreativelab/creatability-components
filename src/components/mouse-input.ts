@@ -105,6 +105,11 @@ class MouseInputElement extends AbstractInputElement {
         const mag = this.amplification / Math.min(contWidth, contHeight) * 2;
         this.pressed = false;
 
+        if(!isFinite(this._lastFoundPosition[0] + this._lastFoundPosition[1])) {
+            this._lastFoundPosition[0] = 0;
+            this._lastFoundPosition[1] = 0;
+        }
+
 
         let changed = false;
 
@@ -152,7 +157,7 @@ class MouseInputElement extends AbstractInputElement {
         }
 
         //mouse
-        this.pressed = event.type !== 'mouseup' && event.which > 0;
+        this.pressed = event.buttons > 0;
         this.__mode = MouseKeyboardInputMode.MOUSE;
 
         //touch
