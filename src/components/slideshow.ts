@@ -46,6 +46,18 @@ export class SlideshowElement extends LitElement {
     @property({ type: String })
     public closeButton: string = 'Start Playing';
 
+    @property({ type: String })
+    public caption: string = '';
+
+    @property({ type: String })
+    public video: string = '';
+
+    @property({ type: String })
+    public alt: string = '';
+
+    @property({ type: Boolean })
+    public transition: boolean = false;
+
     constructor() {
         super();
     }
@@ -68,15 +80,18 @@ export class SlideshowElement extends LitElement {
 
     set currentSlideId(id:number) {
         const slide = this.slides[id];
-        this.doFadeOut = true;
-        this.doFadeIn = false;
-        this.requestRender();
+
+        this.transition = true
+        this.currentSlide = slide
+        this.caption = ''
+        this.alt = ''
+
         setTimeout(() => {
-            this.currentSlide = slide;
-            this.doFadeIn = true;
-            this.doFadeOut = false;
-            this.requestRender();
-        }, 250);
+            this.transition = false
+            this.alt = slide.alt;
+            this.caption = slide.caption;
+            this.video = slide.video;
+        }, 250)
     }
 
     get currentSlideId() {
@@ -98,13 +113,13 @@ export class SlideshowElement extends LitElement {
         this.__nodesObserver = new FlattenedNodesObserver(this, this._handleNodesObserverUpdate);
     }
 
-    focus(){
+    /*focus(){
         super.focus()
         const slideContainer = this.shadowRoot.querySelector('.slideshow-container') as HTMLElement
         if (slideContainer){
             slideContainer.focus()
         }
-    }
+    }*/
 
     _handleNodesObserverUpdate(info: NodeObservation) {
         info.addedNodes.forEach((node:any) => {
@@ -123,16 +138,21 @@ export class SlideshowElement extends LitElement {
         this.requestRender();
     }
 
-    _didRender(props:any, changed:any, prev:any){
+    _nextSlide(){
+        this.dispatchEvent(new CustomEvent('next-slide', {bubbles : true, composed : true}));
+        this.currentSlideId = this.nextSlide
+    }
+
+    _previousSlide(){
+        this.dispatchEvent(new CustomEvent('previous-slide', {bubbles : true, composed : true}));   
+        this.currentSlideId = this.prevSlide
+    }
+
+    /*_didRender(props:any, changed:any, prev:any){
         const caption = this.currentSlide ? this.currentSlide.caption : ''
         const alt = this.currentSlide ? this.currentSlide.alt : ''
-        // this.shadowRoot.querySelector('#caption').setAttribute('aria-label', caption)
-        this.shadowRoot.querySelector('#alt-text').setAttribute('aria-label', alt)
-        /*if (this.slides.length > 0 && this.currentSlideId === this.slides.length - 1){
-            (this.shadowRoot.querySelector('#slideshow-start-button') as HTMLElement).focus()
-        }*/
         super._didRender(props, changed, prev);
-    }
+    }*/
 
     _render() {
 
@@ -148,30 +168,17 @@ export class SlideshowElement extends LitElement {
                 .slides {
                     position: relative;
                     height: 400px;
-                }
-                
-                .slide {
-                    opacity: 0;
                     transition: opacity 0.25s ease-out;
-                    width: 100%;
-                    position: absolute;
-                }
-                                
-                .slide.fadeIn {
-                    opacity: 1;
+                    opacity : 1;
+                    display: block;
                 }
 
                 button[disabled]{
                     opacity: 0.25;
                     pointer-events: none;
                 }
-
-                .slide.fadeOut {
-                    opacity: 0;
-                }
                 
-                img,
-                video {
+                img, video {
                     width: 100%;
                     height: 300px;
                     margin-bottom: 40px;
@@ -181,7 +188,7 @@ export class SlideshowElement extends LitElement {
                     text-align: center;
                     font-size: 18px;
                     color: ${labelColor};
-                    max-width: 50%;
+                    max-width: 70%;
                     margin: 0px auto;
                 }
                 
@@ -246,45 +253,37 @@ export class SlideshowElement extends LitElement {
                     background-color: transparent;
                 }
 
+                #alt-text, #live-caption{
+                    height: 0px;
+                    position: absolute;
+                    overflow: hidden;
+                }
+
             </style>
-            <div aria-label$="Carousel. ${this.slides.length.toString()} Slides" class="slideshow-container" tabindex="-1">                
+            <div aria-label$="Carousel. ${this.slides.length.toString()} Slides" class="slideshow-container">                
 
                 <button
                     class="nav-arrow nav-arrow-previous"
                     aria-label="Previous slide"
                     disabled?=${this.prevSlide < 0}
-                    on-click="${(e:MouseEvent) => this.currentSlideId = this.prevSlide}">
+                    on-click="${this._previousSlide.bind(this)}">
                     <acc-icon icon="previous"></acc-icon>
                 </button>
 
-                <div class="slides" aria-label="Slide Content">
-                    <div id="alt-text" role="img"></div>
-
-                    ${(_currentSlide => {
-                        if (_currentSlide) {
-                            return html`
-                            <div class$="slide ${this.doFadeIn ? 'fadeIn' : ''} ${this.doFadeOut ? 'fadeOut' : ''}">
-                                ${((_el) => { if (_el && _el !== '') {
-                                    return html`<img src$="${_currentSlide.image}" alt="${_currentSlide.alt}">`
-                                }})(_currentSlide.image)}
-                                ${((_el) => { if (_el && _el !== '') {
-                                    return html`
-                                        <video aria-hidden="true" src$="${_currentSlide.video}" playsinline muted autoplay></video>
-                                    `
-                                }})(_currentSlide.video)}
-
-                                <p id="caption" aria-live="polite" aria-atomic="true">${_currentSlide.caption}</p>
-                            </div>
-                            `;
-                        }
-                    })(this.currentSlide)}
+                <div class="slides" style="opacity:${this.transition?'0':'1'}" aria-label="Slide Content">
+                    <img id="alt-text" alt$="${this.alt}"" src="">
+                    <video aria-hidden="true" src$="${this.video}" playsinline muted autoplay></video>
+                    <p id="caption" 
+                        aria-live="polite" 
+                        aria-atomic="true" 
+                        aria-relevant="text">${this.caption}</p>
                 </div>
                                 
                 <button
                     class="nav-arrow nav-arrow-next"
                     aria-label="Next slide"
                     disabled?=${this.nextSlide > this.slides.length-1}
-                    on-click="${(e:MouseEvent) => this.currentSlideId = this.nextSlide}">
+                    on-click="${this._nextSlide.bind(this)}">
                     <acc-icon icon="next"></acc-icon>
                 </button>
 
@@ -305,7 +304,7 @@ export class SlideshowElement extends LitElement {
 
                  <button 
                     id="slideshow-start-button"
-                    on-click="${() => this.dispatchEvent(new CustomEvent('close'))}">
+                    on-click="${() => this.dispatchEvent(new CustomEvent('close', {bubbles : true, composed : true}))}">
                     ${this.closeButton}
                 </button>
 

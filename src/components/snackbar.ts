@@ -15,6 +15,7 @@
 import { accentColor, labelColor, backgroundColor } from './styles';
 import { html, LitElement } from '@polymer/lit-element';
 import { property } from './decorators';
+import { AbstractModalElement } from './abstract-modal';
 
 
 
@@ -89,7 +90,11 @@ export class SnackBarElement extends LitElement {
         const textElement:any = this.shadowRoot.querySelector('p');
         textElement.innerHTML = this.message;
         textElement.setAttribute('tabindex', '0');
-        this.__previousFocus = document.activeElement as HTMLElement
+        const currentFocus = document.activeElement as HTMLElement
+        if (currentFocus !== this && currentFocus !== document.body &&
+                currentFocus && !(currentFocus instanceof AbstractModalElement)){
+            this.__previousFocus = currentFocus
+        }
     }
 
     _render({ duration, message }:any){
@@ -166,17 +171,17 @@ export class SnackBarElement extends LitElement {
                 }
 
             </style>
-            <div class="container" aria-atomic="true" aria-label="Overlay Message" error?=${this.error}>
+            <div class="container" error?=${this.error}>
                 ${(this.dismissable) ?
                     html`
                         <div class="column left">
-                            <p></p>
+                            <p aria-atomic="true" aria-live="assertive"></p>
                         </div>
                         <div class="column right">
                             <button on-click=${()=> this.hide()}>DISMISS</button>
                         </div>
                     ` :
-                    html`<p></p>`
+                    html`<p aria-atomic="true" aria-live="assertive"></p>`
                 }
             </div>
         `;

@@ -12,13 +12,15 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-import { titleFontFamily, bodyFontFamily, outlineBorderColor, accentColor } from './styles'
-import { LitElement, html } from '@polymer/lit-element';
+import { html } from '@polymer/lit-element';
 import { property } from './decorators';
 import './slideshow';
 import { AbstractModalElement } from './abstract-modal';
 
 export class Tutorial extends AbstractModalElement {
+
+    @property({ type: String })
+    public closeButton: string = 'Start Playing';
 
     constructor() {
         super();
@@ -28,18 +30,18 @@ export class Tutorial extends AbstractModalElement {
 
     protected _handleCloseClick(){
         this.removeAttribute('open')
-        this.dispatchEvent(new CustomEvent('close'));
+        this.dispatchEvent(new CustomEvent('close-clicked', { bubbles: true }));
     }
 
     focus(){
         super.focus()
-        const container = this.shadowRoot.querySelector('.container') as HTMLElement
-        if (container){
-            container.focus()
+        const header = this.shadowRoot.querySelector('h2') as HTMLElement
+        if (header){
+            header.focus()
         }
     }
 
-    _renderModalBody() {
+    _renderModalBody({ closeButton }: any) {
 
         return html`
             <style>
@@ -73,10 +75,16 @@ export class Tutorial extends AbstractModalElement {
                     left: 50%;
                     transform: translate(-50%, -50%);
                 }
-                
+
+                h2 {
+                    height: 0px;
+                    overflow: hidden;
+                }
+
             </style>
             <div id="content">
-                <acc-slideshow on-close=${this._handleCloseClick.bind(this)}>
+                <h2 tabindex="-1">Tutorial</h2>
+                <acc-slideshow closeButton="${closeButton}" on-close=${this._handleCloseClick.bind(this)}>
                     <slot></slot>
                 </acc-slideshow>
             </div>
