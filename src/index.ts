@@ -19,6 +19,7 @@
  */
 import './components/button';
 import './components/content';
+import './components/group';
 import './components/input-mode-select';
 import './components/item';
 import './components/mouse-input';
