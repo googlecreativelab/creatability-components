@@ -16,22 +16,13 @@ import { fillColor } from './styles';
 import { html, LitElement } from '@polymer/lit-element';
 
 const icons:any = {
-    pause : require('raw-loader!../assets/icons/pause.svg'),
-    play : require('raw-loader!../assets/icons/play.svg'),
-    stop : require('raw-loader!../assets/icons/stop.svg'),
     menu : require('raw-loader!../assets/icons/menu.svg'),
     close : require('raw-loader!../assets/icons/close.svg'),
-    replay : require('raw-loader!../assets/icons/replay.svg'),
-    code : require('raw-loader!../assets/icons/code.svg'),
     down : require('raw-loader!../assets/icons/down.svg'),
     link : require('raw-loader!../assets/icons/link.svg'),
     next : require('raw-loader!../assets/icons/next.svg'),
-    previous : require('raw-loader!../assets/icons/previous.svg'),
-    'volume-on' : require('raw-loader!../assets/icons/volume-on.svg'),
-    'volume-off' : require('raw-loader!../assets/icons/volume-off.svg'),
-    'chrome' : require('raw-loader!../assets/icons/chrome_experiment.svg'),
-    'badges' : require('raw-loader!../assets/icons/badges.svg'),
-}
+    previous : require('raw-loader!../assets/icons/previous.svg')
+};
 
 class IconElement extends LitElement {
 
