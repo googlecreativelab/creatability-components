@@ -15,52 +15,58 @@
 
 const { resolve } = require('path')
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin')
+const cloneDeep = require('lodash.clonedeep');
 
 const isDev = process.argv.find(arg => arg.includes('webpack-dev-server'))
 const outputPath = resolve('dist') //isDev ? resolve('src') : resolve('dist');
 
 const config = {
-	entry : './src/index.ts',
-	output : {
-		path : outputPath,
-		filename : 'acc-components.js'
-	},
-	mode : 'development',
-	module : {
-		rules : [
-			{
-				test : /\.tsx?$/,
-				use : 'ts-loader',
-				exclude : /node_modules/
-			},
-			{
-				test : /\.html$/,
-				use : ['text-loader']
-			}
-		]
-	},
-	resolve : {
-		extensions : ['.tsx', '.ts', '.js']
-	},
-	devtool : 'inline-source-map'
+    entry : './src/index.ts',
+    output : {
+        path : outputPath,
+        filename : 'acc-components.js'
+    },
+    mode : 'development',
+    module : {
+        rules : [
+            {
+                test : /\.tsx?$/,
+                use : 'ts-loader',
+                exclude : /node_modules/
+            },
+            {
+                test : /\.html$/,
+                use : ['text-loader']
+            }
+        ]
+    },
+    resolve : {
+        extensions : ['.tsx', '.ts', '.js']
+    },
+    devtool : 'inline-source-map'
 }
 
 module.exports = function(argv){
-	console.log(arguments)
+    console.log(arguments)
 
-	if (argv.mode === 'production'){
-		console.log('Creating Production JS Bundle')
-		config.mode = argv.mode
-		config.devtool = 'none'
+    if (argv.mode === 'production'){
+        const prod = cloneDeep(config);
+        console.log('Creating Production JS Bundle')
+        prod.mode = argv.mode
+        prod.devtool = 'none'
+        prod.output.filename = 'acc-components.min.js';
 
-		// config.optimization = {
-		//     minimizer: [
-		//         new UglifyJSPlugin({
-		//             extractComments: true
-		//         })
-		//     ]
-		// };
-	}
-	return [config];
+        prod.optimization = {
+            minimizer: [
+                new UglifyJSPlugin({
+                    extractComments: true
+                })
+            ]
+        };
+
+        return [config, prod];
+    }
+
+    return [config];
 
 }
