@@ -12,6 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+import autobind from 'autobind-decorator';
+import { AbstractUIElement } from './abstract-ui';
 import { KeyboardShortcutObserver } from './../keyboard-shortcut-observer';
 import { setBooleanAttribute, scaleToFill, isElement } from './../utils';
 import { html, LitElement } from '@polymer/lit-element';
@@ -19,7 +21,6 @@ import { FlattenedNodesObserver } from '@polymer/polymer/lib/utils/flattened-nod
 import { property } from './decorators';
 import { InputModeSelectElement } from './input-mode-select';
 import { AbstractInputElement, ACCInputEvent } from './abstract-input';
-import autobind from 'autobind-decorator';
 
 
 
@@ -29,7 +30,7 @@ const isFocusable = (el: any): el is { focus: ()=> void } =>
 const isInputWithCanvas = (c: any): c is { canvas: HTMLCanvasElement } =>
     typeof c.canvas === 'object' && typeof c.canvas.getContext === 'function';
 
-export class ContentElement extends LitElement {
+export class ContentElement extends AbstractUIElement {
 
 
     @property({ type: String })
@@ -47,18 +48,10 @@ export class ContentElement extends LitElement {
     @property({ type: Boolean })
     public mounted: boolean = false;
 
-    @property({ type: Boolean })
-    public disabled: boolean = false;
-
-    @property({ type: String })
-    public shortcut: string = '';
-
-
 
     private __bgCtx: CanvasRenderingContext2D;
     private __inputElement: InputModeSelectElement | AbstractInputElement | null;
     private __nodesObserver: FlattenedNodesObserver;
-    private __shortcutObserver: KeyboardShortcutObserver;
 
     public set inputElement(element: InputModeSelectElement | AbstractInputElement | null) {
         if(this.__inputElement) {
@@ -94,15 +87,11 @@ export class ContentElement extends LitElement {
             }
         };
         poll();
-
-        this.__shortcutObserver = new KeyboardShortcutObserver(this.shortcut, this._handleShortcut, 'content focus');
         window.addEventListener('resize', this._onResize);
-
         super.connectedCallback();
     }
 
     disconnectedCallback() {
-        this.__shortcutObserver.disconnect();
         window.removeEventListener('resize', this._onResize);
         super.disconnectedCallback();
     }
@@ -112,12 +101,13 @@ export class ContentElement extends LitElement {
         for(let child of this.children) {
             if(isFocusable(child)) {
                 child.focus();
+                super._handleShortcut();
                 return;
             }
         }
         //found none, so focus itself
         this.focus();
-        this.dispatchEvent(new CustomEvent('shortcut'));
+        super._handleShortcut();
     }
 
 
@@ -126,14 +116,11 @@ export class ContentElement extends LitElement {
             return;
         }
 
-        if (changedProps.shortcut !== undefined && this.__shortcutObserver) {
-            this.__shortcutObserver.pattern = this.shortcut;
-        }
+        super._propertiesChanged(props, changedProps, prevProps);
 
         setBooleanAttribute(this, 'grayscale', props.grayscale);
         setBooleanAttribute(this, 'webcam', props.webcam);
         setBooleanAttribute(this, 'mounted', props.mounted);
-        setBooleanAttribute(this, 'disabled', props.disabled);
         if (props.disabled !== prevProps.disabled) {
             if (props.disabled && this.__inputElement) {
                 this.__inputElement.removeEventListener('tick', this._onTick);
@@ -141,7 +128,6 @@ export class ContentElement extends LitElement {
                 this.__inputElement.addEventListener('tick', this._onTick);
             }
         }
-        return super._propertiesChanged(props, changedProps, prevProps);
     }
 
     @autobind

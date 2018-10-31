@@ -12,6 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+import { AbstractUIElement } from './abstract-ui';
 import { bodyFontFamily, labelColor, accentColor, accentOffColor } from './styles';
 import { KeyboardShortcutObserver } from './../keyboard-shortcut-observer';
 import { ButtonElementProperties } from './button';
@@ -21,10 +22,7 @@ import { setBooleanAttribute } from '../utils';
 import autobind from 'autobind-decorator';
 
 
-export class ToggleElement extends LitElement {
-
-    @property({ type: Boolean })
-    public disabled: boolean = false;
+export class ToggleElement extends AbstractUIElement {
 
     @property({ type: Boolean })
     public checked:boolean = false;
@@ -32,24 +30,11 @@ export class ToggleElement extends LitElement {
     @property({ type: String })
     public label:string = '';
 
-    @property({ type: String })
-    public shortcut:string = '';
 
     public get value() :string {
         return String(this.checked);
     }
 
-    private __shortcutObserver: KeyboardShortcutObserver;
-
-    connectedCallback() {
-        super.connectedCallback();
-        this.__shortcutObserver = new KeyboardShortcutObserver(this.shortcut, this._handleShortcut, this.label);
-    }
-
-    disconnectedCallback() {
-        super.disconnectedCallback();
-        this.__shortcutObserver.disconnect();
-    }
 
     focus(){
         super.focus()
@@ -57,9 +42,9 @@ export class ToggleElement extends LitElement {
     }
 
     @autobind
-    _handleShortcut() {
+    protected _handleShortcut() {
         this.checked = !this.checked;
-        this.dispatchEvent(new CustomEvent('shortcut'));
+        super._handleShortcut();
     }
 
     _render({ label, shortcut, checked }:any){
@@ -160,19 +145,12 @@ export class ToggleElement extends LitElement {
 
         let changed = false;
 
-        if(changedProps.shortcut !== undefined && this.__shortcutObserver) {
-           this.__shortcutObserver.pattern = this.shortcut;
-           //dont count this as a change
-        }
-
-
         if(changedProps.checked !== prevProps.checked){
             setBooleanAttribute(this, 'checked', props.checked);
             changed = true;
         }
 
         if (changedProps.disabled !== prevProps.disabled) {
-            setBooleanAttribute(this, 'disabled', props.disabled);
             changed = true;
         }
 

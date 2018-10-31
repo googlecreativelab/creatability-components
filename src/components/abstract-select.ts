@@ -12,10 +12,11 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+import autobind from'autobind-decorator';
+import { AbstractUIElement } from './abstract-ui';
 import { OptgroupElement } from './optgroup';
 import { LitElement } from '@polymer/lit-element';
 import { isElement } from '../utils';
-import autobind from 'autobind-decorator';
 import { property } from "./decorators";
 import {getLabelTemplate} from "./label";
 
@@ -52,7 +53,7 @@ interface InitializableElement extends SelectableElement {
  * AbstractSelectLitElement is an Abstract class and therefore should always be extended
  * This class manages the [selected] attribute state of all children added into its slot
  */
-export class AbstractSelectLitElement extends LitElement {
+export class AbstractSelectLitElement extends AbstractUIElement {
 
     /**
      * hide the label visually, only provide to aria
@@ -65,9 +66,6 @@ export class AbstractSelectLitElement extends LitElement {
 
     @property({ type: String })
     public id:string;
-
-    @property({ type: Boolean })
-    public disabled:string;
 
     protected _nodeChildSelector = 'acc-item';
 
@@ -105,7 +103,6 @@ export class AbstractSelectLitElement extends LitElement {
         this.__nodesObserver.disconnect();
         super.disconnectedCallback();
     }
-
 
     /**
      * Select an element to change the active item.

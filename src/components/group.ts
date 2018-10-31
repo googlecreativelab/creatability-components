@@ -1,3 +1,4 @@
+import { AbstractUIElement } from './abstract-ui';
 // Copyright 2018 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -24,13 +25,8 @@ interface UIElements {
     disabled: boolean;
 }
 
-export class GroupElement extends LitElement {
+export class GroupElement extends AbstractUIElement {
 
-    /**
-     * a keyboard shortcut to access the element
-     */
-    @property({ type: String })
-    public shortcut: string = '';
 
     /**
      * the group label
@@ -39,47 +35,16 @@ export class GroupElement extends LitElement {
     public label:string = '';
 
     /**
-     * disable the entire group, make it inaccessible
-     */
-    @property({ type: Boolean })
-    public disabled: boolean = false;
-
-    /**
      * hide the label of the group, only provide for aria
      */
     @property({ type: Boolean })
     public hideLabel: boolean = false;
 
-    private __shortcutObserver: KeyboardShortcutObserver;
-
-    connectedCallback() {
-        super.connectedCallback();
-        this.__shortcutObserver = new KeyboardShortcutObserver(this.shortcut, this._handleShortcut, 'focus group');
-    }
-
-    disconnectedCallback() {
-        this.__shortcutObserver.disconnect();
-        super.disconnectedCallback();
-    }
-
-    _propertiesChanged(props: any, changed: any, prev: any) {
-        if(!changed) {
-            return;
-        }
-        if(changed.hasOwnProperty('disabled')) {
-            setBooleanAttribute(this, 'disabled', this.disabled);
-            this.setAttribute('aria-hidden', props.disabled);
-        }
-        if(changed.hasOwnProperty('shortcut') && this.__shortcutObserver) {
-            this.__shortcutObserver.pattern = props.shortcut;
-        }
-        return super._propertiesChanged(props, changed, prev);
-    }
 
     @autobind
     _handleShortcut() {
         this.focus();
-        this.dispatchEvent(new CustomEvent('shortcut', { bubbles: true }));
+        super._handleShortcut();
     }
 
     focus() {

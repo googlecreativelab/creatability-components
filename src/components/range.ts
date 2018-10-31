@@ -12,8 +12,9 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+import autobind from 'autobind-decorator';
 import { accentColor, labelColor } from './styles';
-
+import { AbstractUIElement } from './abstract-ui';
 import { html, LitElement } from '@polymer/lit-element';
 import { AbstractModalElement } from './abstract-modal';
 import { scalemap } from '../utils';
@@ -34,7 +35,7 @@ const normalizeValue = (name:string, min:number, max:number, value:number) => {
 };
 
 
-class RangeElement extends LitElement {
+class RangeElement extends AbstractUIElement {
 
     @property({ type: String })
     public name:string = '';
@@ -56,9 +57,6 @@ class RangeElement extends LitElement {
 
     @property({ type: Boolean })
     public inlineLabel:boolean = false;
-
-    @property({ type: Boolean })
-    public disabled:boolean = false;
 
     protected labelHtml:any;
 
@@ -87,6 +85,15 @@ class RangeElement extends LitElement {
                                         + `color-stop(${val}, ${accentColor}), `
                                         + 'color-stop(' + val + ', #D8D8D8)'
                                         + ')';
+    }
+
+    @autobind
+    protected _handleShortcut() {
+        const inputEl = this.shadowRoot.querySelector('.range-slider__range') as HTMLElement;
+        if(inputEl) {
+            inputEl.focus();
+        }
+        super._handleShortcut();
     }
 
     _propertiesChanged(props:any, changed:any, prev:any){

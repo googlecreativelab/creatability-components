@@ -12,9 +12,10 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-import { KeyboardShortcutObserver } from './../keyboard-shortcut-observer';
+import { AbstractUIElement } from './abstract-ui';
 import { bodyFontFamily, buttonBackgroundColor, buttonLabelColor, iconSize, accentColor, buttonBorderColor, buttonFontSize, buttonFontWeight, buttonJustifyContent, buttonBorderWidth } from './styles';
 import { html, LitElement } from '@polymer/lit-element';
+import autobind from 'autobind-decorator';
 import { property } from './decorators';
 import { setBooleanAttribute } from '../utils';
 import './icon'
@@ -24,52 +25,23 @@ export interface ButtonElementProperties {
     icon: string;
 }
 
-export class ButtonElement extends LitElement {
+export class ButtonElement extends AbstractUIElement {
     @property({ type: String })
     public icon: string = '';
 
     @property({ type: String })
     public label:string = '';
 
-    @property({ type: Boolean })
-    public disabled: boolean = false;
-
-    @property({ type: String })
-    public shortcut: string = '';
-
-    private __shortcutObserver: KeyboardShortcutObserver;
-
-    connectedCallback() {
-        super.connectedCallback();
-        this.__shortcutObserver = new KeyboardShortcutObserver(this.shortcut, ()=> {
-            this.dispatchEvent(new CustomEvent('shortcut', {bubbles : true, composed : true}))
-            this._dispatchClick()
-        });
-    }
-
-    disconnectedCallback() {
-        this.__shortcutObserver.disconnect();
-        super.disconnectedCallback();
+    @autobind
+    protected _handleShortcut() {
+        this._dispatchClick()
+        super._handleShortcut();
     }
 
     _dispatchClick() {
         this.dispatchEvent(new MouseEvent('click'));
     }
 
-    _propertiesChanged(props: any, changed: any, prev: any) {
-        if(!changed) {
-            return;
-        }
-
-        if(typeof changed.shortcut !== 'undefined' && this.__shortcutObserver) {
-            this.__shortcutObserver.pattern = props.shortcut;
-        }
-
-        if(typeof changed.disabled !== 'undefined') {
-            setBooleanAttribute(this, 'disabled', props.disabled);
-        }
-        super._propertiesChanged(props, changed, prev);
-    }
 
     focus(){
         super.focus();

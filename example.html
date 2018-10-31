@@ -40,19 +40,19 @@
         </acc-input-mode-select>
     </acc-group>
     <acc-group label="Range Group">
-        <acc-range label="Range test" value="5" min="0" max="10" step="0.1"></acc-range>
+        <acc-range label="Range test" value="5" min="0" max="10" step="0.1" shortcut="Shift l"></acc-range>
         <acc-range label="Range test disabled" value="5" min="0" max="10" step="0.1" disabled></acc-range>
     </acc-group>
     <acc-group label="Button Group">
-        <acc-button label="Test button"></acc-button>
+        <acc-button label="Test button" shortcut="Shift K" onclick="console.log('click', event);"></acc-button>
         <acc-button label="Test button disabled" disabled></acc-button>
     </acc-group>
-    <acc-group label="Toggle Group">
-        <acc-toggle label="Test toggle" checked></acc-toggle>
+    <acc-group label="Toggle Group" shortcut="Shift G">
+        <acc-toggle label="Test toggle" shortcut="Shift J" onchange="console.log('toggle change', event)" checked></acc-toggle>
         <acc-toggle label="Test toggle disabled" disabled></acc-toggle>
     </acc-group>
     <acc-group label="Select Group">
-        <acc-select label="Test Select">
+        <acc-select label="Test Select" shortcut="Shift s">
             <acc-optgroup label="Option Group 1">
                 <acc-item label="Option 1"></acc-item>
                 <acc-item label="Option 2"></acc-item>
@@ -73,7 +73,7 @@
 
 
 </acc-side-panel>
-<acc-content webcamopacity="0.25" grayscale mounted>
+<acc-content shortcut="Shift c" webcamopacity="0.25" grayscale mounted>
     <div id="cursor"></div>
 </acc-content>
 
@@ -88,6 +88,11 @@
         cursor.style.left = `${input.targetPosition[0] - (cursorSize/2)}px`;
         cursor.style.top = `${input.targetPosition[1] - (cursorSize/2)}px`;
     });
+
+
+
+    const content = document.querySelector('acc-content');
+    content.addEventListener('shortcut', ()=> console.log('content shortcut', content.shortcut));
 
 </script>
 </body>

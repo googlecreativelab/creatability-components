@@ -12,6 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+import autobind from 'autobind-decorator';
 import { backgroundColor, bodyFontFamily, labelColor } from './styles';
 import { SelectableElement, AbstractSelectLitElement, isOptgroupElement } from './abstract-select';
 import { OptgroupElement } from './optgroup';
@@ -57,6 +58,12 @@ export class SelectElement extends AbstractSelectLitElement  {
 
     get value():string {
         return this.selected ? this.selected.value || this.selected.label : undefined;
+    }
+
+    @autobind
+    protected _handleShortcut() {
+        this.focus();
+        super._handleShortcut();
     }
 
 
