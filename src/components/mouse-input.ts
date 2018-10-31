@@ -33,9 +33,11 @@ enum MouseKeyboardInputMode {
 
 class MouseInputElement extends AbstractInputElement {
 
+    @property({ type: String })
+    public label:string = 'Keyboard / Mouse';
+
     public inputType:InputType = 'mouse';
     private __mode: MouseKeyboardInputMode;
-    public inputName:string = 'Keyboard / Mouse';
     public pressed:boolean = false;
 
     @property({ type: Number })

@@ -28,7 +28,7 @@ interface InputModeElement extends SelectableElement {
     inputType: string;
     initialize: Function;
     controls: boolean;
-    inputName: string;
+    label: string;
 }
 
 interface UIElements {
@@ -219,7 +219,7 @@ export class InputModeSelectElement extends AbstractSelectLitElement {
                 <select class="accessibility-selector" on-input="${onSelectInput}" id="select">
                     ${this.items.map((node,i)=>{
                         const isSelected = i === sI;
-                        return html`<option value="${node.inputType}" selected="${isSelected}">${node.inputName}</option>`;
+                        return html`<option value="${node.inputType}" selected="${isSelected}">${node.label}</option>`;
                     })}
                 </select>
 

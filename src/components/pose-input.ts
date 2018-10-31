@@ -178,8 +178,10 @@ const _tmpContentDims: [number, number] = [NaN, NaN];
 
 export class PoseInputElement extends AbstractInputElement {
 
+    @property({ type: String })
+    public label:string = 'Body';
+
     public inputType:InputType = 'pose';
-    public inputName:string = 'Body';
     public pose:posenet.Pose;
 
 
