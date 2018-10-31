@@ -22,8 +22,7 @@
     "animitter": "3.0.0",
     "assert": "1.4.1",
     "eventemitter": "0.3.3",
-    "lit-html": "^0.10.0",
-    "raw-loader": "^0.5.1"
+    "lit-html": "^0.10.0"
   },
   "devDependencies": {
     "@webpack-cli/serve": "0.0.8",

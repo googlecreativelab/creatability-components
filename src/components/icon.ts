@@ -15,13 +15,42 @@
 import { fillColor } from './styles';
 import { html, LitElement } from '@polymer/lit-element';
 
+
 const icons:any = {
-    menu : require('raw-loader!../assets/icons/menu.svg'),
-    close : require('raw-loader!../assets/icons/close.svg'),
-    down : require('raw-loader!../assets/icons/down.svg'),
-    link : require('raw-loader!../assets/icons/link.svg'),
-    next : require('raw-loader!../assets/icons/next.svg'),
-    previous : require('raw-loader!../assets/icons/previous.svg')
+    // Hamburger
+    menu: `
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+            <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+            <path d="M0 0h24v24H0z" fill="none"/>
+        </svg>`,
+
+    // X icon
+    close: `
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+            <path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"/>
+            <path d="M0 0h24v24H0z" fill="none"/>
+        </svg>`,
+
+
+    // Downward arrow, like for select
+    down : `
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+            <path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"/>
+            <path d="M0 0h24v24H0z" fill="none"/>
+        </svg>`,
+
+    // External Link Icon - square with an arrow
+    link : `
+        <svg width="14px" height="14px" viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+            <polygon points="0 0 0 20 20 20 20 12 18 12 18 18 2 18 2 2 8 2 8 0"></polygon>
+            <polygon points="11.707 0 11.707 2 17.293 2 8 11.293 9.414 12.707 18.707 3.414 18.707 9 20.707 9 20.707 0"></polygon>
+        </svg>`,
+
+    // Next Arrow, like for a tutorial
+    next : `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M5.88 4.12L13.76 12l-7.88 7.88L8 22l10-10L8 2z"/><path fill="none" d="M0 0h24v24H0z"/></svg>`,
+
+    // Previous Arrow, like for a tutorial
+    previous : `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M11.67 3.87L9.9 2.1 0 12l9.9 9.9 1.77-1.77L3.54 12z"/><path fill="none" d="M0 0h24v24H0z"/></svg>`
 };
 
 class IconElement extends LitElement {
