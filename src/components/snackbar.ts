@@ -28,7 +28,7 @@ export class SnackBarElement extends LitElement {
      * if 0, stays visible indefinitely or until dismissed
      */
     @property({ type: Number })
-    public duration:number = 3;
+    public duration:number = 4;
 
     /**
      * if true, shows a "DISMISS" button to close
