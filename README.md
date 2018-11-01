@@ -6,26 +6,41 @@ _in active development_
 ![using input tracking](https://storage.googleapis.com/creatability-github/creatability-maher.gif)
 
 
-## Setup an Input
+## Usage
 
-A simple example of toggling between mouse/keyboard and body tracking input.
+A simple example of including the library then supporting mouse/keyboard and body tracking inputs.
+
 ```html
-<acc-input-mode-select oninput="onInput">
-    <acc-mouse-input amplification="10"></acc-mouse-input>
-    <acc-pose-input smoothing="0.5" selected></acc-pose-input>
-</acc-input-mode-select>
+    <body>
+        <!-- webcomponents-loader.js will load polyfills only for browsers not supporting Shadow DOM v1 -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/webcomponentsjs/2.0.2/webcomponents-loader.js"></script>
+        <script src="dist/acc-components.min.js"></script>
 
-<script>
-    function onInput(event){
-        const input = event.target;
-        //position is normalized from -1, 1
-        const x = input.position[0];
-        const y = input.position[1];
-    }
-</script>
+        <acc-input-mode-select>
+            <acc-mouse-input amplification="10"></acc-mouse-input>
+            <acc-pose-input smoothing="0.5" selected></acc-pose-input>
+        </acc-input-mode-select>
+
+        <script>
+            const inputSelector = document.querySelector('acc-input-mode-select');
+
+            // all of the input's events bubble up to the selector
+            inputSelector.addEventListener('input', function onInput(event){
+                const input = event.target;
+                // position mapped to the content's coordinate space
+                // by default this is document.body, it can be set to any
+                // element with inputSelector.contentElement = htmlElement;
+                // or <acc-input-mode-select contentselector="#content">
+                // exists on individual inputs as well
+                const x = input.contentX;
+                const y = input.contentY;
+            }
+        </script>
+    </body>
 ```
 
-_the simplest example of using this purely in javascript_
+In pure JavaScript these elements behave like normal HTMLElement's:
+
 ```js
 
 const input = document.createElement('acc-pose-input');
@@ -41,16 +56,6 @@ input.initialize();
 ```
 
 
-You can of course bind the event the same way with javascript:
-```js
-const inputSelector = document.querySelector('acc-input-mode-select');
-
-inputSelector.addEventListener('input', (event)=>{
-    console.log(event.target.position);
-});
-```
-
-
 ### Input Event Cycle
 All input types dispatch the following events:
 
@@ -61,12 +66,57 @@ All input types dispatch the following events:
 * `'change'` dispatched when an attribute/property changes values
 
 
-### Input methods
-All Input types contain the following methods:
+## Side Panel and Content
 
-* `input.initialize()` required to begin using the input
-* `input.stop()` can be used to stop the input
+Quickly scaffold an application with a collapsable sidebar and content area that resizes accordingly and can display webcam when in use.
 
+```html
+<acc-side-panel label="My Application">
+    <acc-group>
+        <acc-input-mode-select contentselector="#main-content">
+            <acc-mouse-input amplification="10" enablekeyboard></acc-mouse-input>
+            <acc-pose-input amplification="3" multiplier="1.01" smoothing="0.75" part="nose"></acc-pose-input>
+        </acc-input-mode-select>
+    </acc-group>
+</acc-side-panel>
+
+<!-- mounted attribute tells the element to be fullscree minus side-panel width -->
+<acc-content id="main-content" webcamopacity="0.25" grayscale mounted>
+</acc-content>
+```
+
+## Snackbar
+Snackbar is meant to be a temporary notification UI. **Snackbar is ideal for [ARIA Live Regions](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Live_Regions). To use as a Live Region YOU must add the `aria-live` attribute to the element directly in the HTML.** When its message changes (or show() is invoked) it will display for its set `duration` in seconds. Typically there is only one per application, the code below is for demonstration purposes.
+
+```html
+<acc-snackbar id="snackbar-1" duration="5" aria-live="polite" dismissable>
+    <strong>Example 1</strong> will show for 5 seconds every time this content changes or until "DISMISS" is clicked
+</acc-snackbar>
+
+<acc-snackbar duration="0" aria-live="assertive" dismissable error>
+    <strong>Example 2</strong> will show up indefinitely until "DISMISS" is clicked and will be styled boldly as an error alert.
+</acc-snackbar>
+
+<acc-snackbar aria-live="polite">
+    <strong>Example 3</strong> will show up for 4 seconds every time its content changes.
+</acc-snackbar>
+
+
+<script>
+
+    setTimeout(function() {
+        // changing a snackbar's content will trigger it to show up again
+        // and with aria-live it will be read by screen readers when changed
+        const snack1 = document.querySelectorAll('#snackbar-1');
+        snack1.innerHTML = `
+            <img alt="A heart icon" src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/Love_Heart_symbol.svg/1000px-Love_Heart_symbol.svg.png" width="32">
+            <div style="display: inline-block; transform: translate(0, -50%); padding-left: 8px;">
+                <strong>Example 1 updated</strong> this changed message will get read by screen readers.
+            </div>`;
+    }, 10000);
+
+</script>
+```
 
 ## Tutorial
 
