@@ -31,3 +31,15 @@ export interface Animitter extends EventEmitter {
     update:Function;
     reset:Function;
 }
+
+
+export interface NodeObserver {
+    connect: ()=> void;
+    disconnect: ()=> void;
+    flush: ()=> void;
+}
+
+export interface NodeObservation {
+    addedNodes:Element[];
+    removedNodes:Element[];
+};

@@ -13,15 +13,20 @@
 // limitations under the License.
 
 import autobind from 'autobind-decorator';
-import { AbstractUIElement } from './abstract-ui';
-import { KeyboardShortcutObserver } from './../keyboard-shortcut-observer';
+import { AbstractUIElement, UIProperties } from './abstract-ui';
 import { setBooleanAttribute, scaleToFill, isElement } from './../utils';
-import { html, LitElement } from '@polymer/lit-element';
+import { html } from '@polymer/lit-element';
 import { FlattenedNodesObserver } from '@polymer/polymer/lib/utils/flattened-nodes-observer';
 import { property } from './decorators';
 import { InputModeSelectElement } from './input-mode-select';
 import { AbstractInputElement, ACCInputEvent } from './abstract-input';
 
+export interface ContentProperties extends UIProperties {
+    inputSelector: string;
+    grayscale: boolean;
+    webcamOpacity: number;
+    mounted: boolean;
+}
 
 
 const isFocusable = (el: any): el is { focus: ()=> void } =>
@@ -38,9 +43,6 @@ export class ContentElement extends AbstractUIElement {
 
     @property({ type: Boolean })
     public grayscale: boolean = false;
-
-    @property({ type: Boolean })
-    public webcam: boolean = false;
 
     @property({ type: Number })
     public webcamOpacity: number = 1;
@@ -63,6 +65,11 @@ export class ContentElement extends AbstractUIElement {
         }
     }
 
+    constructor() {
+        super();
+        this.label = this.label || 'content';
+    }
+
     public get inputElement(): InputModeSelectElement | AbstractInputElement | null {
         if(!this.__inputElement){
             this.inputElement = document.querySelector(this.inputSelector);
@@ -71,15 +78,8 @@ export class ContentElement extends AbstractUIElement {
         return this.__inputElement;
     }
 
-    constructor() {
-        super();
-
-        this.__nodesObserver = new FlattenedNodesObserver(this, (items: any) => {
-            items.addedNodes.forEach((node: Node) => this._onAddNode(node));
-        });
-    }
-
     connectedCallback() {
+        super.connectedCallback();
         //this calls the getter attempting to find the element
         const poll = () =>{
             if(!this.inputElement) {
@@ -88,10 +88,13 @@ export class ContentElement extends AbstractUIElement {
         };
         poll();
         window.addEventListener('resize', this._onResize);
-        super.connectedCallback();
+        this.__nodesObserver = new FlattenedNodesObserver(this, (items: any) => {
+            items.addedNodes.forEach((node: Node) => this._onAddNode(node));
+        });
     }
 
     disconnectedCallback() {
+        this.__nodesObserver.disconnect();
         window.removeEventListener('resize', this._onResize);
         super.disconnectedCallback();
     }
@@ -146,7 +149,7 @@ export class ContentElement extends AbstractUIElement {
         const { __bgCtx } = this;
 
 
-        if(isInputWithCanvas(input)) {
+        if(isInputWithCanvas(input) && this.webcamOpacity > 0) {
             if (__bgCtx.canvas.width === 0) {
                 const cw = this.clientWidth;
                 const ch = this.clientHeight;
@@ -191,6 +194,13 @@ export class ContentElement extends AbstractUIElement {
         return width;
    }
 
+    protected _updateWebcamCanvas() {
+        const canvas = this.shadowRoot!.querySelector('.webcam-canvas')! as HTMLCanvasElement;
+        canvas.width = this.clientWidth;
+        canvas.height = this.clientHeight;
+        this.__bgCtx = canvas.getContext('2d');
+    }
+
 
     _didRender(props: any, changedProps: any, prevProps: any) {
         this.childNodes.forEach((node) => this._onAddNode(node));
@@ -198,8 +208,7 @@ export class ContentElement extends AbstractUIElement {
         return super._didRender(props, changedProps, prevProps);
     }
 
-    _render({ mounted, webcamOpacity } : any) {
-
+    _render({ label, webcamOpacity } : ContentProperties) {
 
         return html`<style>
                 :host {
@@ -232,7 +241,7 @@ export class ContentElement extends AbstractUIElement {
                 }
 
             </style>
-            <div class="wrapper" style="width: ${this.__calcWidth()}; height: ${window.innerHeight}px;" role="section" arial-label="${mounted ? 'right content' : 'content'}">
+            <div class="wrapper" style="width: ${this.__calcWidth()}; height: ${window.innerHeight}px;" role$="section" aria-label$="${label}">
                 <canvas class="webcam-canvas" style="opacity: ${webcamOpacity};"></canvas>
                 <div class="slot-container">
                     <slot></slot>
@@ -240,12 +249,6 @@ export class ContentElement extends AbstractUIElement {
             </div>`;
     }
 
-    protected _updateWebcamCanvas() {
-        const canvas = this.shadowRoot!.querySelector('.webcam-canvas')! as HTMLCanvasElement;
-        canvas.width = this.clientWidth;
-        canvas.height = this.clientHeight;
-        this.__bgCtx = canvas.getContext('2d');
-    }
 }
 
 customElements.define('acc-content', ContentElement);

@@ -12,23 +12,23 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-import { AbstractUIElement } from './abstract-ui';
+import { AbstractUIElement, UIProperties } from './abstract-ui';
 import { bodyFontFamily, labelColor, accentColor, accentOffColor } from './styles';
-import { KeyboardShortcutObserver } from './../keyboard-shortcut-observer';
-import { ButtonElementProperties } from './button';
-import { html, LitElement } from '@polymer/lit-element';
+import { html } from '@polymer/lit-element';
 import { property } from './decorators';
 import { setBooleanAttribute } from '../utils';
 import autobind from 'autobind-decorator';
+
+
+export interface ToggleProperties extends UIProperties {
+    checked: boolean;
+}
 
 
 export class ToggleElement extends AbstractUIElement {
 
     @property({ type: Boolean })
     public checked:boolean = false;
-
-    @property({ type: String })
-    public label:string = '';
 
 
     public get value() :string {
@@ -47,7 +47,7 @@ export class ToggleElement extends AbstractUIElement {
         super._handleShortcut();
     }
 
-    _render({ label, shortcut, checked }:any){
+    _render({ label, shortcut, checked }: ToggleProperties){
         const value = this.value;
         let title = `${label}, toggled ${checked ? 'on' : 'off'} `;
         if (!!shortcut) {

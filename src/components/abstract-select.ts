@@ -14,8 +14,8 @@
 
 import autobind from'autobind-decorator';
 import { AbstractUIElement } from './abstract-ui';
+import { NodeObserver, NodeObservation } from './types';
 import { OptgroupElement } from './optgroup';
-import { LitElement } from '@polymer/lit-element';
 import { isElement } from '../utils';
 import { property } from "./decorators";
 import {getLabelTemplate} from "./label";
@@ -23,29 +23,17 @@ import {getLabelTemplate} from "./label";
 //@ts-ignore
 const { FlattenedNodesObserver } = require('@polymer/polymer/lib/utils/flattened-nodes-observer.js');
 
-interface NodeObserver {
-    connect: ()=> void;
-    disconnect: ()=> void;
-    flush: ()=> void;
-}
-
-interface NodeObservation {
-    addedNodes:Element[];
-    removedNodes:Element[];
-};
-
 
 export interface SelectableElement extends Element {
     selected:boolean;
     value:string;
 }
 
-export const isOptgroupElement = (el:any): el is OptgroupElement => el && el.tagName === 'ACC-OPTGROUP';
-export const isSelectableElement = (el:any): el is SelectableElement => typeof el.selected === 'boolean';
+export const isOptgroupElement = (el:any): el is OptgroupElement =>
+    el && el.tagName === 'ACC-OPTGROUP';
 
-interface InitializableElement extends SelectableElement {
-    initialized:boolean;
-}
+export const isSelectableElement = (el:any): el is SelectableElement =>
+    typeof el.selected === 'boolean';
 
 
 /**
@@ -60,9 +48,6 @@ export class AbstractSelectLitElement extends AbstractUIElement {
      */
     @property({ type: Boolean })
     public hideLabel: boolean = false;
-
-    @property({ type: String })
-    public label:string;
 
     @property({ type: String })
     public id:string;

@@ -12,50 +12,54 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+import autobind from 'autobind-decorator';
 import { accentColor, labelColor, backgroundColor } from './styles';
 import { html, LitElement } from '@polymer/lit-element';
 import { property } from './decorators';
 import { AbstractModalElement } from './abstract-modal';
+import { setBooleanAttribute } from '../utils';
 
 
 
 export class SnackBarElement extends LitElement {
 
-    //in seconds
+    /**
+     * duration (in seconds) to stay visible after message changes,
+     * if 0, stays visible indefinitely or until dismissed
+     */
     @property({ type: Number })
     public duration:number = 3;
 
+    /**
+     * if true, shows a "DISMISS" button to close
+     */
     @property({ type: Boolean })
     public dismissable: boolean = false;
 
+    /**
+     * if true, snackbar will be styled as an alert
+     */
     @property({ type: Boolean })
     public error: boolean = false;
 
-    //TODO it probably makes more sense for this to be innerHTML in slot
-    @property({ type: String })
-    public message:string = '';
-
     private __lastMessageChange:number;
     private __previousFocus:HTMLElement;
+    private __slot:HTMLElement;
 
     public get open() : boolean {
         return this.hasAttribute('open');
     }
 
-    connectedCallback(){
-        super.connectedCallback()
-        this.addEventListener('show', () => {
-            if (this.error){
-                const textElement = this.shadowRoot.querySelector('p') as HTMLElement
-                setTimeout(() => {
-                    textElement.focus();
-                }, 10);
-            }
-        })
+
+    @autobind
+    protected _handleSlotChange(){
+        this.show();
     }
+
 
     _propertiesChanged(props:any, changed:any={}, prev:any={}){
         super._propertiesChanged(props, changed, prev);
+        setBooleanAttribute(this, 'error', props.error);
         if(changed.message) {
             this.show();
         }
@@ -74,6 +78,13 @@ export class SnackBarElement extends LitElement {
                 }
             }, this.duration * 1000);
         }
+
+        if (this.error){
+            const textElement = this.shadowRoot.querySelector('p') as HTMLElement
+            setTimeout(() => {
+                textElement.focus();
+            }, 16);
+        }
         this.dispatchEvent(new CustomEvent('show'));
     }
 
@@ -87,13 +98,19 @@ export class SnackBarElement extends LitElement {
     }
 
     _didRender() {
-        const textElement:any = this.shadowRoot.querySelector('p');
-        textElement.innerHTML = this.message;
-        textElement.setAttribute('tabindex', '0');
         const currentFocus = document.activeElement as HTMLElement
         if (currentFocus !== this && currentFocus !== document.body &&
                 currentFocus && !(currentFocus instanceof AbstractModalElement)){
             this.__previousFocus = currentFocus
+        }
+
+        if(this.__slot) {
+            this.__slot.removeEventListener('slotchange', this._handleSlotChange);
+        }
+        const slot =this.shadowRoot.querySelector('slot');
+        if(slot) {
+            slot.addEventListener('slotchange', this._handleSlotChange);
+            this.__slot = slot;
         }
     }
 
@@ -151,13 +168,14 @@ export class SnackBarElement extends LitElement {
                     margin-left: 50px;
                 }
 
-                p {
+                .message {
                     min-width: 100%;
                     float: left;
                 }
-                
-                .left p {
+
+                .left .message {
                     min-width: 75%;
+                    padding: 24px;
                 }
 
                 button {
@@ -175,13 +193,13 @@ export class SnackBarElement extends LitElement {
                 ${(this.dismissable) ?
                     html`
                         <div class="column left">
-                            <p aria-atomic="true" aria-live="assertive"></p>
+                            <p tabindex="0"><slot class="message" aria-atomic="true" aria-live="assertive" tabindex="0"></slot></p>
                         </div>
                         <div class="column right">
                             <button on-click=${()=> this.hide()}>DISMISS</button>
                         </div>
                     ` :
-                    html`<p aria-atomic="true" aria-live="assertive"></p>`
+                    html`<p><slot class="message" aria-atomic="true" aria-live="assertive"></slot></p>`
                 }
             </div>
         `;

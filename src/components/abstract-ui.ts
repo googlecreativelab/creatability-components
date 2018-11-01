@@ -5,7 +5,19 @@ import { html, LitElement } from '@polymer/lit-element';
 import { property } from './decorators';
 
 
+export interface UIProperties {
+    label:string;
+    disabled: boolean;
+    shortcut: string;
+}
+
+
 export class AbstractUIElement extends LitElement {
+    /**
+     * the label for the element, useful for display as well as screen readers
+     */
+    @property({ type: String })
+    public label: string = '';
 
     /**
      * disable the element, make it inaccessible

@@ -1,4 +1,3 @@
-import { AbstractUIElement } from './abstract-ui';
 // Copyright 2018 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,26 +12,13 @@ import { AbstractUIElement } from './abstract-ui';
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-import { KeyboardShortcutObserver } from './../keyboard-shortcut-observer';
-import { html, LitElement } from '@polymer/lit-element';
+import { AbstractUIElement, UIProperties } from './abstract-ui';
+import { html } from '@polymer/lit-element';
 import { bodyFontFamily, outlineBorderColor } from "./styles";
 import { property } from './decorators';
 import autobind from 'autobind-decorator';
-import { setBooleanAttribute } from '../utils';
-
-interface UIElements {
-    label:string;
-    disabled: boolean;
-}
 
 export class GroupElement extends AbstractUIElement {
-
-
-    /**
-     * the group label
-     */
-    @property({ type: String })
-    public label:string = '';
 
     /**
      * hide the label of the group, only provide for aria
@@ -58,7 +44,7 @@ export class GroupElement extends AbstractUIElement {
         }
     }
 
-    _render({label, disabled}:UIElements){
+    _render({label, disabled}: UIProperties){
 
         return html`
         <style>

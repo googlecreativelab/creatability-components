@@ -13,15 +13,14 @@
 // limitations under the License.
 
 import autobind from 'autobind-decorator';
+import { UIProperties } from './abstract-ui';
 import { accentColor, labelColor } from './styles';
 import { AbstractUIElement } from './abstract-ui';
-import { html, LitElement } from '@polymer/lit-element';
-import { AbstractModalElement } from './abstract-modal';
-import { scalemap } from '../utils';
+import { html } from '@polymer/lit-element';
 import { property } from './decorators';
 import { getLabelTemplate } from "./label";
 
-const normalizeValue = (name:string, min:number, max:number, value:number) => {
+const normalizeValue = (min:number, max:number, value:number) => {
     // console.log('calling normalize values for', name);
     let newMin = 0;
     let newMax = max - min;
@@ -35,13 +34,18 @@ const normalizeValue = (name:string, min:number, max:number, value:number) => {
 };
 
 
+export interface RangeProperties extends UIProperties {
+    name: string;
+    min: string;
+    max: string;
+    step: string;
+    value: string;
+}
+
 class RangeElement extends AbstractUIElement {
 
     @property({ type: String })
     public name:string = '';
-
-    @property({ type: String })
-    public label:string = '';
 
     @property({ type: String })
     public min:string = '0';
@@ -77,7 +81,7 @@ class RangeElement extends AbstractUIElement {
 
         // Normalize Values
         let sliderValue = parseFloat(e.currentTarget.value);
-        let val = normalizeValue(this.name, parseFloat(this.min), parseFloat(this.max), sliderValue);
+        let val = normalizeValue(parseFloat(this.min), parseFloat(this.max), sliderValue);
 
         const rangeEl = this.shadowRoot.querySelector('.range-slider__range')! as HTMLElement;
 
@@ -107,14 +111,9 @@ class RangeElement extends AbstractUIElement {
         super._propertiesChanged(props, changed, prev);
     }
 
-    _render({
-        id,
-        name,
-        min,
-        max,
-        step,
-        value
-    }:any){
+    _render({ name, min, max, step, value }: RangeProperties){
+
+        const [minf, maxf, valuef] = [min, max, value].map(parseFloat);
 
         const inputHtml = html`
             <input class="range-slider__range"
@@ -171,8 +170,8 @@ class RangeElement extends AbstractUIElement {
                     linear,
                     left top,
                     right top,
-                    color-stop(${value !== '' ? normalizeValue(name, min,max,value) : 0.5}, ${accentColor}),
-                    color-stop(${value !== '' ? normalizeValue(name, min,max,value) : 0.5}, #D8D8D8)
+                    color-stop(${value !== '' ? normalizeValue(minf, maxf, valuef) : 0.5}, ${accentColor}),
+                    color-stop(${value !== '' ? normalizeValue(minf, maxf, valuef) : 0.5}, #D8D8D8)
                 );
                 margin: 0px;
             }

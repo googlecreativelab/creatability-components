@@ -21,14 +21,15 @@ import {
     titleFontFamily,
     outlineBorderColor
 } from './styles';
+import { UIProperties } from './abstract-ui';
+import { GroupElement } from './group';
 import { html, LitElement } from '@polymer/lit-element';
 import { property } from './decorators';
 import { setBooleanAttribute } from '../utils';
 import './icon'
 
 
-interface PanelProperties {
-    label: string;
+interface PanelProperties extends UIProperties {
     disableSkipToContent: boolean;
     closed: boolean;
 }
@@ -72,13 +73,7 @@ const extractValue = (el:any):any => {
  * <acc-side-panel label="App Name">
  * The side panel element that houses UI elements.
  */
-export class SidePanel extends LitElement {
-
-    /**
-     * the label and header for the side panel
-     */
-    @property({ type: String })
-    public label:string = '';
+export class SidePanel extends GroupElement {
 
     /**
      * skip to content shows up in the tab order of the side panel
@@ -173,7 +168,7 @@ export class SidePanel extends LitElement {
         super._propertiesChanged(props, changed, prev);
     }
 
-    _render({ label, disableSkipToContent }:PanelProperties){
+    _render({ label, disableSkipToContent }: PanelProperties){
         return html`
             <style>
                 :host {

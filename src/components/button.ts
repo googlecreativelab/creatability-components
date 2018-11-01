@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-import { AbstractUIElement } from './abstract-ui';
+import { AbstractUIElement, UIProperties } from './abstract-ui';
 import { bodyFontFamily, buttonBackgroundColor, buttonLabelColor, iconSize, accentColor, buttonBorderColor, buttonFontSize, buttonFontWeight, buttonJustifyContent, buttonBorderWidth } from './styles';
 import { html, LitElement } from '@polymer/lit-element';
 import autobind from 'autobind-decorator';
@@ -20,17 +20,17 @@ import { property } from './decorators';
 import { setBooleanAttribute } from '../utils';
 import './icon'
 
-export interface ButtonElementProperties {
-    label:string;
+export interface ButtonProperties extends UIProperties {
     icon: string;
 }
 
 export class ButtonElement extends AbstractUIElement {
+
+    /**
+     * a src URL for an icon to be shown inside the button
+     */
     @property({ type: String })
     public icon: string = '';
-
-    @property({ type: String })
-    public label:string = '';
 
     @autobind
     protected _handleShortcut() {
@@ -51,16 +51,7 @@ export class ButtonElement extends AbstractUIElement {
         }
     }
 
-    _render({label, icon}:ButtonElementProperties){
-
-        let iconName = ''
-        if (this.label.toLowerCase() === 'play'){
-            iconName = 'play'
-        } else if (this.label.toLowerCase() === 'stop'){
-            iconName = 'stop'
-        } else if ((/(restart|clear)/gi).test(this.label)) {
-            iconName = 'replay'
-        }
+    _render({label, icon}: ButtonProperties){
 
         return html`
             <style>
@@ -124,6 +115,5 @@ export class ButtonElement extends AbstractUIElement {
     }
 }
 
-//<acc-icon icon="${iconName}" style$="display: ${ iconName !== '' ? 'block' : 'none'}" aria-hidden="true"></acc-icon>
 
 customElements.define('acc-button', ButtonElement);
