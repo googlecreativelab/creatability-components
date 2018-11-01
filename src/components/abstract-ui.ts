@@ -1,7 +1,7 @@
 import autobind from 'autobind-decorator';
 import { setBooleanAttribute } from './../utils';
 import { KeyboardShortcutObserver } from './../keyboard-shortcut-observer';
-import { html, LitElement } from '@polymer/lit-element';
+import { LitElement } from '@polymer/lit-element';
 import { property } from './decorators';
 
 
@@ -10,7 +10,6 @@ export interface UIProperties {
     disabled: boolean;
     shortcut: string;
 }
-
 
 export class AbstractUIElement extends LitElement {
     /**

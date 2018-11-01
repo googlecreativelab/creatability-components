@@ -18,7 +18,6 @@ import { NodeObserver, NodeObservation } from './types';
 import { OptgroupElement } from './optgroup';
 import { isElement } from '../utils';
 import { property } from "./decorators";
-import {getLabelTemplate} from "./label";
 
 //@ts-ignore
 const { FlattenedNodesObserver } = require('@polymer/polymer/lib/utils/flattened-nodes-observer.js');
@@ -49,9 +48,6 @@ export class AbstractSelectLitElement extends AbstractUIElement {
     @property({ type: Boolean })
     public hideLabel: boolean = false;
 
-    @property({ type: String })
-    public id:string;
-
     protected _nodeChildSelector = 'acc-item';
 
     /**
@@ -68,16 +64,8 @@ export class AbstractSelectLitElement extends AbstractUIElement {
      * this map is flattened to include all items nested in a group
      */
     protected _nodes:SelectableElement[] = [];
-    protected labelHtml:any;
 
     private __nodesObserver: NodeObserver;
-
-    _propertiesChanged(props:any, changed:any, prev:any){
-        super._propertiesChanged(props, changed, prev);
-        if (changed && changed.label) {
-            this.labelHtml = getLabelTemplate(changed.label, this.id);
-        }
-    }
 
     connectedCallback(){
         super.connectedCallback();

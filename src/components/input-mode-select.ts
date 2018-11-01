@@ -12,13 +12,10 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-import { backgroundColor, bodyFontFamily, labelColor } from './styles';
-import { isAbstractInputElement, AbstractInputElement } from './abstract-input';
+import { backgroundColor, bodyFontFamily, labelColor, labelStyleChunk } from './styles';
 import { html } from '@polymer/lit-element';
 import { SelectableElement, AbstractSelectLitElement } from './abstract-select';
-import { isElement } from '../utils';
 import { property } from './decorators';
-import {getLabelTemplate} from "./label";
 
 
 interface InputModeElement extends SelectableElement {
@@ -146,6 +143,8 @@ export class InputModeSelectElement extends AbstractSelectLitElement {
 
         return html`
         <style>
+            ${labelStyleChunk()}
+
             :host select, button {
                 font-size: 18px;
             }
@@ -214,7 +213,7 @@ export class InputModeSelectElement extends AbstractSelectLitElement {
             }
 
             </style>
-            ${getLabelTemplate('Tracking', 'select')}
+            <label for="select">Tracking</label>
             <div class="select-style">
                 <select class="accessibility-selector" on-input="${onSelectInput}" id="select">
                     ${this.items.map((node,i)=>{

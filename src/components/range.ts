@@ -1,3 +1,4 @@
+import { labelStyleChunk } from './styles';
 // Copyright 2018 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,7 +19,6 @@ import { accentColor, labelColor } from './styles';
 import { AbstractUIElement } from './abstract-ui';
 import { html } from '@polymer/lit-element';
 import { property } from './decorators';
-import { getLabelTemplate } from "./label";
 
 const normalizeValue = (min:number, max:number, value:number) => {
     // console.log('calling normalize values for', name);
@@ -62,13 +62,6 @@ class RangeElement extends AbstractUIElement {
     @property({ type: Boolean })
     public inlineLabel:boolean = false;
 
-    protected labelHtml:any;
-
-
-    constructor(){
-        super();
-        this.labelHtml = html`0`;
-    }
 
     changeGradient(e:any) {
         this.value = e.currentTarget.value;
@@ -100,37 +93,29 @@ class RangeElement extends AbstractUIElement {
         super._handleShortcut();
     }
 
-    _propertiesChanged(props:any, changed:any, prev:any){
-        if(!changed){
-            return;
-        }
-        if (changed && changed.label) {
-            this.labelHtml = getLabelTemplate(changed.label, this.id);
-            this.requestRender();
-        }
-        super._propertiesChanged(props, changed, prev);
-    }
-
-    _render({ name, min, max, step, value }: RangeProperties){
+    _render({ label, name, min, max, step, value }: RangeProperties){
 
         const [minf, maxf, valuef] = [min, max, value].map(parseFloat);
 
         const inputHtml = html`
-            <input class="range-slider__range"
-               on-input=${(e:any) => this.changeGradient(e)}
-               id="${this.id}"
-               name="${name}"
-               type="range"
-               min="${min}"
-               max="${max}"
-               step="${step}"
-               disabled?="${this.disabled}"
-               aria-label="${name}"
-               value="${value}"></input>
-        `
+            <input
+                id="range-slider"
+                class="range-slider__range"
+                on-input=${(e:any) => this.changeGradient(e)}
+                name="${name}"
+                type="range"
+                min="${min}"
+                max="${max}"
+                step="${step}"
+                disabled?="${this.disabled}"
+                aria-label="${name}"
+                value="${value}"></input>
+        `;
 
         return html`
             <style>
+
+            ${labelStyleChunk()}
 
             :host([inline]), [inline] {
                 display: inline-block;
@@ -153,9 +138,6 @@ class RangeElement extends AbstractUIElement {
                 display: flex;
                 align-self: flex-start;
             }
-
-
-
 
             input[type="range"]{
                 -webkit-appearance: none;
@@ -234,7 +216,7 @@ class RangeElement extends AbstractUIElement {
             </style>
 
             <div class="range-slider">
-                ${this.labelHtml}
+                <label for="range-slider">${label}</label>
                 ${this.inlineLabel ? html`<span id="input-container">${inputHtml}</span>` : inputHtml}
             </div>
         `;

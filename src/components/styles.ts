@@ -76,3 +76,17 @@ export const iconSize = applyVariable('iconSize');
 export const fillColor = applyVariable('fillColor');
 
 export const outlineBorderColor = applyVariable('outlineBorderColor')
+
+
+
+export const labelStyleChunk = (selector: string= 'label') => `
+    ${selector} {
+        font-family: ${bodyFontFamily};
+        font-size: 18px;
+        padding: 0px 0px 20px 0px;
+        font-weight: 700;
+        text-transform: capitalize;
+        display: block;
+        cursor: pointer;
+        color: ${labelColor};
+    }`;
