@@ -34,7 +34,7 @@
 
 <acc-side-panel label="Example">
     <acc-group label="Tracking Group" hidelabel>
-        <acc-input-mode-select>
+        <acc-input-mode-select contentselector="#main-content">
             <acc-mouse-input amplification="10" label="Custom Mouse/Keyboard"></acc-mouse-input>
             <acc-pose-input amplification="2" smoothing="0.5"></acc-pose-input>
         </acc-input-mode-select>
@@ -81,7 +81,7 @@
     <acc-snackbar aria-live="polite" duration="0" dismissable></acc-snackbar>
 
 </acc-side-panel>
-<acc-content shortcut="Shift c" webcamopacity="0.25" grayscale mounted>
+<acc-content id="main-content" shortcut="Shift c" webcamopacity="0.25" grayscale mounted>
     <div id="cursor"></div>
 </acc-content>
 

@@ -48,7 +48,7 @@ export class InputModeSelectElement extends AbstractSelectLitElement {
      * provide a selector for the content element the input is applied to
      */
     @property({ type: String })
-    public contentSelector:string = 'acc-content';
+    public contentSelector:string = 'body'; //'acc-content';
 
 
     @property({ type: String})

@@ -1,6 +1,8 @@
 doc/
 es2015/
-dist/
+dist/*
+!dist/acc-components.min.js
+!dist/acc-components.js
 assets/bundle.js
 assets/style.css
 node_modules/
