@@ -1,4 +1,4 @@
-doc/
+docs/
 es2015/
 dist/*
 !dist/acc-components.min.js
