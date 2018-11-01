@@ -151,7 +151,10 @@ export abstract class AbstractInputElement extends LitElement {
     ///////////////////////////////////
 
 
-    public hasControls: boolean = false;
+    public get hasControls() {
+        return false;
+    }
+
 
     /**
      * the type of input this instance is, i.e. 'mouse', 'pose'

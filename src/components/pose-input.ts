@@ -1,5 +1,3 @@
-import { backgroundColor } from './styles';
-import { computeStyleResult, cssColorToArray } from './../utils';
 // Copyright 2018 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,17 +12,19 @@ import { computeStyleResult, cssColorToArray } from './../utils';
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-import { vec2, copy, add, distance, sub, scale } from './../vec2';
+import autobind from 'autobind-decorator';
+import * as posenet from '@tensorflow-models/posenet';
+import { backgroundColor } from './styles';
+import { computeStyleResult, cssColorToArray } from './../utils';
+import { vec2, copy, add, sub, scale } from './../vec2';
 import { scaleToFill, clamp, setBooleanAttribute } from './../utils';
 import { InputType, Animitter } from './types';
 import { html } from '@polymer/lit-element';
 import { ACCInputEvent, InputEventDetails, AbstractInputElement } from './abstract-input';
-import * as posenet from '@tensorflow-models/posenet';
 import { WebcamCanvas } from '../webcam';
 import { scalemap } from '../utils';
 import { property } from './decorators';
 import { MobileNetMultiplier } from '@tensorflow-models/posenet/dist/mobilenet';
-import { Tutorial } from './tutorial';
 import './tutorial';
 
 const animitter = require('animitter');
@@ -212,6 +212,13 @@ export class PoseInputElement extends AbstractInputElement {
     @property({ type: Number })
     public keypointEase: number = 0.5;
 
+    /**
+     * this input has a cointrols panel
+     */
+    public get hasControls() {
+        return true;
+    }
+
     protected _estimating:boolean;
     protected _webcamCanvas:WebcamCanvas = new WebcamCanvas();
     protected _loop:Animitter = animitter();
@@ -230,14 +237,9 @@ export class PoseInputElement extends AbstractInputElement {
     private __lastSourcePosition: vec2 = [0, 0];
 
 
+
     constructor(){
         super();
-        /**
-         * this input has a cointrols panel
-         */
-        this.hasControls = true;
-        this._handleNewFrame = this._handleNewFrame.bind(this);
-        this._handleStop = this._handleStop.bind(this);
         this._loop.on('update', this._handleNewFrame);
         this._loop.on('start', this._dispatchReady);
         this._loop.on('stop', this._handleStop);
@@ -354,12 +356,14 @@ export class PoseInputElement extends AbstractInputElement {
     }
 
 
+    @autobind
     protected _handleStop(){
         //when the input stops, shut down the camera and undo all initialization
         this._dispatchStop();
         this._webcamCanvas.stop();
     }
 
+    @autobind
     protected _handleNewFrame(){
         //if a new frame occurs while still estimating the last pose
         //skip this frame
