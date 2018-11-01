@@ -32,12 +32,23 @@
 </head>
 <body>
 
-<acc-side-panel label="Example">
+<acc-side-panel label="Components">
     <acc-group label="Tracking Group" hidelabel>
         <acc-input-mode-select contentselector="#main-content">
             <acc-mouse-input amplification="10" label="Custom Mouse/Keyboard"></acc-mouse-input>
             <acc-pose-input amplification="2" smoothing="0.5"></acc-pose-input>
         </acc-input-mode-select>
+    </acc-group>
+    <acc-group id="snackbar-ui" label="Snackbar Features">
+        <p>Snackbar displays status updates on top of your application and works well with ARIA Live Regions.</p>
+        <acc-range label="duration" min="0" max="10" step="1" value="4"></acc-range>
+        <acc-toggle label="Error"></acc-toggle>
+        <acc-toggle label="Dismissable"></acc-toggle>
+        <acc-select label="Message">
+            <acc-item label="Basic"></acc-item>
+            <acc-item label="With Image"></acc-item>
+        </acc-select>
+        <acc-button label="Update Snackbar"></acc-button>
     </acc-group>
     <acc-group label="Range Group">
         <acc-range label="Range test" value="5" min="0" max="10" step="0.1" shortcut="Shift l"></acc-range>
@@ -78,7 +89,7 @@
         </acc-group>
     </acc-group>
 
-    <acc-snackbar aria-live="polite" duration="0" dismissable></acc-snackbar>
+    <acc-snackbar aria-live="polite"></acc-snackbar>
 
 </acc-side-panel>
 <acc-content id="main-content" shortcut="Shift c" webcamopacity="0.25" grayscale mounted>
@@ -87,6 +98,8 @@
 
 
 <script type="text/javascript">
+    const panel = document.querySelector('acc-side-panel');
+
     const inputModeSelect = document.querySelector('acc-input-mode-select');
     const cursor = document.querySelector('#cursor');
     const cursorSize = cursor.clientWidth;
@@ -103,17 +116,29 @@
     content.addEventListener('shortcut', ()=> console.log('content shortcut', content.shortcut));
 
 
+
+
     const snackbar = document.querySelector('acc-snackbar');
-    document.querySelector('acc-side-panel').query('snackbar is error', 'change', (event) => {
-        snackbar.error = event.target.checked;
-    });
-    document.querySelector('acc-side-panel').query('send message to snackbar', 'click', () => {
-        snackbar.innerHTML = `
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/Love_Heart_symbol.svg/1000px-Love_Heart_symbol.svg.png" width="32">
-            <div style="display: inline-block; transform: translate(0, -50%); padding-left: 8px;">
-                <strong>bold test</strong> message sent from button
-            </div>`;
-    });
+
+
+    const snackbarMessages = [
+        () => 'update ' + Math.random() + ' duration ' + snackbar.duration,
+        () => `<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/Love_Heart_symbol.svg/1000px-Love_Heart_symbol.svg.png" width="32">
+        <div style="display: inline-block; transform: translate(0, -50%); padding-left: 8px;">
+            <strong>duration: ${snackbar.duration}</strong> snackbar html with image and styling
+        </div>`
+    ];
+
+
+    const snackbarGroup = document.querySelector("#snackbar-ui");
+    snackbarGroup.query('duration', 'input', (event) => snackbar.duration = event.target.value);
+    snackbarGroup.query('error', 'change', (event) => snackbar.error = event.target.checked);
+    snackbarGroup.query('dismissable', 'change', (event)=> snackbar.dismissable = event.target.checked);
+    const updateMessage = () => snackbar.innerHTML = snackbarMessages[snackbarGroup.query('message').selectedIndex]();
+    snackbarGroup.query('update snackbar', 'click', updateMessage);
+    snackbarGroup.query('message', 'change', updateMessage);
+
+
 
 </script>
 </body>

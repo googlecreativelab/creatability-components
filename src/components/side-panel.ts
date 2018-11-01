@@ -23,7 +23,7 @@ import {
 } from './styles';
 import { UIProperties } from './abstract-ui';
 import { GroupElement } from './group';
-import { html, LitElement } from '@polymer/lit-element';
+import { html } from '@polymer/lit-element';
 import { property } from './decorators';
 import { setBooleanAttribute } from '../utils';
 import './icon'
@@ -34,40 +34,6 @@ interface PanelProperties extends UIProperties {
     closed: boolean;
 }
 
-type queryPattern = (v:string)=> string;
-
-const queries:  queryPattern[] = [
-    (v)=> v,
-    (v)=> `acc-${v}`,
-    (v)=> `[name="${v}" i]`,
-    (v)=> `[label="${v}" i]`,
-    (v)=> `[value="${v}" i]`,
-    (v)=> `.${v}`,
-    (v)=> `#${v}`
-];
-
-
-const extractValue = (el:any):any => {
-    if(el.value) {
-        if(typeof el.value === 'string') {
-            if(el.value.toLowerCase() === 'true') {
-                return true;
-            } else if(el.value.toLowerCase() === 'false') {
-                return false;
-            } else if(isFinite(parseInt(el.value, 10))) {
-                return parseInt(el.value, 10);
-            }
-        }
-        return el.value;
-    }
-    if(el.selected) {
-        if(el.selected.value){
-            return el.selected.value;
-        }
-        return el.selected;
-    }
-    return null;
-}
 
 /**
  * <acc-side-panel label="App Name">
@@ -88,50 +54,6 @@ export class SidePanel extends GroupElement {
     @property({ type: Boolean })
     public closed: boolean = false;
 
-
-    getValue(name:string) {
-        const el = this.query(name);
-        if(!el){
-            return null;
-        }
-        return extractValue(el);
-    }
-
-    query(name:string, eventType?: string, eventHandler?: EventHandlerNonNull):HTMLElement|null {
-        const _query = () => {
-            let i:number = 0;
-            while(i < queries.length) {
-                const el = this.querySelector(queries[i](name));
-                if(el !== null){
-                    return el as HTMLElement;
-                }
-                i++;
-            }
-            const find = (baseElement: Element, query: string): Element => {
-                const asAny = (baseElement as any);
-                if(asAny.value && asAny.value.toLowerCase && asAny.value.toLowerCase() === query.toLowerCase()) {
-                    return baseElement;
-                } else if(asAny.label && asAny.label.toLowerCase && asAny.label.toLowerCase() === query.toLowerCase()) {
-                    return baseElement;
-                }
-                let found = null;
-                for(let child of baseElement.children) {
-                    found = find(child, query);
-                    if(found) {
-                        return found;
-                    }
-                }
-            }
-            return find(this, name) as HTMLElement;
-        };
-
-        const element = _query();
-
-        if(element && typeof eventType === 'string' && typeof eventHandler === 'function') {
-            element.addEventListener(eventType, eventHandler);
-        }
-        return element;
-    }
 
     focus(){
         //when focused, move focus to the main header
