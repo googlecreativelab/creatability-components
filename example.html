@@ -93,8 +93,8 @@
 
     inputModeSelect.addEventListener('input', function(event) {
         const input = event.target;
-        cursor.style.left = `${input.targetPosition[0] - (cursorSize/2)}px`;
-        cursor.style.top = `${input.targetPosition[1] - (cursorSize/2)}px`;
+        cursor.style.left = `${input.contentX - (cursorSize/2)}px`;
+        cursor.style.top = `${input.contentY - (cursorSize/2)}px`;
     });
 
 

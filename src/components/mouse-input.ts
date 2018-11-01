@@ -12,12 +12,13 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+import autobind from 'autobind-decorator';
 import { clamp } from './../utils';
 import { Animitter, InputType } from './types';
-import { html, LitElement } from '@polymer/lit-element';
+import { html } from '@polymer/lit-element';
 import { scalemap } from '../utils';
 import { property } from './decorators';
-import { ACCInputEvent, InputEventDetails, AbstractInputElement } from './abstract-input';
+import { AbstractInputElement } from './abstract-input';
 import { mousePositionFromEvent } from '../mouse-position';
 
 
@@ -64,26 +65,14 @@ class MouseInputElement extends AbstractInputElement {
     //used to determine if pressed is dirty and should be announced
     private __lastDispatchedPressed: boolean = false;
 
-
-
-    // public set contentElement(element: HTMLElement | null) {
-    //     this.__removeEvents();
-    //     super.contentElement = element;
-    // }
-
     constructor(){
         super();
-        this._handleMouseMove = this._handleMouseMove.bind(this);
-        this.__handleKeyDown = this.__handleKeyDown.bind(this);
         this._loop.on('update', this._dispatchTick);
         this._loop.on('start', ()=> console.log('loop started'));
     }
 
-    connectedCallback(){
-        super.connectedCallback();
-    }
 
-
+    @autobind
     private __handleKeyDown(event:KeyboardEvent) {
         if(!this.contentElement || !this.enableKeyboard) {
             return;
@@ -151,6 +140,7 @@ class MouseInputElement extends AbstractInputElement {
         // this._lastFoundPosition[1] = clamp(this._lastFoundPosition[1], -1, 1);
     }
 
+    @autobind
     private _handleMouseMove(event:MouseEvent){
 
         const point = mousePositionFromEvent(event, this.contentElement);
@@ -219,7 +209,7 @@ class MouseInputElement extends AbstractInputElement {
         this._loop.start();
     }
 
-    protected _contentElementChanged(contentElement: HTMLElement, previous: HTMLElement) {
+    protected _handleContentElementChanged(contentElement: HTMLElement, previous: HTMLElement) {
         this.__removeEvents(previous);
         this.__addEvents();
     }

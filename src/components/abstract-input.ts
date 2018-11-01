@@ -12,6 +12,9 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+import autobind from 'autobind-decorator';
+import { ACCInputEvent, ACCInputEventInit } from '../events/input-event';
+import { ACCErrorEvent } from '../events/error-event';
 import { add, copy, scale, sub, distance, equal } from './../vec2';
 import { scalemap } from './../utils';
 import { html, LitElement } from '@polymer/lit-element';
@@ -19,93 +22,12 @@ import { property } from './decorators';
 import { InputType } from './types';
 
 
-
 export interface InputProperties {
-    selected?:boolean;
-    initialized?:boolean;
-    controls?:boolean;
-    contentSelector?: string;
+    selected:boolean;
+    initialized:boolean;
+    controls:boolean;
+    contentSelector: string;
 }
-
-/**
- * any event coming from an AbstractInputElement should include
- * these properties in its details
- */
-export interface InputEventDetails {
-    inputType:InputType;
-    target:AbstractInputElement;
-    position:[number, number];
-}
-
-export interface ErrorEventDetails {
-    message: string;
-}
-
-/**
- * extend CustomEventInit to make details a required property
- */
-type InputEventInit = CustomEventInit<InputEventDetails>;
-
-
-
-
-/**
- * Every event coming from an AbstractInputElement
- */
-export class ACCInputEvent extends CustomEvent<InputEventDetails> {
-    /**
-     * Dispatched when an inputs properties have changed
-     * @event
-     */
-    public static CHANGE: string = 'change';
-    /**
-     * Dispatched when the input is beginning to initialize and load itself
-     * @event
-     */
-    public static INITIALIZING: string = 'initializing';
-    /**
-     * Dispatched when the input has completed initializing itself
-     * @event
-     */
-    public static READY: string = 'ready';
-    /**
-     * Dispatched every time theres an update, this is 60fps for webcams
-     * @event
-     */
-    public static TICK: string = 'tick';
-    /**
-     * Dispatches every time there is a new value from the input
-     * @event
-     */
-    public static INPUT: string = 'input';
-    /**
-     * Dispatched when the input has been stopped
-     * @event
-     */
-    public static STOP: string = 'stop';
-
-    constructor(type:string, eventInitDict:InputEventInit){
-        super(type, eventInitDict);
-    }
-}
-
-export class ACCErrorEvent extends CustomEvent<ErrorEventDetails> {
-
-    /**
-     * Dispatched whenever there is an error
-     * @event
-     */
-    public static ERROR: string = 'error';
-
-    constructor(error: Error) {
-        super(ACCErrorEvent.ERROR, {
-            detail: {
-                message: error.message
-            }
-        });
-    }
-}
-
 
 
 export const isAbstractInputElement = (el:any): el is AbstractInputElement =>
@@ -115,9 +37,6 @@ export const isAbstractInputElement = (el:any): el is AbstractInputElement =>
  * AbstractInputElement is the base abstract class for all inputs
  */
 export abstract class AbstractInputElement extends LitElement {
-
-    ///////////////////////////////
-    // Properties
 
     /**
      * setting this property or attribute will display the input's calibration
@@ -150,7 +69,24 @@ export abstract class AbstractInputElement extends LitElement {
 
     ///////////////////////////////////
 
+    /**
+     * the current X position as mapped to the contentElement
+     */
+    public get contentX() {
+        return this.targetPosition[0];
+    }
 
+    /**
+     * the current Y position as mapped to the contentElement
+     */
+    public get contentY() {
+        return this.targetPosition[1];
+    }
+
+
+    /**
+     * does the current input have a control modal
+     */
     public get hasControls() {
         return false;
     }
@@ -161,30 +97,12 @@ export abstract class AbstractInputElement extends LitElement {
      */
     public inputType:InputType;
 
-    /**
-     * the main element of content, set through 'target' or 'targetSelector'
-     */
-    private __contentEl: HTMLElement;
-
     public targetPosition:[number, number] = [0, 0];
-    protected _lastFoundTargetPosition:[number, number] = [0, 0];
 
     /**
      * the input's vector that is updated whenever there is new input data
      */
     public position:[number, number] = [-1, -1];
-
-    /**
-     * the input's current target vector, this could be different if smoothing
-     * is more than 0
-     */
-    protected _lastFoundPosition:[number, number] = [-1, -1];
-
-
-    private __isInitializing:boolean = false;
-    private __isReady:boolean = false;
-    private __hasTickedSinceReady:boolean = false;
-    protected _wasAborted:boolean = false;
 
     /**
      * is the input currently in the phase of initializing itself?
@@ -208,7 +126,7 @@ export abstract class AbstractInputElement extends LitElement {
 
         //provide a hook
         if(changed) {
-            this._contentElementChanged(element, prev);
+            this._handleContentElementChanged(element, prev);
         }
     }
 
@@ -219,38 +137,21 @@ export abstract class AbstractInputElement extends LitElement {
         return this.__contentEl;
     }
 
-
-    constructor(){
-        super();
-        [
-            '_dispatchInitializing',
-            '_dispatchReady',
-            '_dispatchStop',
-            '_dispatchTick'
-        ].forEach(fnStr=> (<any>this)[fnStr] = (<any>this)[fnStr].bind(this));
-    }
+    /**
+     * the input's current target vector, this could be different if smoothing
+     * is more than 0
+     */
+    protected _lastFoundPosition:[number, number] = [-1, -1];
+    protected _lastFoundTargetPosition:[number, number] = [0, 0];
 
     /**
-     * the Event that will be provided in every dispatched event from an input
-     * Most input's will override this to provide even more data unique to their input
-     * @param type
-     * @param bubbles
-     * @param composed
+     * the main element of content, set through 'target' or 'targetSelector'
      */
-    protected _createEvent(type:string, bubbles:boolean=true, composed:boolean=true): ACCInputEvent {
-        const eventInit:InputEventInit = {
-            detail: {
-                inputType: this.inputType,
-                target: this,
-                position: this.position
-            },
-            bubbles,
-            //send outside of shadow to parent element
-            composed
-        };
-
-        return new ACCInputEvent(type, eventInit);
-    }
+    private __contentEl: HTMLElement;
+    private __isInitializing:boolean = false;
+    private __isReady:boolean = false;
+    private __hasTickedSinceReady:boolean = false;
+    protected _wasAborted:boolean = false;
 
 
     /**
@@ -295,7 +196,7 @@ export abstract class AbstractInputElement extends LitElement {
      * should an 'input' event be dispatched as well on this tick
      * this method exists so you can override in other inputs to consider other variables
      */
-    protected _shouldDispatchInput() :boolean {
+    protected _shouldDispatchInput(): boolean {
         return this._stepTowardsTarget();
     }
 
@@ -310,28 +211,64 @@ export abstract class AbstractInputElement extends LitElement {
     }
 
 
+    /**
+     * the Event that will be provided in every dispatched event from an input
+     * Most input's will override this to provide even more data unique to their input
+     * Input implementations can override this to provide extra details
+     * @param type
+     * @param bubbles
+     * @param composed
+     */
+    protected _createEvent(type: string, bubbles: boolean= true, composed: boolean= true): ACCInputEvent {
+
+        const eventInit:ACCInputEventInit = {
+            detail: {
+                inputType: this.inputType,
+                position: this.position
+            },
+            bubbles,
+            //send outside of shadow to parent element
+            composed
+        };
+
+        return new ACCInputEvent(type, eventInit);
+    }
+
+
     //overriding to ensure consistent event types
-    dispatchEvent(evt:ACCInputEvent){
+    dispatchEvent(evt:ACCInputEvent | ACCErrorEvent){
         return super.dispatchEvent(evt);
     }
 
+
+    @autobind
     protected _dispatchChange(): void {
         this.dispatchEvent(this._createEvent(ACCInputEvent.CHANGE));
     }
+
+
+    @autobind
+    protected _dispatchError(error: Error):void {
+        this.dispatchEvent(new ACCErrorEvent(error));
+    }
+
 
     /**
      * when the input BEGINS to load any required resources, ask for any permissions etc
      * @event
      */
+    @autobind
     protected _dispatchInitializing():void {
         this.__isInitializing = true;
         this.dispatchEvent(this._createEvent(ACCInputEvent.INITIALIZING));
     }
 
+
     /**
      * when the input has successfully began
      * @event
      */
+    @autobind
     protected _dispatchReady():void {
         this.__isInitializing = false;
         this.__isReady = true;
@@ -339,12 +276,29 @@ export abstract class AbstractInputElement extends LitElement {
         this.dispatchEvent(this._createEvent(ACCInputEvent.READY));
     }
 
+
+    /**
+     * when the input has stopped operation
+     */
+    @autobind
+    protected _dispatchStop():void {
+        if(this.__isInitializing){
+            this._wasAborted = true;
+        }
+        //TODO should this be set false here or inside each inputs initializing where it completes or fails?
+        this.__isInitializing = false;
+        this.__isReady = false;
+        this.dispatchEvent(this._createEvent(ACCInputEvent.STOP))
+    }
+
+
     /**
      * when the input has performed any new effort,
      * even if there is no new input found.
      * i.e. webcam updated but no face was found, this still triggers
      * @event AbstractInputElement#tick dispatched every time the input updates, even if no changes
      */
+    @autobind
     protected _dispatchTick():void {
         if (this._shouldDispatchInput()) {
             // the position value changed
@@ -354,43 +308,17 @@ export abstract class AbstractInputElement extends LitElement {
          * Tick event, occurs on every update
          * @event AbstractInput#tick
          */
-        this.dispatchEvent(this._createEvent('tick'));
+        this.dispatchEvent(this._createEvent(ACCInputEvent.TICK));
         this.__hasTickedSinceReady = true;
     }
 
-    protected _dispatchError(error: Error):void {
-        //TODO should be a better error event than this
-        super.dispatchEvent(
-            new CustomEvent('error', {
-                detail: {
-                    message: error.message,
-                    name: error.name,
-                    stack: error.stack
-                },
-                bubbles: true,
-                composed: true
-            })
-        );
-    }
-
-    /**
-     * when the input has stopped operation
-     */
-    protected _dispatchStop():void {
-        if(this.__isInitializing){
-            this._wasAborted = true;
-        }
-        //TODO should this be set false here or inside each inputs initializing where it completes or fails?
-        this.__isInitializing = false;
-        this.__isReady = false;
-        this.dispatchEvent(this._createEvent('stop'))
-    }
 
     /**
      * when the input has new tracking data to announce
      */
+    @autobind
     private __dispatchInput():void {
-        this.dispatchEvent(this._createEvent('input'));
+        this.dispatchEvent(this._createEvent(ACCInputEvent.INPUT));
     }
 
     public _propertiesChanged(props: InputProperties, changedProps: InputProperties, prevProps: InputProperties): void {
@@ -419,10 +347,10 @@ export abstract class AbstractInputElement extends LitElement {
         //update controls as attribute because CSS
         if(changedProps.controls && !prevProps.controls){
             this.setAttribute('controls', 'true');
-            this.dispatchEvent(this._createEvent('controlsopen'));
+            this.dispatchEvent(this._createEvent(ACCInputEvent.CONTROLS_OPEN));
         } else if(!changedProps.controls && prevProps.controls) {
             this.removeAttribute('controls');
-            this.dispatchEvent(this._createEvent('controlsclose'));
+            this.dispatchEvent(this._createEvent(ACCInputEvent.CONTROLS_CLOSE));
         }
 
         if(!changedProps.selected && prevProps.selected){
@@ -433,7 +361,12 @@ export abstract class AbstractInputElement extends LitElement {
 
     }
 
-    protected _contentElementChanged(contentElement: HTMLElement, previous: HTMLElement) {
+    /**
+     * Hook to handle any changes whenever the contentElement has changed
+     * @param contentElement
+     * @param previous
+     */
+    protected _handleContentElementChanged(contentElement: HTMLElement, previous: HTMLElement) {
 
     }
 

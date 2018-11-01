@@ -20,7 +20,8 @@ import { vec2, copy, add, sub, scale } from './../vec2';
 import { scaleToFill, clamp, setBooleanAttribute } from './../utils';
 import { InputType, Animitter } from './types';
 import { html } from '@polymer/lit-element';
-import { ACCInputEvent, InputEventDetails, AbstractInputElement } from './abstract-input';
+import { ACCInputEvent, InputEventDetails } from '../events/input-event';
+import { AbstractInputElement } from './abstract-input';
 import { WebcamCanvas } from '../webcam';
 import { scalemap } from '../utils';
 import { property } from './decorators';
@@ -34,12 +35,25 @@ interface KeypointMap {
     [name: string]: vec2;
 }
 
+/**
+ * used in order to focus on calibration panel header without strict casting
+ * @param c
+ */
 const canFocusHeader = (c:any): c is { focusHeader: ()=>void } =>
     typeof c.focusHeader === 'function';
 
+/**
+ * is an element that has width and height attributes like canvas or image
+ * @param v
+ */
 const isPixelResolutionElement = (v: any): v is { width: number, height: number } =>
     typeof v.width === 'number' && v.height === 'number';
 
+/**
+ * Get the dimensions of the provided element
+ * @param element an Element to get the dimensions of
+ * @param result optionally provide an array to fill as a vector to reduce garbage
+ */
 const getElementDimensions = (element: Element, result: vec2 = [0, 0]): vec2 => {
     if (isPixelResolutionElement(element)) {
         result[0] = element.width;
@@ -245,11 +259,16 @@ export class PoseInputElement extends AbstractInputElement {
         this._loop.on('stop', this._handleStop);
     }
 
-    _createEvent(type:string, bubbles:boolean=true, composed:boolean=true){
+    /**
+     * overriding AbstractInputElement#_createEvent to provide extra details
+     * @param type
+     * @param bubbles
+     * @param composed
+     */
+    protected _createEvent(type:string, bubbles:boolean=true, composed:boolean=true){
         const eventInit:PoseInputEventInit = {
             detail: {
                 inputType: this.inputType,
-                target: this,
                 position: this.position,
                 part: this.part,
                 pose:this.pose,

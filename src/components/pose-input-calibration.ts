@@ -14,7 +14,8 @@
 
 import { accentColor, bodyFontFamily, labelColor, backgroundColor, buttonBackgroundColor } from './styles';
 import { ContentElement } from './content';
-import { ACCInputEvent, AbstractInputElement } from './abstract-input';
+import { ACCInputEvent } from '../events/input-event';
+import { AbstractInputElement } from './abstract-input';
 import { PoseInputElement } from './pose-input';
 import { html } from '@polymer/lit-element';
 import { AbstractModalElement } from './abstract-modal';

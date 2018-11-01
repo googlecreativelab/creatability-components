@@ -19,7 +19,8 @@ import { html } from '@polymer/lit-element';
 import { FlattenedNodesObserver } from '@polymer/polymer/lib/utils/flattened-nodes-observer';
 import { property } from './decorators';
 import { InputModeSelectElement } from './input-mode-select';
-import { AbstractInputElement, ACCInputEvent } from './abstract-input';
+import { ACCInputEvent } from '../events/input-event';
+import { AbstractInputElement } from './abstract-input';
 
 export interface ContentProperties extends UIProperties {
     inputSelector: string;
