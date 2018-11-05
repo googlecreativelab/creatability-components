@@ -1,3 +1,4 @@
+import { UIProperties } from './abstract-ui';
 // Copyright 2018 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -23,6 +24,10 @@ import { property } from "./decorators";
 const { FlattenedNodesObserver } = require('@polymer/polymer/lib/utils/flattened-nodes-observer.js');
 
 
+export interface SelectProperties extends UIProperties {
+    hideLabel: boolean;
+}
+
 export interface SelectableElement extends Element {
     selected:boolean;
     value:string;
@@ -40,7 +45,7 @@ export const isSelectableElement = (el:any): el is SelectableElement =>
  * AbstractSelectLitElement is an Abstract class and therefore should always be extended
  * This class manages the [selected] attribute state of all children added into its slot
  */
-export class AbstractSelectLitElement extends AbstractUIElement {
+export class AbstractSelectElement extends AbstractUIElement {
 
     /**
      * hide the label visually, only provide to aria

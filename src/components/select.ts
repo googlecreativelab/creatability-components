@@ -14,7 +14,7 @@
 
 import autobind from 'autobind-decorator';
 import { backgroundColor, bodyFontFamily, labelColor } from './styles';
-import { SelectableElement, AbstractSelectLitElement, isOptgroupElement } from './abstract-select';
+import { SelectableElement, AbstractSelectElement, isOptgroupElement } from './abstract-select';
 import { OptgroupElement } from './optgroup';
 
 import { html } from '@polymer/lit-element';
@@ -42,10 +42,7 @@ const toOptionTemplate = (node: OptionItem) =>
 
 
 
-export class SelectElement extends AbstractSelectLitElement  {
-
-
-    protected labelHtml:any;
+export class SelectElement extends AbstractSelectElement  {
 
 
     get items(): OptionItem[] {

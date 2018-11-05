@@ -14,7 +14,7 @@
 
 import { backgroundColor, bodyFontFamily, labelColor, labelStyleChunk } from './styles';
 import { html } from '@polymer/lit-element';
-import { SelectableElement, AbstractSelectLitElement } from './abstract-select';
+import { SelectableElement, AbstractSelectElement, SelectProperties } from './abstract-select';
 import { property } from './decorators';
 
 
@@ -37,9 +37,9 @@ interface UIElements {
  * Creates a UI element for selecting an appropriate input method,
  * bundles proper initialization, event bubbling, access to calibration
  * and messaging.
- * @extends AbstractSelectLitElement
+ * @extends AbstractSelectElement
  */
-export class InputModeSelectElement extends AbstractSelectLitElement {
+export class InputModeSelectElement extends AbstractSelectElement {
 
     /**
      * provide a selector for the content element the input is applied to
@@ -47,22 +47,11 @@ export class InputModeSelectElement extends AbstractSelectLitElement {
     @property({ type: String })
     public contentSelector:string = 'body'; //'acc-content';
 
-
-    @property({ type: String})
-    public label:string = '';
-
     constructor() {
         super();
         this._nodeChildSelector = '*';
+        this.label = this.label || 'Tracking';
     }
-
-    // focus() {
-    //     super.focus();
-    //     const select = this.shadowRoot.querySelector('select');
-    //     if(select) {
-    //         select.focus();
-    //     }
-    // }
 
 
     set contentElement(element: HTMLElement | null) {
@@ -131,7 +120,7 @@ export class InputModeSelectElement extends AbstractSelectLitElement {
         super._addNode(node);
     }
 
-    _render({label}:UIElements){
+    _render({label, hideLabel}: SelectProperties){
         const sI = this.selectedIndex;
         const hasControls = this.selected && this.selected.hasControls;
 
@@ -213,9 +202,9 @@ export class InputModeSelectElement extends AbstractSelectLitElement {
             }
 
             </style>
-            <label for="select">Tracking</label>
+            ${hideLabel ? '' : html`<label for="select">${label}</label>`}
             <div class="select-style">
-                <select class="accessibility-selector" on-input="${onSelectInput}" id="select">
+                <select class="accessibility-selector" on-input="${onSelectInput}" id="select" aria-label$="${label}">
                     ${this.items.map((node,i)=>{
                         const isSelected = i === sI;
                         return html`<option value="${node.inputType}" selected="${isSelected}">${node.label}</option>`;
