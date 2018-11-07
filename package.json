@@ -17,12 +17,9 @@
     "@polymer/polymer": "3.0.5",
     "@tensorflow-models/posenet": "^0.2.2",
     "@tensorflow/tfjs": "^0.13.0",
-    "@types/webassembly-js-api": "0.0.1",
-    "@webcomponents/webcomponentsjs": "2.0.0",
     "animitter": "3.0.0",
-    "assert": "1.4.1",
-    "eventemitter": "0.3.3",
-    "lit-html": "^0.10.0"
+    "lit-html": "^0.10.0",
+    "shortid": "2.2.8"
   },
   "devDependencies": {
     "@webpack-cli/serve": "0.0.8",
@@ -32,7 +29,6 @@
     "concurrently": "3.6.0",
     "copy-webpack-plugin": "4.5.1",
     "lodash.clonedeep": "^4.5.0",
-    "shortid": "2.2.8",
     "text-loader": "0.0.1",
     "ts-loader": "4.4.2",
     "typedoc": "^0.13.0",
