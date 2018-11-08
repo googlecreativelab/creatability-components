@@ -1,0 +1,390 @@
+<!doctype html>
+<html class="default no-js">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>creatability-components</title>
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="assets/css/main.css">
+</head>
+<body>
+<header>
+	<div class="tsd-page-toolbar">
+		<div class="container">
+			<div class="table-wrap">
+				<div class="table-cell" id="tsd-search" data-index="assets/js/search.js" data-base=".">
+					<div class="field">
+						<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
+						<input id="tsd-search-field" type="text" />
+					</div>
+					<ul class="results">
+						<li class="state loading">Preparing search index...</li>
+						<li class="state failure">The search index is not available</li>
+					</ul>
+					<a href="index.html" class="title">creatability-components</a>
+				</div>
+				<div class="table-cell" id="tsd-widgets">
+					<div id="tsd-filter">
+						<a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a>
+						<div class="tsd-filter-group">
+							<div class="tsd-select" id="tsd-filter-visibility">
+								<span class="tsd-select-label">All</span>
+								<ul class="tsd-select-list">
+									<li data-value="public">Public</li>
+									<li data-value="protected">Public/Protected</li>
+									<li data-value="private" class="selected">All</li>
+								</ul>
+							</div>
+							<input type="checkbox" id="tsd-filter-inherited" checked />
+							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
+							<input type="checkbox" id="tsd-filter-only-exported" />
+							<label class="tsd-widget" for="tsd-filter-only-exported">Only exported</label>
+						</div>
+					</div>
+					<a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="tsd-page-title">
+		<div class="container">
+			<ul class="tsd-breadcrumb">
+				<li>
+					<a href="globals.html">Globals</a>
+				</li>
+			</ul>
+			<h1> creatability-components</h1>
+		</div>
+	</div>
+</header>
+<div class="container container-main">
+	<div class="row">
+		<div class="col-8 col-content">
+			<div class="tsd-panel tsd-typography">
+				<h1 id="creatability-accessible-web-components">Creatability Accessible Web Components</h1>
+				<p><em>in active development</em></p>
+				<p><a href="https://experiments.withgoogle.com/collection/creatability">Creatability</a> is a set of experiments made in collaboration with creators and allies in the accessibility community. They explore how creative tools – drawing, music, and more – can be made more accessible using web and AI technology. We hope they inspire others to make new projects, so we&#39;ve started open-sourcing components here for anyone to use. Note this repo is under development. Contributions welcome!</p>
+				<p><img src="https://storage.googleapis.com/creatability-github/creatability-maher.gif" alt="using input tracking"></p>
+				<h2 id="usage">Usage</h2>
+				<p>A simple example of including the library then supporting mouse/keyboard and body tracking inputs.</p>
+				<pre><code class="language-html">    <span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+        <span class="hljs-comment">&lt;!-- webcomponents-loader loads polyfills only for browsers not supporting Shadow DOM --&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"//cdnjs.cloudflare.com/ajax/libs/webcomponentsjs/2.0.2/webcomponents-loader.js"</span>&gt;</span><span class="undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"dist/acc-components.min.js"</span>&gt;</span><span class="undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+
+        <span class="hljs-tag">&lt;<span class="hljs-name">acc-input-mode-select</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">acc-mouse-input</span> <span class="hljs-attr">amplification</span>=<span class="hljs-string">"10"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">acc-mouse-input</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">acc-pose-input</span> <span class="hljs-attr">smoothing</span>=<span class="hljs-string">"0.5"</span> <span class="hljs-attr">selected</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">acc-pose-input</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">acc-input-mode-select</span>&gt;</span>
+
+        <span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="javascript">
+            <span class="hljs-keyword">const</span> inputSelector = <span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">'acc-input-mode-select'</span>);
+
+            <span class="hljs-comment">// all of the input's events bubble up to the selector</span>
+            inputSelector.addEventListener(<span class="hljs-string">'input'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">onInput</span>(<span class="hljs-params">event</span>)</span>{
+                <span class="hljs-keyword">const</span> input = event.target;
+                <span class="hljs-comment">// position mapped to the content's coordinate space</span>
+                <span class="hljs-comment">// by default this is document.body, it can be set to any</span>
+                <span class="hljs-comment">// element with inputSelector.contentElement = htmlElement;</span>
+                <span class="hljs-comment">// or &lt;acc-input-mode-select contentselector="#content"&gt;</span>
+                <span class="hljs-comment">// exists on individual inputs as well</span>
+                <span class="hljs-keyword">const</span> x = input.contentX;
+                <span class="hljs-keyword">const</span> y = input.contentY;
+            }
+        </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span></code></pre>
+				<p>In pure JavaScript these elements behave like normal HTMLElement&#39;s:</p>
+				<pre><code class="language-js">
+<span class="hljs-keyword">const</span> input = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">'acc-pose-input'</span>);
+<span class="hljs-comment">//or use document.querySelector('acc-pose-input')</span>
+
+input.addEventListener(<span class="hljs-string">'input'</span>, (event)=&gt;{
+    <span class="hljs-built_in">console</span>.log(event.target.position);
+});
+
+<span class="hljs-comment">//this triggers the loading and initialization of any resources</span>
+input.initialize();
+</code></pre>
+				<h2 id="components">Components</h2>
+				<ul>
+					<li><code>&lt;acc-button&gt;</code></li>
+					<li><code>&lt;acc-content&gt;</code></li>
+					<li><code>&lt;acc-group&gt;</code></li>
+					<li><code>&lt;acc-input-mode-select&gt;</code></li>
+					<li><code>&lt;acc-item&gt;</code></li>
+					<li><code>&lt;acc-mouse-input&gt;</code></li>
+					<li><code>&lt;acc-optgroup&gt;</code></li>
+					<li><code>&lt;acc-pose-input&gt;</code></li>
+					<li><code>&lt;acc-range&gt;</code></li>
+					<li><code>&lt;acc-select&gt;</code></li>
+					<li><code>&lt;acc-side-panel&gt;</code></li>
+					<li><code>&lt;acc-slide&gt;</code></li>
+					<li><code>&lt;acc-slideshow&gt;</code></li>
+					<li><code>&lt;acc-snackbar&gt;</code></li>
+					<li><code>&lt;acc-toggle&gt;</code></li>
+					<li><p><code>&lt;acc-tutorial&gt;</code></p>
+					</li>
+					<li><p><code>&lt;acc-radio-group&gt;</code></p>
+					</li>
+					<li><code>&lt;acc-radio&gt;</code></li>
+				</ul>
+				<h3 id="input-event-cycle">Input Event Cycle</h3>
+				<p>All input types dispatch the following events:</p>
+				<ul>
+					<li><code>&#39;initializing&#39;</code> when the input begins to load and initialize any necessary resources.</li>
+					<li><code>&#39;ready&#39;</code> when the input has completed initializing and is now operating</li>
+					<li><code>&#39;input&#39;</code> dispatched every time the input has a new value</li>
+					<li><code>&#39;stop&#39;</code> dispatched if the input has stopped such as by switching inputs or calling <code>input.stop()</code>.</li>
+					<li><code>&#39;change&#39;</code> dispatched when an attribute/property changes values</li>
+				</ul>
+				<h2 id="side-panel-and-content">Side Panel and Content</h2>
+				<p>Quickly scaffold an application with a collapsable sidebar and content area that resizes accordingly and can display webcam when in use.</p>
+				<pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">acc-side-panel</span> <span class="hljs-attr">label</span>=<span class="hljs-string">"My Application"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">acc-group</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">acc-input-mode-select</span> <span class="hljs-attr">contentselector</span>=<span class="hljs-string">"#main-content"</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">acc-mouse-input</span> <span class="hljs-attr">amplification</span>=<span class="hljs-string">"10"</span> <span class="hljs-attr">enablekeyboard</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">acc-mouse-input</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">acc-pose-input</span> <span class="hljs-attr">amplification</span>=<span class="hljs-string">"3"</span> <span class="hljs-attr">multiplier</span>=<span class="hljs-string">"1.01"</span> <span class="hljs-attr">smoothing</span>=<span class="hljs-string">"0.75"</span> <span class="hljs-attr">part</span>=<span class="hljs-string">"nose"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">acc-pose-input</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">acc-input-mode-select</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">acc-group</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">acc-side-panel</span>&gt;</span>
+
+<span class="hljs-comment">&lt;!-- mounted attribute tells the element to be fullscree minus side-panel width --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">acc-content</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"main-content"</span> <span class="hljs-attr">webcamopacity</span>=<span class="hljs-string">"0.25"</span> <span class="hljs-attr">grayscale</span> <span class="hljs-attr">mounted</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">acc-content</span>&gt;</span></code></pre>
+				<h2 id="snackbar">Snackbar</h2>
+				<p>Snackbar is meant to be a temporary notification UI. <strong>Snackbar is ideal for <a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Live_Regions">ARIA Live Regions</a>. To use as a Live Region YOU must add the <code>aria-live</code> attribute to the element directly in the HTML.</strong> When its message changes (or show() is invoked) it will display for its set <code>duration</code> in seconds. Typically there is only one per application, the code below is for demonstration purposes.</p>
+				<pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">acc-snackbar</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"snackbar-1"</span> <span class="hljs-attr">duration</span>=<span class="hljs-string">"5"</span> <span class="hljs-attr">aria-live</span>=<span class="hljs-string">"polite"</span> <span class="hljs-attr">dismissable</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">strong</span>&gt;</span>Example 1<span class="hljs-tag">&lt;/<span class="hljs-name">strong</span>&gt;</span> will show for 5 seconds every time this content changes or until "DISMISS" is clicked
+<span class="hljs-tag">&lt;/<span class="hljs-name">acc-snackbar</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">acc-snackbar</span> <span class="hljs-attr">duration</span>=<span class="hljs-string">"0"</span> <span class="hljs-attr">aria-live</span>=<span class="hljs-string">"assertive"</span> <span class="hljs-attr">dismissable</span> <span class="hljs-attr">error</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">strong</span>&gt;</span>Example 2<span class="hljs-tag">&lt;/<span class="hljs-name">strong</span>&gt;</span> will show up indefinitely until "DISMISS" is clicked and will be styled boldly as an error alert.
+<span class="hljs-tag">&lt;/<span class="hljs-name">acc-snackbar</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">acc-snackbar</span> <span class="hljs-attr">aria-live</span>=<span class="hljs-string">"polite"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">strong</span>&gt;</span>Example 3<span class="hljs-tag">&lt;/<span class="hljs-name">strong</span>&gt;</span> will show up for 4 seconds every time its content changes.
+<span class="hljs-tag">&lt;/<span class="hljs-name">acc-snackbar</span>&gt;</span>
+
+
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="actionscript">
+
+    setTimeout(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-comment">// changing a snackbar's content will trigger it to show up again</span>
+        <span class="hljs-comment">// and with aria-live it will be read by screen readers when changed</span>
+        <span class="hljs-keyword">const</span> snack1 = document.querySelectorAll(<span class="hljs-string">'#snackbar-1'</span>);
+        snack1.innerHTML = `
+            &lt;img alt=<span class="hljs-string">"A heart icon"</span> src=<span class="hljs-string">"https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/Love_Heart_symbol.svg/1000px-Love_Heart_symbol.svg.png"</span> width=<span class="hljs-string">"32"</span>&gt;
+            &lt;div style=<span class="hljs-string">"display: inline-block; transform: translate(0, -50%); padding-left: 8px;"</span>&gt;
+                &lt;strong&gt;Example <span class="hljs-number">1</span> updated&lt;/strong&gt; <span class="hljs-keyword">this</span> changed message will <span class="hljs-keyword">get</span> read by screen readers.
+            &lt;/div&gt;`;
+    }, <span class="hljs-number">10000</span>);
+
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></code></pre>
+				<h2 id="tutorial">Tutorial</h2>
+				<p>The tutorial element gives you a simple slide show. It extends <code>AbstractModal</code> so it can be added to the screen by adding an &quot;open&quot; attribute. Each of the <code>&lt;acc-slide&gt;</code> children will be rendered as a slide-show.</p>
+				<pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">acc-tutorial</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">acc-slide</span>
+        <span class="hljs-attr">video</span>=<span class="hljs-string">"assets/s1.mp4"</span>
+        <span class="hljs-attr">alt</span>=<span class="hljs-string">"don't forget to add alt text for the video"</span>
+        <span class="hljs-attr">caption</span>=<span class="hljs-string">"This experiment lets you combine speech and music in a fun way."</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">acc-slide</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">acc-slide</span>
+        <span class="hljs-attr">caption</span>=<span class="hljs-string">"Just type some words, then set them into your own melody."</span>
+        <span class="hljs-attr">video</span>=<span class="hljs-string">"assets/s2.mp4"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">acc-slide</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">acc-slide</span>
+        <span class="hljs-attr">caption</span>=<span class="hljs-string">"You can change the melody using your mouse or keyboard."</span>
+        <span class="hljs-attr">video</span>=<span class="hljs-string">"assets/s3.mp4"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">acc-slide</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">acc-slide</span>
+        <span class="hljs-attr">caption</span>=<span class="hljs-string">"Just play around – try different voices, scales, and more."</span>
+        <span class="hljs-attr">video</span>=<span class="hljs-string">"assets/s4.mp4"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">acc-slide</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">acc-tutorial</span>&gt;</span></code></pre>
+				<h2 id="contributors">Contributors</h2>
+				<ul>
+					<li><a href="https://github.com/hapticdata">Kyle Phillips</a></li>
+					<li><a href="https://github.com/tambien">Yotam Mann</a></li>
+					<li><a href="https://github.com/useallfive">Use All 5</a></li>
+				</ul>
+				<p><em>This is not an official Google product</em></p>
+			</div>
+		</div>
+		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
+			<nav class="tsd-navigation primary">
+				<ul>
+					<li class="globals  ">
+						<a href="globals.html"><em>Globals</em></a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_components_abstract_input_.html">"components/abstract-<wbr>input"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_components_abstract_modal_.html">"components/abstract-<wbr>modal"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_components_abstract_select_.html">"components/abstract-<wbr>select"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_components_abstract_ui_.html">"components/abstract-<wbr>ui"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_components_button_.html">"components/button"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_components_content_.html">"components/content"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_components_decorators_.html">"components/decorators"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_components_group_.html">"components/group"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_components_icon_.html">"components/icon"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_components_input_mode_select_.html">"components/input-<wbr>mode-<wbr>select"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_components_item_.html">"components/item"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_components_mouse_input_.html">"components/mouse-<wbr>input"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_components_mouse_input_calibration_.html">"components/mouse-<wbr>input-<wbr>calibration"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_components_optgroup_.html">"components/optgroup"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_components_pose_input_.html">"components/pose-<wbr>input"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_components_pose_input_calibration_.html">"components/pose-<wbr>input-<wbr>calibration"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_components_range_.html">"components/range"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_components_select_.html">"components/select"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_components_side_panel_.html">"components/side-<wbr>panel"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_components_slide_.html">"components/slide"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_components_slideshow_.html">"components/slideshow"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_components_snackbar_.html">"components/snackbar"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_components_styles_.html">"components/styles"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_components_toggle_.html">"components/toggle"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_components_tutorial_.html">"components/tutorial"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_components_types_.html">"components/types"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_events_error_event_.html">"events/error-<wbr>event"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_events_input_event_.html">"events/input-<wbr>event"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_index_.html">"index"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_keyboard_shortcut_observer_.html">"keyboard-<wbr>shortcut-<wbr>observer"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_mouse_position_.html">"mouse-<wbr>position"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_utils_.html">"utils"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_vec2_.html">"vec2"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_webcam_.html">"webcam"</a>
+					</li>
+				</ul>
+			</nav>
+			<nav class="tsd-navigation secondary menu-sticky">
+				<ul class="before-current">
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>
+<footer>
+	<div class="container">
+		<h2>Legend</h2>
+		<div class="tsd-legend-group">
+			<ul class="tsd-legend">
+				<li class="tsd-kind-module"><span class="tsd-kind-icon">Module</span></li>
+				<li class="tsd-kind-object-literal"><span class="tsd-kind-icon">Object literal</span></li>
+				<li class="tsd-kind-variable"><span class="tsd-kind-icon">Variable</span></li>
+				<li class="tsd-kind-function"><span class="tsd-kind-icon">Function</span></li>
+				<li class="tsd-kind-function tsd-has-type-parameter"><span class="tsd-kind-icon">Function with type parameter</span></li>
+				<li class="tsd-kind-index-signature"><span class="tsd-kind-icon">Index signature</span></li>
+				<li class="tsd-kind-type-alias"><span class="tsd-kind-icon">Type alias</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-enum"><span class="tsd-kind-icon">Enumeration</span></li>
+				<li class="tsd-kind-enum-member"><span class="tsd-kind-icon">Enumeration member</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-enum"><span class="tsd-kind-icon">Property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-enum"><span class="tsd-kind-icon">Method</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-interface"><span class="tsd-kind-icon">Interface</span></li>
+				<li class="tsd-kind-interface tsd-has-type-parameter"><span class="tsd-kind-icon">Interface with type parameter</span></li>
+				<li class="tsd-kind-constructor tsd-parent-kind-interface"><span class="tsd-kind-icon">Constructor</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-interface"><span class="tsd-kind-icon">Property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-interface"><span class="tsd-kind-icon">Method</span></li>
+				<li class="tsd-kind-index-signature tsd-parent-kind-interface"><span class="tsd-kind-icon">Index signature</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-class"><span class="tsd-kind-icon">Class</span></li>
+				<li class="tsd-kind-class tsd-has-type-parameter"><span class="tsd-kind-icon">Class with type parameter</span></li>
+				<li class="tsd-kind-constructor tsd-parent-kind-class"><span class="tsd-kind-icon">Constructor</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-class"><span class="tsd-kind-icon">Property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class"><span class="tsd-kind-icon">Method</span></li>
+				<li class="tsd-kind-accessor tsd-parent-kind-class"><span class="tsd-kind-icon">Accessor</span></li>
+				<li class="tsd-kind-index-signature tsd-parent-kind-class"><span class="tsd-kind-icon">Index signature</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-constructor tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited constructor</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited method</span></li>
+				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited accessor</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected method</span></li>
+				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected accessor</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private method</span></li>
+				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private accessor</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static property</span></li>
+				<li class="tsd-kind-call-signature tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static method</span></li>
+			</ul>
+		</div>
+	</div>
+</footer>
+<div class="overlay"></div>
+<script src="assets/js/main.js"></script>
+<script>if (location.protocol == 'file:') document.write('<script src="assets/js/search.js"><' + '/script>');</script>
+</body>
+</html>

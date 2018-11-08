@@ -1,0 +1,2320 @@
+<!doctype html>
+<html class="default no-js">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>PoseInputElement | creatability-components</title>
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="../assets/css/main.css">
+</head>
+<body>
+<header>
+	<div class="tsd-page-toolbar">
+		<div class="container">
+			<div class="table-wrap">
+				<div class="table-cell" id="tsd-search" data-index="../assets/js/search.js" data-base="..">
+					<div class="field">
+						<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
+						<input id="tsd-search-field" type="text" />
+					</div>
+					<ul class="results">
+						<li class="state loading">Preparing search index...</li>
+						<li class="state failure">The search index is not available</li>
+					</ul>
+					<a href="../index.html" class="title">creatability-components</a>
+				</div>
+				<div class="table-cell" id="tsd-widgets">
+					<div id="tsd-filter">
+						<a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a>
+						<div class="tsd-filter-group">
+							<div class="tsd-select" id="tsd-filter-visibility">
+								<span class="tsd-select-label">All</span>
+								<ul class="tsd-select-list">
+									<li data-value="public">Public</li>
+									<li data-value="protected">Public/Protected</li>
+									<li data-value="private" class="selected">All</li>
+								</ul>
+							</div>
+							<input type="checkbox" id="tsd-filter-inherited" checked />
+							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
+							<input type="checkbox" id="tsd-filter-only-exported" />
+							<label class="tsd-widget" for="tsd-filter-only-exported">Only exported</label>
+						</div>
+					</div>
+					<a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="tsd-page-title">
+		<div class="container">
+			<ul class="tsd-breadcrumb">
+				<li>
+					<a href="../globals.html">Globals</a>
+				</li>
+				<li>
+					<a href="../modules/_components_pose_input_.html">&quot;components/pose-input&quot;</a>
+				</li>
+				<li>
+					<a href="_components_pose_input_.poseinputelement.html">PoseInputElement</a>
+				</li>
+			</ul>
+			<h1>Class PoseInputElement</h1>
+		</div>
+	</div>
+</header>
+<div class="container container-main">
+	<div class="row">
+		<div class="col-8 col-content">
+			<section class="tsd-panel tsd-comment">
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p><code>&lt;acc-pose-input&gt;</code> element easily adds PoseNet based tracking for controlling
+							the cursor position on a webpage with a chosen body part of the user.
+							For example with a couple lines of code, a user&#39;s nose can be used to control
+						a webpage.</p>
+					</div>
+					<dl class="tsd-comment-tags">
+						<dt>example</dt>
+						<dd><pre><code class="language-html">
+<span class="hljs-tag">&lt;<span class="hljs-name">acc-pose-input</span> <span class="hljs-attr">amplification</span>=<span class="hljs-string">"2"</span> <span class="hljs-attr">smoothing</span>=<span class="hljs-string">"0.5"</span> <span class="hljs-attr">part</span>=<span class="hljs-string">"nose"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">acc-pose-input</span>&gt;</span></code></pre>
+						</dd>
+					</dl>
+				</div>
+			</section>
+			<section class="tsd-panel tsd-hierarchy">
+				<h3>Hierarchy</h3>
+				<ul class="tsd-hierarchy">
+					<li>
+						<a href="_components_abstract_input_.abstractinputelement.html" class="tsd-signature-type">AbstractInputElement</a>
+						<ul class="tsd-hierarchy">
+							<li>
+								<span class="target">PoseInputElement</span>
+							</li>
+						</ul>
+					</li>
+				</ul>
+			</section>
+			<section class="tsd-panel-group tsd-index-group">
+				<h2>Index</h2>
+				<section class="tsd-panel tsd-index-panel">
+					<div class="tsd-index-content">
+						<section class="tsd-index-section ">
+							<h3>Constructors</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-constructor tsd-parent-kind-class"><a href="_components_pose_input_.poseinputelement.html#constructor" class="tsd-kind-icon">constructor</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section tsd-is-inherited tsd-is-private-protected">
+							<h3>Events</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-event tsd-parent-kind-class tsd-is-inherited tsd-is-protected"><a href="_components_pose_input_.poseinputelement.html#_dispatchinitializing" class="tsd-kind-icon">_dispatch<wbr>Initializing</a></li>
+								<li class="tsd-kind-event tsd-parent-kind-class tsd-is-inherited tsd-is-protected"><a href="_components_pose_input_.poseinputelement.html#_dispatchready" class="tsd-kind-icon">_dispatch<wbr>Ready</a></li>
+								<li class="tsd-kind-event tsd-parent-kind-class tsd-is-inherited tsd-is-protected"><a href="_components_pose_input_.poseinputelement.html#_dispatchtick" class="tsd-kind-icon">_dispatch<wbr>Tick</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section ">
+							<h3>Properties</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-protected"><a href="_components_pose_input_.poseinputelement.html#_estimating" class="tsd-kind-icon">_estimating</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-protected"><a href="_components_pose_input_.poseinputelement.html#_input" class="tsd-kind-icon">_input</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-protected"><a href="_components_pose_input_.poseinputelement.html#_lastfoundposition" class="tsd-kind-icon">_last<wbr>Found<wbr>Position</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-protected"><a href="_components_pose_input_.poseinputelement.html#_lastfoundtargetposition" class="tsd-kind-icon">_last<wbr>Found<wbr>Target<wbr>Position</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-protected"><a href="_components_pose_input_.poseinputelement.html#_loop" class="tsd-kind-icon">_loop</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-protected"><a href="_components_pose_input_.poseinputelement.html#_wasaborted" class="tsd-kind-icon">_was<wbr>Aborted</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-protected"><a href="_components_pose_input_.poseinputelement.html#_webcamcanvas" class="tsd-kind-icon">_webcam<wbr>Canvas</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_components_pose_input_.poseinputelement.html#amplification" class="tsd-kind-icon">amplification</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="_components_pose_input_.poseinputelement.html#contentselector" class="tsd-kind-icon">content<wbr>Selector</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="_components_pose_input_.poseinputelement.html#controls" class="tsd-kind-icon">controls</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="_components_pose_input_.poseinputelement.html#disableclamp" class="tsd-kind-icon">disable<wbr>Clamp</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_components_pose_input_.poseinputelement.html#help" class="tsd-kind-icon">help</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_components_pose_input_.poseinputelement.html#imagescalefactor" class="tsd-kind-icon">image<wbr>Scale<wbr>Factor</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-overwrite"><a href="_components_pose_input_.poseinputelement.html#inputtype" class="tsd-kind-icon">input<wbr>Type</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_components_pose_input_.poseinputelement.html#keypointease" class="tsd-kind-icon">keypoint<wbr>Ease</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_components_pose_input_.poseinputelement.html#label" class="tsd-kind-icon">label</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_components_pose_input_.poseinputelement.html#multiplier" class="tsd-kind-icon">multiplier</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_components_pose_input_.poseinputelement.html#part" class="tsd-kind-icon">part</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_components_pose_input_.poseinputelement.html#pose" class="tsd-kind-icon">pose</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="_components_pose_input_.poseinputelement.html#position" class="tsd-kind-icon">position</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_components_pose_input_.poseinputelement.html#preamplifiedtargetposition" class="tsd-kind-icon">preamplified<wbr>Target<wbr>Position</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="_components_pose_input_.poseinputelement.html#rendercomplete" class="tsd-kind-icon">render<wbr>Complete</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="_components_pose_input_.poseinputelement.html#selected" class="tsd-kind-icon">selected</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="_components_pose_input_.poseinputelement.html#smoothing" class="tsd-kind-icon">smoothing</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_components_pose_input_.poseinputelement.html#sourcecenter" class="tsd-kind-icon">source<wbr>Center</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_components_pose_input_.poseinputelement.html#target" class="tsd-kind-icon">target</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="_components_pose_input_.poseinputelement.html#targetposition" class="tsd-kind-icon">target<wbr>Position</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section ">
+							<h3>Accessors</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited"><a href="_components_pose_input_.poseinputelement.html#caninitialize" class="tsd-kind-icon">can<wbr>Initialize</a></li>
+								<li class="tsd-kind-get-signature tsd-parent-kind-class"><a href="_components_pose_input_.poseinputelement.html#canvas" class="tsd-kind-icon">canvas</a></li>
+								<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-inherited"><a href="_components_pose_input_.poseinputelement.html#contentelement" class="tsd-kind-icon">content<wbr>Element</a></li>
+								<li class="tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited"><a href="_components_pose_input_.poseinputelement.html#contentx" class="tsd-kind-icon">contentX</a></li>
+								<li class="tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited"><a href="_components_pose_input_.poseinputelement.html#contenty" class="tsd-kind-icon">contentY</a></li>
+								<li class="tsd-kind-get-signature tsd-parent-kind-class tsd-is-overwrite"><a href="_components_pose_input_.poseinputelement.html#hascontrols" class="tsd-kind-icon">has<wbr>Controls</a></li>
+								<li class="tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited"><a href="_components_pose_input_.poseinputelement.html#isinitializing" class="tsd-kind-icon">is<wbr>Initializing</a></li>
+								<li class="tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited"><a href="_components_pose_input_.poseinputelement.html#isready" class="tsd-kind-icon">is<wbr>Ready</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section ">
+							<h3>Methods</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected"><a href="_components_pose_input_.poseinputelement.html#_applyrender" class="tsd-kind-icon">_apply<wbr>Render</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-overwrite tsd-is-protected"><a href="_components_pose_input_.poseinputelement.html#_createevent" class="tsd-kind-icon">_create<wbr>Event</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected"><a href="_components_pose_input_.poseinputelement.html#_createroot" class="tsd-kind-icon">_create<wbr>Root</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-overwrite"><a href="_components_pose_input_.poseinputelement.html#_didrender" class="tsd-kind-icon">_did<wbr>Render</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected"><a href="_components_pose_input_.poseinputelement.html#_dispatchchange" class="tsd-kind-icon">_dispatch<wbr>Change</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected"><a href="_components_pose_input_.poseinputelement.html#_dispatcherror" class="tsd-kind-icon">_dispatch<wbr>Error</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected"><a href="_components_pose_input_.poseinputelement.html#_dispatchstop" class="tsd-kind-icon">_dispatch<wbr>Stop</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_components_pose_input_.poseinputelement.html#_firstrendered" class="tsd-kind-icon">_first<wbr>Rendered</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_components_pose_input_.poseinputelement.html#_flushproperties" class="tsd-kind-icon">_flush<wbr>Properties</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected"><a href="_components_pose_input_.poseinputelement.html#_handlecontentelementchanged" class="tsd-kind-icon">_handle<wbr>Content<wbr>Element<wbr>Changed</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-protected"><a href="_components_pose_input_.poseinputelement.html#_handlenewframe" class="tsd-kind-icon">_handle<wbr>New<wbr>Frame</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-protected"><a href="_components_pose_input_.poseinputelement.html#_handlestop" class="tsd-kind-icon">_handle<wbr>Stop</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_components_pose_input_.poseinputelement.html#_invalidateproperties" class="tsd-kind-icon">_invalidate<wbr>Properties</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-overwrite"><a href="_components_pose_input_.poseinputelement.html#_propertieschanged" class="tsd-kind-icon">_properties<wbr>Changed</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-overwrite"><a href="_components_pose_input_.poseinputelement.html#_render" class="tsd-kind-icon">_render</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected"><a href="_components_pose_input_.poseinputelement.html#_shoulddispatchinput" class="tsd-kind-icon">_should<wbr>Dispatch<wbr>Input</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_components_pose_input_.poseinputelement.html#_shouldpropertieschange" class="tsd-kind-icon">_should<wbr>Properties<wbr>Change</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-overwrite tsd-is-inherited"><a href="_components_pose_input_.poseinputelement.html#_shouldpropertychange" class="tsd-kind-icon">_should<wbr>Property<wbr>Change</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected"><a href="_components_pose_input_.poseinputelement.html#_shouldrender" class="tsd-kind-icon">_should<wbr>Render</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected"><a href="_components_pose_input_.poseinputelement.html#_steptowardstarget" class="tsd-kind-icon">_step<wbr>Towards<wbr>Target</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-protected"><a href="_components_pose_input_.poseinputelement.html#_updatepose" class="tsd-kind-icon">_update<wbr>Pose</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_components_pose_input_.poseinputelement.html#computepartposition" class="tsd-kind-icon">compute<wbr>Part<wbr>Position</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_components_pose_input_.poseinputelement.html#connectedcallback" class="tsd-kind-icon">connected<wbr>Callback</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_components_pose_input_.poseinputelement.html#dispatchevent" class="tsd-kind-icon">dispatch<wbr>Event</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_components_pose_input_.poseinputelement.html#getallpositionsprojected" class="tsd-kind-icon">get<wbr>All<wbr>Positions<wbr>Projected</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_components_pose_input_.poseinputelement.html#getpartposition" class="tsd-kind-icon">get<wbr>Part<wbr>Position</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_components_pose_input_.poseinputelement.html#getpartpositionnormalized" class="tsd-kind-icon">get<wbr>Part<wbr>Position<wbr>Normalized</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_components_pose_input_.poseinputelement.html#getpartpositionprojected" class="tsd-kind-icon">get<wbr>Part<wbr>Position<wbr>Projected</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-overwrite"><a href="_components_pose_input_.poseinputelement.html#initialize" class="tsd-kind-icon">initialize</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_components_pose_input_.poseinputelement.html#projectposition" class="tsd-kind-icon">project<wbr>Position</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_components_pose_input_.poseinputelement.html#ready" class="tsd-kind-icon">ready</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_components_pose_input_.poseinputelement.html#rendercenter" class="tsd-kind-icon">render<wbr>Center</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_components_pose_input_.poseinputelement.html#rendercursor" class="tsd-kind-icon">render<wbr>Cursor</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_components_pose_input_.poseinputelement.html#renderinputdata" class="tsd-kind-icon">render<wbr>Input<wbr>Data</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_components_pose_input_.poseinputelement.html#requestrender" class="tsd-kind-icon">request<wbr>Render</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_components_pose_input_.poseinputelement.html#resetcenter" class="tsd-kind-icon">reset<wbr>Center</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_components_pose_input_.poseinputelement.html#setcentertocurrentposition" class="tsd-kind-icon">set<wbr>Center<wbr>ToCurrent<wbr>Position</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_components_pose_input_.poseinputelement.html#setposition" class="tsd-kind-icon">set<wbr>Position</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_components_pose_input_.poseinputelement.html#settargetposition" class="tsd-kind-icon">set<wbr>Target<wbr>Position</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-overwrite"><a href="_components_pose_input_.poseinputelement.html#stop" class="tsd-kind-icon">stop</a></li>
+							</ul>
+						</section>
+					</div>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Constructors</h2>
+				<section class="tsd-panel tsd-member tsd-kind-constructor tsd-parent-kind-class">
+					<a name="constructor" class="tsd-anchor"></a>
+					<h3>constructor</h3>
+					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">new <wbr>Pose<wbr>Input<wbr>Element<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_components_pose_input_.poseinputelement.html" class="tsd-signature-type">PoseInputElement</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in components/pose-input.ts:262</li>
+								</ul>
+							</aside>
+							<h4 class="tsd-returns-title">Returns <a href="_components_pose_input_.poseinputelement.html" class="tsd-signature-type">PoseInputElement</a></h4>
+						</li>
+					</ul>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group tsd-is-inherited tsd-is-private-protected">
+				<h2>Events</h2>
+				<section class="tsd-panel tsd-member tsd-kind-event tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+					<a name="_dispatchinitializing" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagProtected">Protected</span> _dispatch<wbr>Initializing</h3>
+					<ul class="tsd-signatures tsd-kind-event tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+						<li class="tsd-signature tsd-kind-icon">_dispatch<wbr>Initializing<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from <a href="_components_abstract_input_.abstractinputelement.html">AbstractInputElement</a>.<a href="_components_abstract_input_.abstractinputelement.html#_dispatchinitializing">_dispatchInitializing</a></p>
+								<ul>
+									<li>Defined in components/abstract-input.ts:261</li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>when the input BEGINS to load any required resources, ask for any permissions etc</p>
+								</div>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-event tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+					<a name="_dispatchready" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagProtected">Protected</span> _dispatch<wbr>Ready</h3>
+					<ul class="tsd-signatures tsd-kind-event tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+						<li class="tsd-signature tsd-kind-icon">_dispatch<wbr>Ready<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from <a href="_components_abstract_input_.abstractinputelement.html">AbstractInputElement</a>.<a href="_components_abstract_input_.abstractinputelement.html#_dispatchready">_dispatchReady</a></p>
+								<ul>
+									<li>Defined in components/abstract-input.ts:272</li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>when the input has successfully began</p>
+								</div>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-event tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+					<a name="_dispatchtick" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagProtected">Protected</span> _dispatch<wbr>Tick</h3>
+					<ul class="tsd-signatures tsd-kind-event tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+						<li class="tsd-signature tsd-kind-icon">_dispatch<wbr>Tick<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from <a href="_components_abstract_input_.abstractinputelement.html">AbstractInputElement</a>.<a href="_components_abstract_input_.abstractinputelement.html#_dispatchtick">_dispatchTick</a></p>
+								<ul>
+									<li>Defined in components/abstract-input.ts:302</li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>when the input has performed any new effort,
+										even if there is no new input found.
+									i.e. webcam updated but no face was found, this still triggers</p>
+								</div>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Properties</h2>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-protected">
+					<a name="_estimating" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagProtected">Protected</span> _estimating</h3>
+					<div class="tsd-signature tsd-kind-icon">_estimating<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in components/pose-input.ts:247</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-protected">
+					<a name="_input" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagProtected">Protected</span> _input</h3>
+					<div class="tsd-signature tsd-kind-icon">_input<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">PoseNet</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in components/pose-input.ts:250</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+					<a name="_lastfoundposition" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagProtected">Protected</span> _last<wbr>Found<wbr>Position</h3>
+					<div class="tsd-signature tsd-kind-icon">_last<wbr>Found<wbr>Position<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">[</span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">]</span><span class="tsd-signature-symbol"> =&nbsp;[-1, -1]</span></div>
+					<aside class="tsd-sources">
+						<p>Inherited from <a href="_components_abstract_input_.abstractinputelement.html">AbstractInputElement</a>.<a href="_components_abstract_input_.abstractinputelement.html#_lastfoundposition">_lastFoundPosition</a></p>
+						<ul>
+							<li>Defined in components/abstract-input.ts:144</li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>the input&#39;s current target vector, this could be different if smoothing
+							is more than 0</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+					<a name="_lastfoundtargetposition" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagProtected">Protected</span> _last<wbr>Found<wbr>Target<wbr>Position</h3>
+					<div class="tsd-signature tsd-kind-icon">_last<wbr>Found<wbr>Target<wbr>Position<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">[</span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">]</span><span class="tsd-signature-symbol"> =&nbsp;[0, 0]</span></div>
+					<aside class="tsd-sources">
+						<p>Inherited from <a href="_components_abstract_input_.abstractinputelement.html">AbstractInputElement</a>.<a href="_components_abstract_input_.abstractinputelement.html#_lastfoundtargetposition">_lastFoundTargetPosition</a></p>
+						<ul>
+							<li>Defined in components/abstract-input.ts:145</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-protected">
+					<a name="_loop" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagProtected">Protected</span> _loop</h3>
+					<div class="tsd-signature tsd-kind-icon">_loop<span class="tsd-signature-symbol">:</span> <a href="../interfaces/_components_types_.animitter.html" class="tsd-signature-type">Animitter</a><span class="tsd-signature-symbol"> =&nbsp;animitter()</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in components/pose-input.ts:249</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+					<a name="_wasaborted" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagProtected">Protected</span> _was<wbr>Aborted</h3>
+					<div class="tsd-signature tsd-kind-icon">_was<wbr>Aborted<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> =&nbsp;false</span></div>
+					<aside class="tsd-sources">
+						<p>Inherited from <a href="_components_abstract_input_.abstractinputelement.html">AbstractInputElement</a>.<a href="_components_abstract_input_.abstractinputelement.html#_wasaborted">_wasAborted</a></p>
+						<ul>
+							<li>Defined in components/abstract-input.ts:154</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-protected">
+					<a name="_webcamcanvas" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagProtected">Protected</span> _webcam<wbr>Canvas</h3>
+					<div class="tsd-signature tsd-kind-icon">_webcam<wbr>Canvas<span class="tsd-signature-symbol">:</span> <a href="_webcam_.webcamcanvas.html" class="tsd-signature-type">WebcamCanvas</a><span class="tsd-signature-symbol"> =&nbsp;new WebcamCanvas()</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in components/pose-input.ts:248</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+					<a name="amplification" class="tsd-anchor"></a>
+					<h3>amplification</h3>
+					<div class="tsd-signature tsd-kind-icon">amplification<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> =&nbsp;1</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in components/pose-input.ts:216</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
+					<a name="contentselector" class="tsd-anchor"></a>
+					<h3>content<wbr>Selector</h3>
+					<div class="tsd-signature tsd-kind-icon">content<wbr>Selector<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> =&nbsp;&quot;&quot;</span></div>
+					<aside class="tsd-sources">
+						<p>Inherited from <a href="_components_abstract_input_.abstractinputelement.html">AbstractInputElement</a>.<a href="_components_abstract_input_.abstractinputelement.html#contentselector">contentSelector</a></p>
+						<ul>
+							<li>Defined in components/abstract-input.ts:64</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
+					<a name="controls" class="tsd-anchor"></a>
+					<h3>controls</h3>
+					<div class="tsd-signature tsd-kind-icon">controls<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> =&nbsp;false</span></div>
+					<aside class="tsd-sources">
+						<p>Inherited from <a href="_components_abstract_input_.abstractinputelement.html">AbstractInputElement</a>.<a href="_components_abstract_input_.abstractinputelement.html#controls">controls</a></p>
+						<ul>
+							<li>Defined in components/abstract-input.ts:45</li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>setting this property or attribute will display the input&#39;s calibration</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
+					<a name="disableclamp" class="tsd-anchor"></a>
+					<h3>disable<wbr>Clamp</h3>
+					<div class="tsd-signature tsd-kind-icon">disable<wbr>Clamp<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> =&nbsp;false</span></div>
+					<aside class="tsd-sources">
+						<p>Inherited from <a href="_components_abstract_input_.abstractinputelement.html">AbstractInputElement</a>.<a href="_components_abstract_input_.abstractinputelement.html#disableclamp">disableClamp</a></p>
+						<ul>
+							<li>Defined in components/abstract-input.ts:67</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+					<a name="help" class="tsd-anchor"></a>
+					<h3>help</h3>
+					<div class="tsd-signature tsd-kind-icon">help<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> =&nbsp;false</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in components/pose-input.ts:234</li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>show the help modal, has priority over controls</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+					<a name="imagescalefactor" class="tsd-anchor"></a>
+					<h3>image<wbr>Scale<wbr>Factor</h3>
+					<div class="tsd-signature tsd-kind-icon">image<wbr>Scale<wbr>Factor<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> =&nbsp;0.33</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in components/pose-input.ts:228</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-overwrite">
+					<a name="inputtype" class="tsd-anchor"></a>
+					<h3>input<wbr>Type</h3>
+					<div class="tsd-signature tsd-kind-icon">input<wbr>Type<span class="tsd-signature-symbol">:</span> <a href="../modules/_components_types_.html#inputtype" class="tsd-signature-type">InputType</a><span class="tsd-signature-symbol"> =&nbsp;&quot;pose&quot;</span></div>
+					<aside class="tsd-sources">
+						<p>Overrides <a href="_components_abstract_input_.abstractinputelement.html">AbstractInputElement</a>.<a href="_components_abstract_input_.abstractinputelement.html#inputtype">inputType</a></p>
+						<ul>
+							<li>Defined in components/pose-input.ts:209</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+					<a name="keypointease" class="tsd-anchor"></a>
+					<h3>keypoint<wbr>Ease</h3>
+					<div class="tsd-signature tsd-kind-icon">keypoint<wbr>Ease<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> =&nbsp;0.5</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in components/pose-input.ts:238</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+					<a name="label" class="tsd-anchor"></a>
+					<h3>label</h3>
+					<div class="tsd-signature tsd-kind-icon">label<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> =&nbsp;&quot;Body&quot;</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in components/pose-input.ts:207</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+					<a name="multiplier" class="tsd-anchor"></a>
+					<h3>multiplier</h3>
+					<div class="tsd-signature tsd-kind-icon">multiplier<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">MobileNetMultiplier</span><span class="tsd-signature-symbol"> =&nbsp;1.01</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in components/pose-input.ts:225</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+					<a name="part" class="tsd-anchor"></a>
+					<h3>part</h3>
+					<div class="tsd-signature tsd-kind-icon">part<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> =&nbsp;&quot;nose&quot;</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in components/pose-input.ts:219</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+					<a name="pose" class="tsd-anchor"></a>
+					<h3>pose</h3>
+					<div class="tsd-signature tsd-kind-icon">pose<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">posenet.Pose</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in components/pose-input.ts:210</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
+					<a name="position" class="tsd-anchor"></a>
+					<h3>position</h3>
+					<div class="tsd-signature tsd-kind-icon">position<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">[</span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">]</span><span class="tsd-signature-symbol"> =&nbsp;[-1, -1]</span></div>
+					<aside class="tsd-sources">
+						<p>Inherited from <a href="_components_abstract_input_.abstractinputelement.html">AbstractInputElement</a>.<a href="_components_abstract_input_.abstractinputelement.html#position">position</a></p>
+						<ul>
+							<li>Defined in components/abstract-input.ts:105</li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>the input&#39;s vector that is updated whenever there is new input data</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+					<a name="preamplifiedtargetposition" class="tsd-anchor"></a>
+					<h3>preamplified<wbr>Target<wbr>Position</h3>
+					<div class="tsd-signature tsd-kind-icon">preamplified<wbr>Target<wbr>Position<span class="tsd-signature-symbol">:</span> <a href="../modules/_vec2_.html#vec2" class="tsd-signature-type">vec2</a><span class="tsd-signature-symbol"> =&nbsp;[0, 0]</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in components/pose-input.ts:213</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
+					<a name="rendercomplete" class="tsd-anchor"></a>
+					<h3>render<wbr>Complete</h3>
+					<div class="tsd-signature tsd-kind-icon">render<wbr>Complete<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">&gt;</span></div>
+					<aside class="tsd-sources">
+						<p>Inherited from LitElement.renderComplete</p>
+						<ul>
+							<li>Defined in /Users/kylephillips/Dropbox/dev/GCL/acc-creativity/creatability-components/node_modules/@polymer/lit-element/lit-element.d.ts:169</li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Returns a promise which resolves after the element next renders.
+								The promise resolves to <code>true</code> if the element rendered and <code>false</code> if the
+								element did not render.
+								This is useful when users (e.g. tests) need to react to the rendered state
+								of the element after a change is made.
+								This can also be useful in event handlers if it is desireable to wait
+								to send an event until after rendering. If possible implement the
+								<code>_didRender</code> method to directly respond to rendering within the
+							rendering lifecycle.</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
+					<a name="selected" class="tsd-anchor"></a>
+					<h3>selected</h3>
+					<div class="tsd-signature tsd-kind-icon">selected<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> =&nbsp;false</span></div>
+					<aside class="tsd-sources">
+						<p>Inherited from <a href="_components_abstract_input_.abstractinputelement.html">AbstractInputElement</a>.<a href="_components_abstract_input_.abstractinputelement.html#selected">selected</a></p>
+						<ul>
+							<li>Defined in components/abstract-input.ts:60</li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>this attribute is used on the HTML node to denote it is the selected input
+							and to begin initializing</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
+					<a name="smoothing" class="tsd-anchor"></a>
+					<h3>smoothing</h3>
+					<div class="tsd-signature tsd-kind-icon">smoothing<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> =&nbsp;0</span></div>
+					<aside class="tsd-sources">
+						<p>Inherited from <a href="_components_abstract_input_.abstractinputelement.html">AbstractInputElement</a>.<a href="_components_abstract_input_.abstractinputelement.html#smoothing">smoothing</a></p>
+						<ul>
+							<li>Defined in components/abstract-input.ts:53</li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>a higher smoothing value (0-1) results in a slower and smoother
+								interpolation towards the current position. This creates less jitter
+							from an input but a high value can make the input feel slow.</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+					<a name="sourcecenter" class="tsd-anchor"></a>
+					<h3>source<wbr>Center</h3>
+					<div class="tsd-signature tsd-kind-icon">source<wbr>Center<span class="tsd-signature-symbol">:</span> <a href="../modules/_vec2_.html#vec2" class="tsd-signature-type">vec2</a></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in components/pose-input.ts:252</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+					<a name="target" class="tsd-anchor"></a>
+					<h3>target</h3>
+					<div class="tsd-signature tsd-kind-icon">target<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> =&nbsp;&quot;&quot;</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in components/pose-input.ts:222</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
+					<a name="targetposition" class="tsd-anchor"></a>
+					<h3>target<wbr>Position</h3>
+					<div class="tsd-signature tsd-kind-icon">target<wbr>Position<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">[</span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">]</span><span class="tsd-signature-symbol"> =&nbsp;[0, 0]</span></div>
+					<aside class="tsd-sources">
+						<p>Inherited from <a href="_components_abstract_input_.abstractinputelement.html">AbstractInputElement</a>.<a href="_components_abstract_input_.abstractinputelement.html#targetposition">targetPosition</a></p>
+						<ul>
+							<li>Defined in components/abstract-input.ts:100</li>
+						</ul>
+					</aside>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Accessors</h2>
+				<section class="tsd-panel tsd-member tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited">
+					<a name="caninitialize" class="tsd-anchor"></a>
+					<h3>can<wbr>Initialize</h3>
+					<ul class="tsd-signatures tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited">
+						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> canInitialize<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from <a href="_components_abstract_input_.abstractinputelement.html">AbstractInputElement</a>.<a href="_components_abstract_input_.abstractinputelement.html#caninitialize">canInitialize</a></p>
+								<ul>
+									<li>Defined in components/abstract-input.ts:208</li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>is it ok to initialize this input?
+									no if it is already initializing or it was aborted mid-initialization</p>
+								</div>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-get-signature tsd-parent-kind-class">
+					<a name="canvas" class="tsd-anchor"></a>
+					<h3>canvas</h3>
+					<ul class="tsd-signatures tsd-kind-get-signature tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> canvas<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">HTMLCanvasElement</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in components/pose-input.ts:361</li>
+								</ul>
+							</aside>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">HTMLCanvasElement</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-accessor tsd-parent-kind-class tsd-is-inherited">
+					<a name="contentelement" class="tsd-anchor"></a>
+					<h3>content<wbr>Element</h3>
+					<ul class="tsd-signatures tsd-kind-accessor tsd-parent-kind-class tsd-is-inherited">
+						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> contentElement<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">HTMLElement</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">null</span></li>
+						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">set</span> contentElement<span class="tsd-signature-symbol">(</span>element<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">HTMLElement</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">null</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from <a href="_components_abstract_input_.abstractinputelement.html">AbstractInputElement</a>.<a href="_components_abstract_input_.abstractinputelement.html#contentelement">contentElement</a></p>
+								<ul>
+									<li>Defined in components/abstract-input.ts:133</li>
+								</ul>
+							</aside>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">HTMLElement</span>
+								<span class="tsd-signature-symbol"> | </span>
+								<span class="tsd-signature-type">null</span>
+							</h4>
+						</li>
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from <a href="_components_abstract_input_.abstractinputelement.html">AbstractInputElement</a>.<a href="_components_abstract_input_.abstractinputelement.html#contentelement">contentElement</a></p>
+								<ul>
+									<li>Defined in components/abstract-input.ts:122</li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>element: <span class="tsd-signature-type">HTMLElement</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">null</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited">
+					<a name="contentx" class="tsd-anchor"></a>
+					<h3>contentX</h3>
+					<ul class="tsd-signatures tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited">
+						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> contentX<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from <a href="_components_abstract_input_.abstractinputelement.html">AbstractInputElement</a>.<a href="_components_abstract_input_.abstractinputelement.html#contentx">contentX</a></p>
+								<ul>
+									<li>Defined in components/abstract-input.ts:75</li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>the current X position as mapped to the contentElement</p>
+								</div>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited">
+					<a name="contenty" class="tsd-anchor"></a>
+					<h3>contentY</h3>
+					<ul class="tsd-signatures tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited">
+						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> contentY<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from <a href="_components_abstract_input_.abstractinputelement.html">AbstractInputElement</a>.<a href="_components_abstract_input_.abstractinputelement.html#contenty">contentY</a></p>
+								<ul>
+									<li>Defined in components/abstract-input.ts:82</li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>the current Y position as mapped to the contentElement</p>
+								</div>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-get-signature tsd-parent-kind-class tsd-is-overwrite">
+					<a name="hascontrols" class="tsd-anchor"></a>
+					<h3>has<wbr>Controls</h3>
+					<ul class="tsd-signatures tsd-kind-get-signature tsd-parent-kind-class tsd-is-overwrite">
+						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> hasControls<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Overrides <a href="_components_abstract_input_.abstractinputelement.html">AbstractInputElement</a>.<a href="_components_abstract_input_.abstractinputelement.html#hascontrols">hasControls</a></p>
+								<ul>
+									<li>Defined in components/pose-input.ts:243</li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>this input has a cointrols panel</p>
+								</div>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited">
+					<a name="isinitializing" class="tsd-anchor"></a>
+					<h3>is<wbr>Initializing</h3>
+					<ul class="tsd-signatures tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited">
+						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> isInitializing<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from <a href="_components_abstract_input_.abstractinputelement.html">AbstractInputElement</a>.<a href="_components_abstract_input_.abstractinputelement.html#isinitializing">isInitializing</a></p>
+								<ul>
+									<li>Defined in components/abstract-input.ts:110</li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>is the input currently in the phase of initializing itself?</p>
+								</div>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited">
+					<a name="isready" class="tsd-anchor"></a>
+					<h3>is<wbr>Ready</h3>
+					<ul class="tsd-signatures tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited">
+						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> isReady<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from <a href="_components_abstract_input_.abstractinputelement.html">AbstractInputElement</a>.<a href="_components_abstract_input_.abstractinputelement.html#isready">isReady</a></p>
+								<ul>
+									<li>Defined in components/abstract-input.ts:117</li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>has the input completed initialization and is currently in operation?</p>
+								</div>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
+						</li>
+					</ul>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Methods</h2>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+					<a name="_applyrender" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagProtected">Protected</span> _apply<wbr>Render</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+						<li class="tsd-signature tsd-kind-icon">_apply<wbr>Render<span class="tsd-signature-symbol">(</span>result<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">TemplateResult</span>, node<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Element</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">DocumentFragment</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from LitElement._applyRender</p>
+								<ul>
+									<li>Defined in /Users/kylephillips/Dropbox/dev/GCL/acc-creativity/creatability-components/node_modules/@polymer/lit-element/lit-element.d.ts:137</li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Renders the given lit-html template <code>result</code> into the given <code>node</code>.
+										Implement to customize the way rendering is applied. This is should not
+									typically be needed and is provided for advanced use cases.</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>result: <span class="tsd-signature-type">TemplateResult</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p><code>lit-html</code> template result to render</p>
+									</div>
+								</li>
+								<li>
+									<h5>node: <span class="tsd-signature-type">Element</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">DocumentFragment</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>node into which to render</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-overwrite tsd-is-protected">
+					<a name="_createevent" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagProtected">Protected</span> _create<wbr>Event</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-overwrite tsd-is-protected">
+						<li class="tsd-signature tsd-kind-icon">_create<wbr>Event<span class="tsd-signature-symbol">(</span>type<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, bubbles<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">boolean</span>, composed<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_events_input_event_.accinputevent.html" class="tsd-signature-type">ACCInputEvent</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Overrides <a href="_components_abstract_input_.abstractinputelement.html">AbstractInputElement</a>.<a href="_components_abstract_input_.abstractinputelement.html#_createevent">_createEvent</a></p>
+								<ul>
+									<li>Defined in components/pose-input.ts:279</li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>overriding AbstractInputElement#_createEvent to provide extra details</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>type: <span class="tsd-signature-type">string</span></h5>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> bubbles: <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> =&nbsp;true</span></h5>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> composed: <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> =&nbsp;true</span></h5>
+									<div class="tsd-comment tsd-typography">
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="_events_input_event_.accinputevent.html" class="tsd-signature-type">ACCInputEvent</a></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+					<a name="_createroot" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagProtected">Protected</span> _create<wbr>Root</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+						<li class="tsd-signature tsd-kind-icon">_create<wbr>Root<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Element</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">DocumentFragment</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from LitElement._createRoot</p>
+								<ul>
+									<li>Defined in /Users/kylephillips/Dropbox/dev/GCL/acc-creativity/creatability-components/node_modules/@polymer/lit-element/lit-element.d.ts:79</li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Implement to customize where the element&#39;s template is rendered by
+										returning an element into which to render. By default this creates
+										a shadowRoot for the element. To render into the element&#39;s childNodes,
+									return <code>this</code>.</p>
+								</div>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Element</span>
+								<span class="tsd-signature-symbol"> | </span>
+								<span class="tsd-signature-type">DocumentFragment</span>
+							</h4>
+							<p>Returns a node into which to render.</p>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-overwrite">
+					<a name="_didrender" class="tsd-anchor"></a>
+					<h3>_did<wbr>Render</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-overwrite">
+						<li class="tsd-signature tsd-kind-icon">_did<wbr>Render<span class="tsd-signature-symbol">(</span>props<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span>, changed<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span>, prev<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Overrides LitElement._didRender</p>
+								<ul>
+									<li>Defined in components/pose-input.ts:631</li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>props: <span class="tsd-signature-type">any</span></h5>
+								</li>
+								<li>
+									<h5>changed: <span class="tsd-signature-type">any</span></h5>
+								</li>
+								<li>
+									<h5>prev: <span class="tsd-signature-type">any</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+					<a name="_dispatchchange" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagProtected">Protected</span> _dispatch<wbr>Change</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+						<li class="tsd-signature tsd-kind-icon">_dispatch<wbr>Change<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from <a href="_components_abstract_input_.abstractinputelement.html">AbstractInputElement</a>.<a href="_components_abstract_input_.abstractinputelement.html#_dispatchchange">_dispatchChange</a></p>
+								<ul>
+									<li>Defined in components/abstract-input.ts:245</li>
+								</ul>
+							</aside>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+					<a name="_dispatcherror" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagProtected">Protected</span> _dispatch<wbr>Error</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+						<li class="tsd-signature tsd-kind-icon">_dispatch<wbr>Error<span class="tsd-signature-symbol">(</span>error<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Error</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from <a href="_components_abstract_input_.abstractinputelement.html">AbstractInputElement</a>.<a href="_components_abstract_input_.abstractinputelement.html#_dispatcherror">_dispatchError</a></p>
+								<ul>
+									<li>Defined in components/abstract-input.ts:251</li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>error: <span class="tsd-signature-type">Error</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+					<a name="_dispatchstop" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagProtected">Protected</span> _dispatch<wbr>Stop</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+						<li class="tsd-signature tsd-kind-icon">_dispatch<wbr>Stop<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from <a href="_components_abstract_input_.abstractinputelement.html">AbstractInputElement</a>.<a href="_components_abstract_input_.abstractinputelement.html#_dispatchstop">_dispatchStop</a></p>
+								<ul>
+									<li>Defined in components/abstract-input.ts:284</li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>when the input has stopped operation</p>
+								</div>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+					<a name="_firstrendered" class="tsd-anchor"></a>
+					<h3>_first<wbr>Rendered</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+						<li class="tsd-signature tsd-kind-icon">_first<wbr>Rendered<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from LitElement._firstRendered</p>
+								<ul>
+									<li>Defined in /Users/kylephillips/Dropbox/dev/GCL/acc-creativity/creatability-components/node_modules/@polymer/lit-element/lit-element.d.ts:71</li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Called after the element DOM is rendered for the first time.
+										Implement to perform tasks after first rendering like capturing a
+										reference to a static node which must be directly manipulated.
+										This should not be commonly needed. For tasks which should be performed
+									before first render, use the element constructor.</p>
+								</div>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+					<a name="_flushproperties" class="tsd-anchor"></a>
+					<h3>_flush<wbr>Properties</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+						<li class="tsd-signature tsd-kind-icon">_flush<wbr>Properties<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from LitElement._flushProperties</p>
+								<ul>
+									<li>Defined in /Users/kylephillips/Dropbox/dev/GCL/acc-creativity/creatability-components/node_modules/@polymer/lit-element/lit-element.d.ts:110</li>
+								</ul>
+							</aside>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+					<a name="_handlecontentelementchanged" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagProtected">Protected</span> _handle<wbr>Content<wbr>Element<wbr>Changed</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+						<li class="tsd-signature tsd-kind-icon">_handle<wbr>Content<wbr>Element<wbr>Changed<span class="tsd-signature-symbol">(</span>contentElement<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">HTMLElement</span>, previous<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">HTMLElement</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from <a href="_components_abstract_input_.abstractinputelement.html">AbstractInputElement</a>.<a href="_components_abstract_input_.abstractinputelement.html#_handlecontentelementchanged">_handleContentElementChanged</a></p>
+								<ul>
+									<li>Defined in components/abstract-input.ts:369</li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Hook to handle any changes whenever the contentElement has changed</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>contentElement: <span class="tsd-signature-type">HTMLElement</span></h5>
+								</li>
+								<li>
+									<h5>previous: <span class="tsd-signature-type">HTMLElement</span></h5>
+									<div class="tsd-comment tsd-typography">
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-protected">
+					<a name="_handlenewframe" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagProtected">Protected</span> _handle<wbr>New<wbr>Frame</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-protected">
+						<li class="tsd-signature tsd-kind-icon">_handle<wbr>New<wbr>Frame<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in components/pose-input.ts:397</li>
+								</ul>
+							</aside>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-protected">
+					<a name="_handlestop" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagProtected">Protected</span> _handle<wbr>Stop</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-protected">
+						<li class="tsd-signature tsd-kind-icon">_handle<wbr>Stop<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in components/pose-input.ts:390</li>
+								</ul>
+							</aside>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+					<a name="_invalidateproperties" class="tsd-anchor"></a>
+					<h3>_invalidate<wbr>Properties</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+						<li class="tsd-signature tsd-kind-icon">_invalidate<wbr>Properties<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from LitElement._invalidateProperties</p>
+								<ul>
+									<li>Defined in /Users/kylephillips/Dropbox/dev/GCL/acc-creativity/creatability-components/node_modules/@polymer/lit-element/lit-element.d.ts:157</li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Override which provides tracking of invalidated state.</p>
+								</div>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-overwrite">
+					<a name="_propertieschanged" class="tsd-anchor"></a>
+					<h3>_properties<wbr>Changed</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-overwrite">
+						<li class="tsd-signature tsd-kind-icon">_properties<wbr>Changed<span class="tsd-signature-symbol">(</span>props<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span>, changed<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span>, prev<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Overrides <a href="_components_abstract_input_.abstractinputelement.html">AbstractInputElement</a>.<a href="_components_abstract_input_.abstractinputelement.html#_propertieschanged">_propertiesChanged</a></p>
+								<ul>
+									<li>Defined in components/pose-input.ts:406</li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>props: <span class="tsd-signature-type">any</span></h5>
+								</li>
+								<li>
+									<h5>changed: <span class="tsd-signature-type">any</span></h5>
+								</li>
+								<li>
+									<h5>prev: <span class="tsd-signature-type">any</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-overwrite">
+					<a name="_render" class="tsd-anchor"></a>
+					<h3>_render</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-overwrite">
+						<li class="tsd-signature tsd-kind-icon">_render<span class="tsd-signature-symbol">(</span>__namedParameters<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">object</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">TemplateResult</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Overrides <a href="_components_abstract_input_.abstractinputelement.html">AbstractInputElement</a>.<a href="_components_abstract_input_.abstractinputelement.html#_render">_render</a></p>
+								<ul>
+									<li>Defined in components/pose-input.ts:644</li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>__namedParameters: <span class="tsd-signature-type">object</span></h5>
+									<ul class="tsd-parameters">
+										<li class="tsd-parameter">
+											<h5>amplification<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span></h5>
+										</li>
+										<li class="tsd-parameter">
+											<h5>controls<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span></h5>
+										</li>
+										<li class="tsd-parameter">
+											<h5>help<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span></h5>
+										</li>
+										<li class="tsd-parameter">
+											<h5>image<wbr>Scale<wbr>Factor<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span></h5>
+										</li>
+										<li class="tsd-parameter">
+											<h5>part<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span></h5>
+										</li>
+										<li class="tsd-parameter">
+											<h5>smoothing<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span></h5>
+										</li>
+									</ul>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">TemplateResult</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+					<a name="_shoulddispatchinput" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagProtected">Protected</span> _should<wbr>Dispatch<wbr>Input</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+						<li class="tsd-signature tsd-kind-icon">_should<wbr>Dispatch<wbr>Input<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from <a href="_components_abstract_input_.abstractinputelement.html">AbstractInputElement</a>.<a href="_components_abstract_input_.abstractinputelement.html#_shoulddispatchinput">_shouldDispatchInput</a></p>
+								<ul>
+									<li>Defined in components/abstract-input.ts:199</li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>should an &#39;input&#39; event be dispatched as well on this tick
+									this method exists so you can override in other inputs to consider other variables</p>
+								</div>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+					<a name="_shouldpropertieschange" class="tsd-anchor"></a>
+					<h3>_should<wbr>Properties<wbr>Change</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+						<li class="tsd-signature tsd-kind-icon">_should<wbr>Properties<wbr>Change<span class="tsd-signature-symbol">(</span>_props<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">object</span>, _changedProps<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">object</span>, _prevProps<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">object</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from LitElement._shouldPropertiesChange</p>
+								<ul>
+									<li>Defined in /Users/kylephillips/Dropbox/dev/GCL/acc-creativity/creatability-components/node_modules/@polymer/lit-element/lit-element.d.ts:90</li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Override which returns the value of <code>_shouldRender</code> which users
+										should implement to control rendering. If this method returns false,
+										_propertiesChanged will not be called and no rendering will occur even
+									if property values change or <code>requestRender</code> is called.</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>_props: <span class="tsd-signature-type">object</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Current element properties</p>
+									</div>
+								</li>
+								<li>
+									<h5>_changedProps: <span class="tsd-signature-type">object</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Changing element properties</p>
+									</div>
+								</li>
+								<li>
+									<h5>_prevProps: <span class="tsd-signature-type">object</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Previous element properties</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
+							<p>Default implementation always returns true.</p>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-overwrite tsd-is-inherited">
+					<a name="_shouldpropertychange" class="tsd-anchor"></a>
+					<h3>_should<wbr>Property<wbr>Change</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-overwrite tsd-is-inherited">
+						<li class="tsd-signature tsd-kind-icon">_should<wbr>Property<wbr>Change<span class="tsd-signature-symbol">(</span>property<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, value<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span>, old<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from <a href="_components_abstract_input_.abstractinputelement.html">AbstractInputElement</a>.<a href="_components_abstract_input_.abstractinputelement.html#_shouldpropertychange">_shouldPropertyChange</a></p>
+								<p>Overrides LitElement._shouldPropertyChange</p>
+								<ul>
+									<li>Defined in components/abstract-input.ts:401</li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>property: <span class="tsd-signature-type">string</span></h5>
+								</li>
+								<li>
+									<h5>value: <span class="tsd-signature-type">any</span></h5>
+								</li>
+								<li>
+									<h5>old: <span class="tsd-signature-type">any</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+					<a name="_shouldrender" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagProtected">Protected</span> _should<wbr>Render</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+						<li class="tsd-signature tsd-kind-icon">_should<wbr>Render<span class="tsd-signature-symbol">(</span>_props<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">object</span>, _changedProps<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">object</span>, _prevProps<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">object</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from LitElement._shouldRender</p>
+								<ul>
+									<li>Defined in /Users/kylephillips/Dropbox/dev/GCL/acc-creativity/creatability-components/node_modules/@polymer/lit-element/lit-element.d.ts:101</li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Implement to control if rendering should occur when property values
+										change or <code>requestRender</code> is called. By default, this method always
+										returns true, but this can be customized as an optimization to avoid
+									rendering work when changes occur which should not be rendered.</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>_props: <span class="tsd-signature-type">object</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Current element properties</p>
+									</div>
+								</li>
+								<li>
+									<h5>_changedProps: <span class="tsd-signature-type">object</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Changing element properties</p>
+									</div>
+								</li>
+								<li>
+									<h5>_prevProps: <span class="tsd-signature-type">object</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Previous element properties</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
+							<p>Default implementation always returns true.</p>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+					<a name="_steptowardstarget" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagProtected">Protected</span> _step<wbr>Towards<wbr>Target</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+						<li class="tsd-signature tsd-kind-icon">_step<wbr>Towards<wbr>Target<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from <a href="_components_abstract_input_.abstractinputelement.html">AbstractInputElement</a>.<a href="_components_abstract_input_.abstractinputelement.html#_steptowardstarget">_stepTowardsTarget</a></p>
+								<ul>
+									<li>Defined in components/abstract-input.ts:169</li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>apply smoothing to the current position,
+									moving towards the _targetPosition according to smoothing</p>
+								</div>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
+							<p>true if the position value changed</p>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-protected">
+					<a name="_updatepose" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagProtected">Protected</span> _update<wbr>Pose</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-protected">
+						<li class="tsd-signature tsd-kind-icon">_update<wbr>Pose<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in components/pose-input.ts:415</li>
+								</ul>
+							</aside>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="computepartposition" class="tsd-anchor"></a>
+					<h3>compute<wbr>Part<wbr>Position</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">compute<wbr>Part<wbr>Position<span class="tsd-signature-symbol">(</span>part<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, result<span class="tsd-signature-symbol">?: </span><a href="../modules/_vec2_.html#vec2" class="tsd-signature-type">vec2</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../modules/_vec2_.html#vec2" class="tsd-signature-type">vec2</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in components/pose-input.ts:296</li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>part: <span class="tsd-signature-type">string</span></h5>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> result: <a href="../modules/_vec2_.html#vec2" class="tsd-signature-type">vec2</a><span class="tsd-signature-symbol"> =&nbsp;[NaN,NaN]</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="../modules/_vec2_.html#vec2" class="tsd-signature-type">vec2</a></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+					<a name="connectedcallback" class="tsd-anchor"></a>
+					<h3>connected<wbr>Callback</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+						<li class="tsd-signature tsd-kind-icon">connected<wbr>Callback<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from LitElement.connectedCallback</p>
+								<ul>
+									<li>Defined in /Users/kylephillips/Dropbox/dev/GCL/acc-creativity/creatability-components/node_modules/@polymer/lit-element/lit-element.d.ts:63</li>
+								</ul>
+							</aside>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+					<a name="dispatchevent" class="tsd-anchor"></a>
+					<h3>dispatch<wbr>Event</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+						<li class="tsd-signature tsd-kind-icon">dispatch<wbr>Event<span class="tsd-signature-symbol">(</span>evt<span class="tsd-signature-symbol">: </span><a href="_events_input_event_.accinputevent.html" class="tsd-signature-type">ACCInputEvent</a><span class="tsd-signature-symbol"> | </span><a href="_events_error_event_.accerrorevent.html" class="tsd-signature-type">ACCErrorEvent</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from <a href="_components_abstract_input_.abstractinputelement.html">AbstractInputElement</a>.<a href="_components_abstract_input_.abstractinputelement.html#dispatchevent">dispatchEvent</a></p>
+								<ul>
+									<li>Defined in components/abstract-input.ts:239</li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>evt: <a href="_events_input_event_.accinputevent.html" class="tsd-signature-type">ACCInputEvent</a><span class="tsd-signature-symbol"> | </span><a href="_events_error_event_.accerrorevent.html" class="tsd-signature-type">ACCErrorEvent</a></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="getallpositionsprojected" class="tsd-anchor"></a>
+					<h3>get<wbr>All<wbr>Positions<wbr>Projected</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">get<wbr>All<wbr>Positions<wbr>Projected<span class="tsd-signature-symbol">(</span>keypoints<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span>, targetElement<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">Element</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in components/pose-input.ts:476</li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Returns an object of the project positions for every part</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> keypoints: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> =&nbsp;keypointParts</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>optionally provide a list of bodyPart keys to project, defaults to all</p>
+									</div>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> targetElement: <span class="tsd-signature-type">Element</span><span class="tsd-signature-symbol"> =&nbsp;this.contentElement</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>optionally project an Element to project coordinates too, defaults to target</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">any</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="getpartposition" class="tsd-anchor"></a>
+					<h3>get<wbr>Part<wbr>Position</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Part<wbr>Position<span class="tsd-signature-symbol">(</span>part<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, result<span class="tsd-signature-symbol">?: </span><a href="../modules/_vec2_.html#vec2" class="tsd-signature-type">vec2</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../modules/_vec2_.html#vec2" class="tsd-signature-type">vec2</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in components/pose-input.ts:322</li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>part: <span class="tsd-signature-type">string</span></h5>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> result: <a href="../modules/_vec2_.html#vec2" class="tsd-signature-type">vec2</a><span class="tsd-signature-symbol"> =&nbsp;[NaN, NaN]</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="../modules/_vec2_.html#vec2" class="tsd-signature-type">vec2</a></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="getpartpositionnormalized" class="tsd-anchor"></a>
+					<h3>get<wbr>Part<wbr>Position<wbr>Normalized</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Part<wbr>Position<wbr>Normalized<span class="tsd-signature-symbol">(</span>part<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, result<span class="tsd-signature-symbol">?: </span><a href="../modules/_vec2_.html#vec2" class="tsd-signature-type">vec2</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../modules/_vec2_.html#vec2" class="tsd-signature-type">vec2</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in components/pose-input.ts:332</li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>part: <span class="tsd-signature-type">string</span></h5>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> result: <a href="../modules/_vec2_.html#vec2" class="tsd-signature-type">vec2</a><span class="tsd-signature-symbol"> =&nbsp;[NaN, NaN]</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="../modules/_vec2_.html#vec2" class="tsd-signature-type">vec2</a></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="getpartpositionprojected" class="tsd-anchor"></a>
+					<h3>get<wbr>Part<wbr>Position<wbr>Projected</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Part<wbr>Position<wbr>Projected<span class="tsd-signature-symbol">(</span>part<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, targetElement<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">Element</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../modules/_vec2_.html#vec2" class="tsd-signature-type">vec2</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in components/pose-input.ts:347</li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Get the position of the body part projected into the coordinate space of the target element</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>part: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>the body part key to receive the position of</p>
+									</div>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> targetElement: <span class="tsd-signature-type">Element</span><span class="tsd-signature-symbol"> =&nbsp;this.contentElement</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>optionally provide an Element if you wish to use one other than the target</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="../modules/_vec2_.html#vec2" class="tsd-signature-type">vec2</a></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-overwrite">
+					<a name="initialize" class="tsd-anchor"></a>
+					<h3>initialize</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-overwrite">
+						<li class="tsd-signature tsd-kind-icon">initialize<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Overrides <a href="_components_abstract_input_.abstractinputelement.html">AbstractInputElement</a>.<a href="_components_abstract_input_.abstractinputelement.html#initialize">initialize</a></p>
+								<ul>
+									<li>Defined in components/pose-input.ts:365</li>
+								</ul>
+							</aside>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="projectposition" class="tsd-anchor"></a>
+					<h3>project<wbr>Position</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">project<wbr>Position<span class="tsd-signature-symbol">(</span>position<span class="tsd-signature-symbol">: </span><a href="../modules/_vec2_.html#vec2" class="tsd-signature-type">vec2</a>, targetElement<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">Element</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../modules/_vec2_.html#vec2" class="tsd-signature-type">vec2</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in components/pose-input.ts:356</li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Project (mutate) a position from source (webcam) coordinates to an elements coordinates</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>position: <a href="../modules/_vec2_.html#vec2" class="tsd-signature-type">vec2</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>a vector in source (webcam) coordinates</p>
+									</div>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> targetElement: <span class="tsd-signature-type">Element</span><span class="tsd-signature-symbol"> =&nbsp;this.contentElement</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>optionally provide an Element to project to other than target element</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="../modules/_vec2_.html#vec2" class="tsd-signature-type">vec2</a></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+					<a name="ready" class="tsd-anchor"></a>
+					<h3>ready</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+						<li class="tsd-signature tsd-kind-icon">ready<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from LitElement.ready</p>
+								<ul>
+									<li>Defined in /Users/kylephillips/Dropbox/dev/GCL/acc-creativity/creatability-components/node_modules/@polymer/lit-element/lit-element.d.ts:62</li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Override which sets up element rendering by calling* <code>_createRoot</code>
+									and <code>_firstRendered</code>.</p>
+								</div>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="rendercenter" class="tsd-anchor"></a>
+					<h3>render<wbr>Center</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">render<wbr>Center<span class="tsd-signature-symbol">(</span>ctx<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">CanvasRenderingContext2D</span>, style<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span>, lineWidth<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span>, radius<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span>, crossLength<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in components/pose-input.ts:497</li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>render a crosshair of the input&#39;s center calibration point</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>ctx: <span class="tsd-signature-type">CanvasRenderingContext2D</span></h5>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> style: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> =&nbsp;&quot;black&quot;</span></h5>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> lineWidth: <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> =&nbsp;3</span></h5>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> radius: <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> =&nbsp;16</span></h5>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> crossLength: <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> =&nbsp;8</span></h5>
+									<div class="tsd-comment tsd-typography">
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="rendercursor" class="tsd-anchor"></a>
+					<h3>render<wbr>Cursor</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">render<wbr>Cursor<span class="tsd-signature-symbol">(</span>ctx<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">CanvasRenderingContext2D</span>, style<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in components/pose-input.ts:542</li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>ctx: <span class="tsd-signature-type">CanvasRenderingContext2D</span></h5>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> style: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> =&nbsp;&quot;blue&quot;</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="renderinputdata" class="tsd-anchor"></a>
+					<h3>render<wbr>Input<wbr>Data</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">render<wbr>Input<wbr>Data<span class="tsd-signature-symbol">(</span>ctx<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">CanvasRenderingContext2D</span>, style<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span>, radius<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in components/pose-input.ts:567</li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>render the pose data to a canvas to show current tracked skeleton</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>ctx: <span class="tsd-signature-type">CanvasRenderingContext2D</span></h5>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> style: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> =&nbsp;&quot;rgba(96,96,96, 0.85)&quot;</span></h5>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> radius: <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> =&nbsp;4</span></h5>
+									<div class="tsd-comment tsd-typography">
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+					<a name="requestrender" class="tsd-anchor"></a>
+					<h3>request<wbr>Render</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+						<li class="tsd-signature tsd-kind-icon">request<wbr>Render<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from LitElement.requestRender</p>
+								<ul>
+									<li>Defined in /Users/kylephillips/Dropbox/dev/GCL/acc-creativity/creatability-components/node_modules/@polymer/lit-element/lit-element.d.ts:153</li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Call to request the element to asynchronously re-render regardless
+									of whether or not any property changes are pending.</p>
+								</div>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="resetcenter" class="tsd-anchor"></a>
+					<h3>reset<wbr>Center</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">reset<wbr>Center<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in components/pose-input.ts:616</li>
+								</ul>
+							</aside>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="setcentertocurrentposition" class="tsd-anchor"></a>
+					<h3>set<wbr>Center<wbr>ToCurrent<wbr>Position</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">set<wbr>Center<wbr>ToCurrent<wbr>Position<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in components/pose-input.ts:623</li>
+								</ul>
+							</aside>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+					<a name="setposition" class="tsd-anchor"></a>
+					<h3>set<wbr>Position</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+						<li class="tsd-signature tsd-kind-icon">set<wbr>Position<span class="tsd-signature-symbol">(</span>__namedParameters<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">[</span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from <a href="_components_abstract_input_.abstractinputelement.html">AbstractInputElement</a>.<a href="_components_abstract_input_.abstractinputelement.html#setposition">setPosition</a></p>
+								<ul>
+									<li>Defined in components/abstract-input.ts:389</li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>__namedParameters: <span class="tsd-signature-symbol">[</span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">]</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+					<a name="settargetposition" class="tsd-anchor"></a>
+					<h3>set<wbr>Target<wbr>Position</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+						<li class="tsd-signature tsd-kind-icon">set<wbr>Target<wbr>Position<span class="tsd-signature-symbol">(</span>__namedParameters<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">[</span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from <a href="_components_abstract_input_.abstractinputelement.html">AbstractInputElement</a>.<a href="_components_abstract_input_.abstractinputelement.html#settargetposition">setTargetPosition</a></p>
+								<ul>
+									<li>Defined in components/abstract-input.ts:377</li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>__namedParameters: <span class="tsd-signature-symbol">[</span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">]</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-overwrite">
+					<a name="stop" class="tsd-anchor"></a>
+					<h3>stop</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-overwrite">
+						<li class="tsd-signature tsd-kind-icon">stop<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Overrides <a href="_components_abstract_input_.abstractinputelement.html">AbstractInputElement</a>.<a href="_components_abstract_input_.abstractinputelement.html#stop">stop</a></p>
+								<ul>
+									<li>Defined in components/pose-input.ts:627</li>
+								</ul>
+							</aside>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+			</section>
+		</div>
+		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
+			<nav class="tsd-navigation primary">
+				<ul>
+					<li class="globals  ">
+						<a href="../globals.html"><em>Globals</em></a>
+					</li>
+					<li class="current tsd-kind-external-module">
+						<a href="../modules/_components_pose_input_.html">"components/pose-<wbr>input"</a>
+					</li>
+				</ul>
+			</nav>
+			<nav class="tsd-navigation secondary menu-sticky">
+				<ul class="before-current">
+					<li class=" tsd-kind-class tsd-parent-kind-external-module">
+						<a href="_components_pose_input_.accposeinputevent.html" class="tsd-kind-icon">ACCPose<wbr>Input<wbr>Event</a>
+					</li>
+				</ul>
+				<ul class="current">
+					<li class="current tsd-kind-class tsd-parent-kind-external-module">
+						<a href="_components_pose_input_.poseinputelement.html" class="tsd-kind-icon">Pose<wbr>Input<wbr>Element</a>
+						<ul>
+							<li class=" tsd-kind-constructor tsd-parent-kind-class">
+								<a href="_components_pose_input_.poseinputelement.html#constructor" class="tsd-kind-icon">constructor</a>
+							</li>
+							<li class=" tsd-kind-event tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+								<a href="_components_pose_input_.poseinputelement.html#_dispatchinitializing" class="tsd-kind-icon">_dispatch<wbr>Initializing</a>
+							</li>
+							<li class=" tsd-kind-event tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+								<a href="_components_pose_input_.poseinputelement.html#_dispatchready" class="tsd-kind-icon">_dispatch<wbr>Ready</a>
+							</li>
+							<li class=" tsd-kind-event tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+								<a href="_components_pose_input_.poseinputelement.html#_dispatchtick" class="tsd-kind-icon">_dispatch<wbr>Tick</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-protected">
+								<a href="_components_pose_input_.poseinputelement.html#_estimating" class="tsd-kind-icon">_estimating</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-protected">
+								<a href="_components_pose_input_.poseinputelement.html#_input" class="tsd-kind-icon">_input</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+								<a href="_components_pose_input_.poseinputelement.html#_lastfoundposition" class="tsd-kind-icon">_last<wbr>Found<wbr>Position</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+								<a href="_components_pose_input_.poseinputelement.html#_lastfoundtargetposition" class="tsd-kind-icon">_last<wbr>Found<wbr>Target<wbr>Position</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-protected">
+								<a href="_components_pose_input_.poseinputelement.html#_loop" class="tsd-kind-icon">_loop</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+								<a href="_components_pose_input_.poseinputelement.html#_wasaborted" class="tsd-kind-icon">_was<wbr>Aborted</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-protected">
+								<a href="_components_pose_input_.poseinputelement.html#_webcamcanvas" class="tsd-kind-icon">_webcam<wbr>Canvas</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class">
+								<a href="_components_pose_input_.poseinputelement.html#amplification" class="tsd-kind-icon">amplification</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
+								<a href="_components_pose_input_.poseinputelement.html#contentselector" class="tsd-kind-icon">content<wbr>Selector</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
+								<a href="_components_pose_input_.poseinputelement.html#controls" class="tsd-kind-icon">controls</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
+								<a href="_components_pose_input_.poseinputelement.html#disableclamp" class="tsd-kind-icon">disable<wbr>Clamp</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class">
+								<a href="_components_pose_input_.poseinputelement.html#help" class="tsd-kind-icon">help</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class">
+								<a href="_components_pose_input_.poseinputelement.html#imagescalefactor" class="tsd-kind-icon">image<wbr>Scale<wbr>Factor</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-overwrite">
+								<a href="_components_pose_input_.poseinputelement.html#inputtype" class="tsd-kind-icon">input<wbr>Type</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class">
+								<a href="_components_pose_input_.poseinputelement.html#keypointease" class="tsd-kind-icon">keypoint<wbr>Ease</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class">
+								<a href="_components_pose_input_.poseinputelement.html#label" class="tsd-kind-icon">label</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class">
+								<a href="_components_pose_input_.poseinputelement.html#multiplier" class="tsd-kind-icon">multiplier</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class">
+								<a href="_components_pose_input_.poseinputelement.html#part" class="tsd-kind-icon">part</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class">
+								<a href="_components_pose_input_.poseinputelement.html#pose" class="tsd-kind-icon">pose</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
+								<a href="_components_pose_input_.poseinputelement.html#position" class="tsd-kind-icon">position</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class">
+								<a href="_components_pose_input_.poseinputelement.html#preamplifiedtargetposition" class="tsd-kind-icon">preamplified<wbr>Target<wbr>Position</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
+								<a href="_components_pose_input_.poseinputelement.html#rendercomplete" class="tsd-kind-icon">render<wbr>Complete</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
+								<a href="_components_pose_input_.poseinputelement.html#selected" class="tsd-kind-icon">selected</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
+								<a href="_components_pose_input_.poseinputelement.html#smoothing" class="tsd-kind-icon">smoothing</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class">
+								<a href="_components_pose_input_.poseinputelement.html#sourcecenter" class="tsd-kind-icon">source<wbr>Center</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class">
+								<a href="_components_pose_input_.poseinputelement.html#target" class="tsd-kind-icon">target</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
+								<a href="_components_pose_input_.poseinputelement.html#targetposition" class="tsd-kind-icon">target<wbr>Position</a>
+							</li>
+							<li class=" tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited">
+								<a href="_components_pose_input_.poseinputelement.html#caninitialize" class="tsd-kind-icon">can<wbr>Initialize</a>
+							</li>
+							<li class=" tsd-kind-get-signature tsd-parent-kind-class">
+								<a href="_components_pose_input_.poseinputelement.html#canvas" class="tsd-kind-icon">canvas</a>
+							</li>
+							<li class=" tsd-kind-accessor tsd-parent-kind-class tsd-is-inherited">
+								<a href="_components_pose_input_.poseinputelement.html#contentelement" class="tsd-kind-icon">content<wbr>Element</a>
+							</li>
+							<li class=" tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited">
+								<a href="_components_pose_input_.poseinputelement.html#contentx" class="tsd-kind-icon">contentX</a>
+							</li>
+							<li class=" tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited">
+								<a href="_components_pose_input_.poseinputelement.html#contenty" class="tsd-kind-icon">contentY</a>
+							</li>
+							<li class=" tsd-kind-get-signature tsd-parent-kind-class tsd-is-overwrite">
+								<a href="_components_pose_input_.poseinputelement.html#hascontrols" class="tsd-kind-icon">has<wbr>Controls</a>
+							</li>
+							<li class=" tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited">
+								<a href="_components_pose_input_.poseinputelement.html#isinitializing" class="tsd-kind-icon">is<wbr>Initializing</a>
+							</li>
+							<li class=" tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited">
+								<a href="_components_pose_input_.poseinputelement.html#isready" class="tsd-kind-icon">is<wbr>Ready</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+								<a href="_components_pose_input_.poseinputelement.html#_applyrender" class="tsd-kind-icon">_apply<wbr>Render</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-overwrite tsd-is-protected">
+								<a href="_components_pose_input_.poseinputelement.html#_createevent" class="tsd-kind-icon">_create<wbr>Event</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+								<a href="_components_pose_input_.poseinputelement.html#_createroot" class="tsd-kind-icon">_create<wbr>Root</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-overwrite">
+								<a href="_components_pose_input_.poseinputelement.html#_didrender" class="tsd-kind-icon">_did<wbr>Render</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+								<a href="_components_pose_input_.poseinputelement.html#_dispatchchange" class="tsd-kind-icon">_dispatch<wbr>Change</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+								<a href="_components_pose_input_.poseinputelement.html#_dispatcherror" class="tsd-kind-icon">_dispatch<wbr>Error</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+								<a href="_components_pose_input_.poseinputelement.html#_dispatchstop" class="tsd-kind-icon">_dispatch<wbr>Stop</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+								<a href="_components_pose_input_.poseinputelement.html#_firstrendered" class="tsd-kind-icon">_first<wbr>Rendered</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+								<a href="_components_pose_input_.poseinputelement.html#_flushproperties" class="tsd-kind-icon">_flush<wbr>Properties</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+								<a href="_components_pose_input_.poseinputelement.html#_handlecontentelementchanged" class="tsd-kind-icon">_handle<wbr>Content<wbr>Element<wbr>Changed</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-protected">
+								<a href="_components_pose_input_.poseinputelement.html#_handlenewframe" class="tsd-kind-icon">_handle<wbr>New<wbr>Frame</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-protected">
+								<a href="_components_pose_input_.poseinputelement.html#_handlestop" class="tsd-kind-icon">_handle<wbr>Stop</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+								<a href="_components_pose_input_.poseinputelement.html#_invalidateproperties" class="tsd-kind-icon">_invalidate<wbr>Properties</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-overwrite">
+								<a href="_components_pose_input_.poseinputelement.html#_propertieschanged" class="tsd-kind-icon">_properties<wbr>Changed</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-overwrite">
+								<a href="_components_pose_input_.poseinputelement.html#_render" class="tsd-kind-icon">_render</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+								<a href="_components_pose_input_.poseinputelement.html#_shoulddispatchinput" class="tsd-kind-icon">_should<wbr>Dispatch<wbr>Input</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+								<a href="_components_pose_input_.poseinputelement.html#_shouldpropertieschange" class="tsd-kind-icon">_should<wbr>Properties<wbr>Change</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-overwrite tsd-is-inherited">
+								<a href="_components_pose_input_.poseinputelement.html#_shouldpropertychange" class="tsd-kind-icon">_should<wbr>Property<wbr>Change</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+								<a href="_components_pose_input_.poseinputelement.html#_shouldrender" class="tsd-kind-icon">_should<wbr>Render</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+								<a href="_components_pose_input_.poseinputelement.html#_steptowardstarget" class="tsd-kind-icon">_step<wbr>Towards<wbr>Target</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-protected">
+								<a href="_components_pose_input_.poseinputelement.html#_updatepose" class="tsd-kind-icon">_update<wbr>Pose</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_components_pose_input_.poseinputelement.html#computepartposition" class="tsd-kind-icon">compute<wbr>Part<wbr>Position</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+								<a href="_components_pose_input_.poseinputelement.html#connectedcallback" class="tsd-kind-icon">connected<wbr>Callback</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+								<a href="_components_pose_input_.poseinputelement.html#dispatchevent" class="tsd-kind-icon">dispatch<wbr>Event</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_components_pose_input_.poseinputelement.html#getallpositionsprojected" class="tsd-kind-icon">get<wbr>All<wbr>Positions<wbr>Projected</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_components_pose_input_.poseinputelement.html#getpartposition" class="tsd-kind-icon">get<wbr>Part<wbr>Position</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_components_pose_input_.poseinputelement.html#getpartpositionnormalized" class="tsd-kind-icon">get<wbr>Part<wbr>Position<wbr>Normalized</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_components_pose_input_.poseinputelement.html#getpartpositionprojected" class="tsd-kind-icon">get<wbr>Part<wbr>Position<wbr>Projected</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-overwrite">
+								<a href="_components_pose_input_.poseinputelement.html#initialize" class="tsd-kind-icon">initialize</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_components_pose_input_.poseinputelement.html#projectposition" class="tsd-kind-icon">project<wbr>Position</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+								<a href="_components_pose_input_.poseinputelement.html#ready" class="tsd-kind-icon">ready</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_components_pose_input_.poseinputelement.html#rendercenter" class="tsd-kind-icon">render<wbr>Center</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_components_pose_input_.poseinputelement.html#rendercursor" class="tsd-kind-icon">render<wbr>Cursor</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_components_pose_input_.poseinputelement.html#renderinputdata" class="tsd-kind-icon">render<wbr>Input<wbr>Data</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+								<a href="_components_pose_input_.poseinputelement.html#requestrender" class="tsd-kind-icon">request<wbr>Render</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_components_pose_input_.poseinputelement.html#resetcenter" class="tsd-kind-icon">reset<wbr>Center</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_components_pose_input_.poseinputelement.html#setcentertocurrentposition" class="tsd-kind-icon">set<wbr>Center<wbr>ToCurrent<wbr>Position</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+								<a href="_components_pose_input_.poseinputelement.html#setposition" class="tsd-kind-icon">set<wbr>Position</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+								<a href="_components_pose_input_.poseinputelement.html#settargetposition" class="tsd-kind-icon">set<wbr>Target<wbr>Position</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-overwrite">
+								<a href="_components_pose_input_.poseinputelement.html#stop" class="tsd-kind-icon">stop</a>
+							</li>
+						</ul>
+					</li>
+				</ul>
+				<ul class="after-current">
+					<li class=" tsd-kind-interface tsd-parent-kind-external-module tsd-is-not-exported">
+						<a href="../interfaces/_components_pose_input_.keypointmap.html" class="tsd-kind-icon">Keypoint<wbr>Map</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
+						<a href="../interfaces/_components_pose_input_.poseinputeventdetails.html" class="tsd-kind-icon">Pose<wbr>Input<wbr>Event<wbr>Details</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-parent-kind-external-module tsd-is-not-exported">
+						<a href="../modules/_components_pose_input_.html#poseinputeventinit" class="tsd-kind-icon">Pose<wbr>Input<wbr>Event<wbr>Init</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported">
+						<a href="../modules/_components_pose_input_.html#_tmpcontentdims" class="tsd-kind-icon">_tmp<wbr>Content<wbr>Dims</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported">
+						<a href="../modules/_components_pose_input_.html#_tmpscalebounds" class="tsd-kind-icon">_tmp<wbr>Scale<wbr>Bounds</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported">
+						<a href="../modules/_components_pose_input_.html#_tmpvec2" class="tsd-kind-icon">_tmp<wbr>Vec2</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported">
+						<a href="../modules/_components_pose_input_.html#animitter" class="tsd-kind-icon">animitter</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-parent-kind-external-module">
+						<a href="../modules/_components_pose_input_.html#keypointparts" class="tsd-kind-icon">keypoint<wbr>Parts</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-parent-kind-external-module">
+						<a href="../modules/_components_pose_input_.html#parts" class="tsd-kind-icon">parts</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported">
+						<a href="../modules/_components_pose_input_.html#selectableparts" class="tsd-kind-icon">selectable<wbr>Parts</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported">
+						<a href="../modules/_components_pose_input_.html#selectablepartsdisplay" class="tsd-kind-icon">selectable<wbr>Parts<wbr>Display</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-external-module tsd-is-not-exported">
+						<a href="../modules/_components_pose_input_.html#canfocusheader" class="tsd-kind-icon">can<wbr>Focus<wbr>Header</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-external-module tsd-is-not-exported">
+						<a href="../modules/_components_pose_input_.html#getelementdimensions" class="tsd-kind-icon">get<wbr>Element<wbr>Dimensions</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-external-module tsd-is-not-exported">
+						<a href="../modules/_components_pose_input_.html#ispixelresolutionelement" class="tsd-kind-icon">is<wbr>Pixel<wbr>Resolution<wbr>Element</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-external-module">
+						<a href="../modules/_components_pose_input_.html#transformcamerapoints" class="tsd-kind-icon">transform<wbr>Camera<wbr>Points</a>
+					</li>
+					<li class=" tsd-kind-object-literal tsd-parent-kind-external-module tsd-is-not-exported">
+						<a href="../modules/_components_pose_input_.html#keypointpartsmap" class="tsd-kind-icon">keypoint<wbr>Parts<wbr>Map</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>
+<footer>
+	<div class="container">
+		<h2>Legend</h2>
+		<div class="tsd-legend-group">
+			<ul class="tsd-legend">
+				<li class="tsd-kind-module"><span class="tsd-kind-icon">Module</span></li>
+				<li class="tsd-kind-object-literal"><span class="tsd-kind-icon">Object literal</span></li>
+				<li class="tsd-kind-variable"><span class="tsd-kind-icon">Variable</span></li>
+				<li class="tsd-kind-function"><span class="tsd-kind-icon">Function</span></li>
+				<li class="tsd-kind-function tsd-has-type-parameter"><span class="tsd-kind-icon">Function with type parameter</span></li>
+				<li class="tsd-kind-index-signature"><span class="tsd-kind-icon">Index signature</span></li>
+				<li class="tsd-kind-type-alias"><span class="tsd-kind-icon">Type alias</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-enum"><span class="tsd-kind-icon">Enumeration</span></li>
+				<li class="tsd-kind-enum-member"><span class="tsd-kind-icon">Enumeration member</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-enum"><span class="tsd-kind-icon">Property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-enum"><span class="tsd-kind-icon">Method</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-interface"><span class="tsd-kind-icon">Interface</span></li>
+				<li class="tsd-kind-interface tsd-has-type-parameter"><span class="tsd-kind-icon">Interface with type parameter</span></li>
+				<li class="tsd-kind-constructor tsd-parent-kind-interface"><span class="tsd-kind-icon">Constructor</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-interface"><span class="tsd-kind-icon">Property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-interface"><span class="tsd-kind-icon">Method</span></li>
+				<li class="tsd-kind-index-signature tsd-parent-kind-interface"><span class="tsd-kind-icon">Index signature</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-class"><span class="tsd-kind-icon">Class</span></li>
+				<li class="tsd-kind-class tsd-has-type-parameter"><span class="tsd-kind-icon">Class with type parameter</span></li>
+				<li class="tsd-kind-constructor tsd-parent-kind-class"><span class="tsd-kind-icon">Constructor</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-class"><span class="tsd-kind-icon">Property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class"><span class="tsd-kind-icon">Method</span></li>
+				<li class="tsd-kind-accessor tsd-parent-kind-class"><span class="tsd-kind-icon">Accessor</span></li>
+				<li class="tsd-kind-index-signature tsd-parent-kind-class"><span class="tsd-kind-icon">Index signature</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-constructor tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited constructor</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited method</span></li>
+				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited accessor</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected method</span></li>
+				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected accessor</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private method</span></li>
+				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private accessor</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static property</span></li>
+				<li class="tsd-kind-call-signature tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static method</span></li>
+			</ul>
+		</div>
+	</div>
+</footer>
+<div class="overlay"></div>
+<script src="../assets/js/main.js"></script>
+<script>if (location.protocol == 'file:') document.write('<script src="../assets/js/search.js"><' + '/script>');</script>
+</body>
+</html>
