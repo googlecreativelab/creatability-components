@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Components</title>
+    <meta name="viewport" content="width=device-width, user-scalable=yes">
+    <link href="https://fonts.googleapis.com/css?family=Karla:400,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:700" rel="stylesheet">
+    <style>
+
+        html {
+            --background-color: #ffffff;
+            --label-color: black;
+            --fill-color: black;
+        }
+        body {
+            background-color: white;
+            font-family: 'Karla', sans-serif;
+            overflow: hidden;
+        }
+
+        #cursor {
+            position: relative;
+            width: 50px;
+            height: 50px;
+            background-color: rgba(0, 0, 255, 0.5);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/webcomponentsjs/2.0.2/webcomponents-loader.js"></script>
+    <script src="/dist/acc-components.js"></script>
+</head>
+<body>
+
+<acc-side-panel label="Components">
+    <acc-group label="Tracking">
+        <acc-input-mode-select contentselector="#main-content" hidelabel>
+            <acc-mouse-input amplification="10" label="Custom Mouse/Keyboard"></acc-mouse-input>
+            <acc-pose-input amplification="2" smoothing="0.5"></acc-pose-input>
+        </acc-input-mode-select>
+    </acc-group>
+    <acc-group id="snackbar-ui" label="Snackbar Features">
+        <a href="docs/api/classes/_components_snackbar_.snackbarelement.html">Documentation</a>
+        <p>Snackbar displays status updates on top of your application and works well with ARIA Live Regions.</p>
+        <acc-range label="duration" min="0" max="10" step="1" value="4"></acc-range>
+        <acc-toggle label="Error"></acc-toggle>
+        <acc-toggle label="Dismissable"></acc-toggle>
+        <acc-select label="Message">
+            <acc-item label="Basic"></acc-item>
+            <acc-item label="With Image"></acc-item>
+        </acc-select>
+        <acc-button label="Update Snackbar"></acc-button>
+    </acc-group>
+    <acc-group label="Range Group">
+        <a href="docs/api/classes/_components_range_.rangeelement.html">Documentation</a>
+        <acc-range label="Range test" value="5" min="0" max="10" step="0.1" shortcut="Shift l"></acc-range>
+        <acc-range label="Range test disabled" value="5" min="0" max="10" step="0.1" disabled></acc-range>
+    </acc-group>
+    <acc-group label="Button Group">
+        <a href="docs/api/classes/_components_button_.buttonelement.html">Documentation</a>
+        <acc-button label="Send message to Snackbar" shortcut="Shift K" onclick="console.log('click', event);"></acc-button>
+        <acc-button label="Test button disabled" disabled></acc-button>
+    </acc-group>
+    <acc-group label="Toggle Group" shortcut="Shift G">
+        <a href="docs/api/classes/_components_toggle.toggleelement.html">Documentation</a>
+        <acc-toggle label="Snackbar is Error" shortcut="Shift J" onchange="console.log('toggle change', event)" checked></acc-toggle>
+        <acc-toggle label="Test toggle disabled" disabled></acc-toggle>
+    </acc-group>
+    <acc-group label="Select Group">
+        <acc-select label="Test Select" shortcut="Shift s">
+            <acc-optgroup label="Option Group 1">
+                <acc-item label="Option 1"></acc-item>
+                <acc-item label="Option 2"></acc-item>
+                <acc-item label="Option 3"></acc-item>
+            </acc-optgroup>
+            <acc-optgroup label="Option Group 2" disabled>
+                <acc-item label="Option 1"></acc-item>
+                <acc-item label="Option 2"></acc-item>
+                <acc-item label="Option 3"></acc-item>
+            </acc-optgroup>
+        </acc-select>
+        <acc-select label="Test Select" disabled>
+            <acc-item label="Option 1"></acc-item>
+            <acc-item label="Option 2"></acc-item>
+            <acc-item label="Option 3"></acc-item>
+        </acc-select>
+    </acc-group>
+
+    <acc-group label="Outer">
+        <acc-range value="2" min="0" max="10" step="1"></acc-range>
+        <acc-group label="Inner">
+            <acc-button label="inner test"></acc-button>
+        </acc-group>
+    </acc-group>
+
+    <acc-snackbar aria-live="polite"></acc-snackbar>
+
+</acc-side-panel>
+<acc-content id="main-content" shortcut="Shift c" webcamopacity="0.25" grayscale mounted>
+    <div id="cursor"></div>
+</acc-content>
+
+
+<script type="text/javascript">
+    const panel = document.querySelector('acc-side-panel');
+
+    const inputModeSelect = document.querySelector('acc-input-mode-select');
+    const cursor = document.querySelector('#cursor');
+    const cursorSize = cursor.clientWidth;
+
+    inputModeSelect.addEventListener('input', function(event) {
+        const input = event.target;
+        cursor.style.left = `${input.contentX - (cursorSize/2)}px`;
+        cursor.style.top = `${input.contentY - (cursorSize/2)}px`;
+    });
+
+
+
+    const content = document.querySelector('acc-content');
+    content.addEventListener('shortcut', ()=> console.log('content shortcut', content.shortcut));
+
+
+
+
+    const snackbar = document.querySelector('acc-snackbar');
+
+
+    const snackbarMessages = [
+        () => 'update ' + Math.random() + ' duration ' + snackbar.duration,
+        () => `<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/Love_Heart_symbol.svg/1000px-Love_Heart_symbol.svg.png" width="32">
+        <div style="display: inline-block; transform: translate(0, -50%); padding-left: 8px;">
+            <strong>duration: ${snackbar.duration}</strong> snackbar html with image and styling
+        </div>`
+    ];
+
+
+    const snackbarGroup = document.querySelector("#snackbar-ui");
+    snackbarGroup.query('duration', 'input', (event) => snackbar.duration = event.target.value);
+    snackbarGroup.query('error', 'change', (event) => snackbar.error = event.target.checked);
+    snackbarGroup.query('dismissable', 'change', (event)=> snackbar.dismissable = event.target.checked);
+    const updateMessage = () => snackbar.innerHTML = snackbarMessages[snackbarGroup.query('message').selectedIndex]();
+    snackbarGroup.query('update snackbar', 'click', updateMessage);
+    snackbarGroup.query('message', 'change', updateMessage);
+
+
+
+</script>
+</body>
+</html>
