@@ -42,6 +42,15 @@ export interface RangeProperties extends UIProperties {
     value: string;
 }
 
+/**
+ * `<acc-range>` element is a custom range / slider component that simplifies
+ * labelling.
+ *
+ * @example ```html
+ *
+ * <acc-range label="amplification" min="1" max="10" step="0.1" value="2"></acc-range>
+ * ```
+ */
 class RangeElement extends AbstractUIElement {
 
     @property({ type: String })

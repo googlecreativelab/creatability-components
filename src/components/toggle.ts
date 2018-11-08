@@ -25,6 +25,16 @@ export interface ToggleProperties extends UIProperties {
 }
 
 
+/**
+ * An `<acc-toggle>` element is similar to a checkbox. It is a button where its
+ * `checked` value toggles each time clicked. This element handles labeling
+ * (including checked state information) as well as additional ARIA attributes.
+ *
+ * @example ```html
+ *
+ * <acc-toggle label="Pen Down" checked></acc-toggle>
+ * ```
+ */
 export class ToggleElement extends AbstractUIElement {
 
     @property({ type: Boolean })

@@ -21,6 +21,18 @@ import { setBooleanAttribute } from '../utils';
 
 
 
+/**
+ * An `<acc-snackbar>` element is floating element intended for temporary UI
+ * notifications. Generally there is one instance per application. If you add
+ * aria-live="polite" to the element in your HTML it will work as a
+ * Live Region for Accessibility tools.
+ *
+ * @example ```html
+ *
+ * <acc-snackbar aria-live="polite" duration="5" dismissable>This will get read
+ * out loud by screen readers whenever it changes</acc-snackbar>
+ * ```
+ */
 export class SnackBarElement extends LitElement {
 
     /**

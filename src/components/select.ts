@@ -42,6 +42,24 @@ const toOptionTemplate = (node: OptionItem) =>
 
 
 
+/**
+ * `<acc-select>` element is similar to a `<select>` element with built-in
+ * labelling and aria attributes.
+ *
+ * @example ```html
+ *
+ * <acc-select label="Instruments">
+ *  <acc-optgroup label="Strings">
+ *      <acc-item label="guitar"></acc-item>
+ *      <acc-item label="cello"></acc-item>
+ *  </acc-optgroup>
+ *  <acc-optgroup label="percussion">
+ *      <acc-item label="drums"></acc-item>
+ *      <acc-item label="tamborine"></acc-item>
+ *  </acc-optgroup>
+ * </acc-select>
+ * ```
+ */
 export class SelectElement extends AbstractSelectElement  {
 
 

@@ -54,6 +54,16 @@ const extractValue = (el:any):any => {
     return null;
 }
 
+/**
+ * A `<acc-group>` element. Make a group (typically within side-panel) of related
+ * controls. Provides proper headings and aria-labels and consistent focusing.
+ *
+ * @example ```html
+ *
+ * <acc-group label="My Group" shortcut="Shift G"></acc-group>
+ * <acc-group label="My Group" disabled></acc-group>
+ * ```
+ */
 export class GroupElement extends AbstractUIElement {
 
     /**

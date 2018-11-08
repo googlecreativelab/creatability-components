@@ -17,8 +17,9 @@ import { property } from './decorators';
 
 
 /**
- * <acc-optgroup> is an element to designate a group within an <acc-select>
- * @example
+ * `<acc-optgroup>` is an element to designate a group within an <acc-select>
+ * @example ```html
+ *
  * <acc-select label="Instruments">
  *  <acc-optgroup label="Strings">
  *      <acc-item label="guitar"></acc-item>
@@ -29,6 +30,7 @@ import { property } from './decorators';
  *      <acc-item label="tamborine"></acc-item>
  *  </acc-optgroup>
  * </acc-select>
+ * ```
  */
 export class OptgroupElement extends LitElement {
 

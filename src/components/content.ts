@@ -36,6 +36,18 @@ const isFocusable = (el: any): el is { focus: ()=> void } =>
 const isInputWithCanvas = (c: any): c is { canvas: HTMLCanvasElement } =>
     typeof c.canvas === 'object' && typeof c.canvas.getContext === 'function';
 
+/**
+ * An `<acc-content>` element is intended as a container for the main content area.
+ * If using an AbstractInput such as `<acc-mouse-input>` or `<acc-pose-input>`
+ * the coordinate space will be mapped to this element and can optionally
+ * simplify display of the camera image.
+ *
+ * @example ```html
+ *
+ * <acc-content webcamOpacity="0.25" grayscale mounted></acc-content>
+ * ```
+ *
+ */
 export class ContentElement extends AbstractUIElement {
 
 

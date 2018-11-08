@@ -33,11 +33,17 @@ interface UIElements {
 }
 
 /**
- * <acc-input-mode-select>
- * Creates a UI element for selecting an appropriate input method,
- * bundles proper initialization, event bubbling, access to calibration
+ * An `<acc-input-mode-select>` element creates a UI element for selecting an input
+ * method. It bundles proper initialization, event bubbling, access to calibration
  * and messaging.
- * @extends AbstractSelectElement
+ *
+ * @example ```html
+ *
+ * <acc-input-mode-select>
+ *  <acc-mouse-input amplification="5"></acc-mouse-input>
+ *  <acc-pose-input amplification="2" part="nose" smoothing="0.5"></acc-pose-input>
+ * </acc-input-mode-select>
+ * ```
  */
 export class InputModeSelectElement extends AbstractSelectElement {
 

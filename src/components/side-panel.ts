@@ -36,8 +36,20 @@ interface PanelProperties extends UIProperties {
 
 
 /**
+ * `<acc-side-panel label="App Name">`
+ * The side panel element is a collapsable menu that houses UI elements. It
+ * simplifies tab management, heading structure and provides a "skip to content"
+ * link when navigated with keyboard.
+ *
+ * @example ```html
+ *
  * <acc-side-panel label="App Name">
- * The side panel element that houses UI elements.
+ *  <acc-group label="Group 1">
+ *      <acc-range label="Slider" value="5" max="10"></acc-range>
+ *      <acc-button label="Button"></acc-button>
+ *  </acc-group>
+ * </acc-side-panel>
+ * ```
  */
 export class SidePanel extends GroupElement {
 

@@ -32,6 +32,12 @@ enum MouseKeyboardInputMode {
 }
 
 
+/**
+ * A Mouse Input element binds mouse, keyboard and touch as a single method
+ * of translating a cursor position.
+ *
+ * @see InputModeSelectElement
+ */
 class MouseInputElement extends AbstractInputElement {
 
     @property({ type: String })

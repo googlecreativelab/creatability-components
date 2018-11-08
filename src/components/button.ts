@@ -24,6 +24,15 @@ export interface ButtonProperties extends UIProperties {
     icon: string;
 }
 
+/**
+ * A `<acc-button>` element.
+ * @example
+ * ```html
+ *
+ *  <acc-button label="My Button" icon="my-icon.png"></acc-button>
+ *  <acc-button label="My Button" disabled></acc-button>
+ * ```
+ */
 export class ButtonElement extends AbstractUIElement {
 
     /**

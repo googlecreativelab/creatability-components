@@ -17,9 +17,13 @@ import { property } from './decorators';
 
 
 /**
+ * A `<acc-slide>` element represents the data of a slide within a slideshow,
+ * The parent element renders this item into its shadow-dom.
+ *
+ * @example ```html
+ *
  * <acc-slide caption="Caption" [ image="" video=""]>
- * An HTML tag to represent a slide in a slideshow,
- * The parent element renders this item into its shadow-dom
+ * ```
  */
 export class SlideElement extends LitElement {
 

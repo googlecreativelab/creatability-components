@@ -17,6 +17,10 @@ import { property } from './decorators';
 import './slideshow';
 import { AbstractModalElement } from './abstract-modal';
 
+/**
+ * A `<acc-tutorial>` element places a `<acc-slideshow>` into a fullscreen
+ * modal container.
+ */
 export class Tutorial extends AbstractModalElement {
 
     @property({ type: String })

@@ -35,6 +35,10 @@ interface Slide {
     alt: string;
 }
 
+/**
+ * A `<acc-slideshow>` element represents a view comprised of `<acc-slide>`
+ * elements with linear next / previous navigation.
+ */
 export class SlideshowElement extends LitElement {
 
     private slides:Slide[] = [];
@@ -58,9 +62,6 @@ export class SlideshowElement extends LitElement {
     @property({ type: Boolean })
     public transition: boolean = false;
 
-    constructor() {
-        super();
-    }
 
     get nextSlide() {
         let currentIndex = this.slides.indexOf(this.currentSlide);
@@ -144,7 +145,7 @@ export class SlideshowElement extends LitElement {
     }
 
     _previousSlide(){
-        this.dispatchEvent(new CustomEvent('previous-slide', {bubbles : true, composed : true}));   
+        this.dispatchEvent(new CustomEvent('previous-slide', {bubbles : true, composed : true}));
         this.currentSlideId = this.prevSlide
     }
 
@@ -158,13 +159,13 @@ export class SlideshowElement extends LitElement {
 
         return html`
             <style>
-                
+
                 .slideshow-container {
                     font-family: ${bodyFontFamily};
                     background-color: var(--background-color);
                     display: block;
                 }
-                
+
                 .slides {
                     position: relative;
                     height: 400px;
@@ -177,13 +178,13 @@ export class SlideshowElement extends LitElement {
                     opacity: 0.25;
                     pointer-events: none;
                 }
-                
+
                 img, video {
                     width: 100%;
                     height: 300px;
                     margin-bottom: 40px;
                 }
-                
+
                 p {
                     text-align: center;
                     font-size: 18px;
@@ -191,7 +192,7 @@ export class SlideshowElement extends LitElement {
                     max-width: 70%;
                     margin: 0px auto;
                 }
-                
+
                 ul {
                     display: flex;
                     justify-content: center;
@@ -202,12 +203,12 @@ export class SlideshowElement extends LitElement {
                     margin-top: 30px;
                     height: 30px;
                 }
-                
+
                 li {
                     margin: 5px;
                     padding: 0;
                 }
-                
+
                 li button {
                     border: none;
                     display: block;
@@ -218,11 +219,11 @@ export class SlideshowElement extends LitElement {
                     background: ${outlineBorderColor};
                     cursor: pointer;
                 }
-                
+
                 li button.current {
                     background: ${accentColor};
                 }
-                
+
                 .nav-arrow {
                     position: absolute;
                     top: 350px;
@@ -231,11 +232,11 @@ export class SlideshowElement extends LitElement {
                     border: none;
                     z-index: 2;
                 }
-                
+
                 .nav-arrow-previous {
                     left: 0px;
                 }
-                
+
                 .nav-arrow-next {
                     right: 0px;
                 }
@@ -260,7 +261,7 @@ export class SlideshowElement extends LitElement {
                 }
 
             </style>
-            <div aria-label$="Carousel. ${this.slides.length.toString()} Slides" class="slideshow-container">                
+            <div aria-label$="Carousel. ${this.slides.length.toString()} Slides" class="slideshow-container">
 
                 <button
                     class="nav-arrow nav-arrow-previous"
@@ -273,12 +274,12 @@ export class SlideshowElement extends LitElement {
                 <div class="slides" style="opacity:${this.transition?'0':'1'}" aria-label="Slide Content">
                     <img id="alt-text" alt$="${this.alt}"" src="">
                     <video aria-hidden="true" src$="${this.video}" playsinline muted autoplay></video>
-                    <p id="caption" 
-                        aria-live="polite" 
-                        aria-atomic="true" 
+                    <p id="caption"
+                        aria-live="polite"
+                        aria-atomic="true"
                         aria-relevant="text">${this.caption}</p>
                 </div>
-                                
+
                 <button
                     class="nav-arrow nav-arrow-next"
                     aria-label="Next slide"
@@ -300,16 +301,16 @@ export class SlideshowElement extends LitElement {
                     `;
                     })}
                 </ul>
-                    
 
-                 <button 
+
+                 <button
                     id="slideshow-start-button"
                     on-click="${() => this.dispatchEvent(new CustomEvent('close', {bubbles : true, composed : true}))}">
                     ${this.closeButton}
                 </button>
 
             </div>
-           
+
         `;
     }
 }

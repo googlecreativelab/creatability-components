@@ -190,6 +190,17 @@ export class ACCPoseInputEvent extends ACCInputEvent {
 
 const _tmpContentDims: [number, number] = [NaN, NaN];
 
+/**
+ * `<acc-pose-input>` element easily adds PoseNet based tracking for controlling
+ * the cursor position on a webpage with a chosen body part of the user.
+ * For example with a couple lines of code, a user's nose can be used to control
+ * a webpage.
+ *
+ * @example ```html
+ *
+ * <acc-pose-input amplification="2" smoothing="0.5" part="nose"></acc-pose-input>
+ * ```
+ */
 export class PoseInputElement extends AbstractInputElement {
 
     @property({ type: String })
