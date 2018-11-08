@@ -12,8 +12,8 @@ A simple example of including the library then supporting mouse/keyboard and bod
 
 ```html
     <body>
-        <!-- webcomponents-loader.js will load polyfills only for browsers not supporting Shadow DOM v1 -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/webcomponentsjs/2.0.2/webcomponents-loader.js"></script>
+        <!-- webcomponents-loader loads polyfills only for browsers not supporting Shadow DOM -->
+        <script src="//cdnjs.cloudflare.com/ajax/libs/webcomponentsjs/2.0.2/webcomponents-loader.js"></script>
         <script src="dist/acc-components.min.js"></script>
 
         <acc-input-mode-select>
@@ -54,6 +54,28 @@ input.addEventListener('input', (event)=>{
 input.initialize();
 
 ```
+
+## Components
+
+* `<acc-button>`
+* `<acc-content>`
+* `<acc-group>`
+* `<acc-input-mode-select>`
+* `<acc-item>`
+* `<acc-mouse-input>`
+* `<acc-optgroup>`
+* `<acc-pose-input>`
+* `<acc-range>`
+* `<acc-select>`
+* `<acc-side-panel>`
+* `<acc-slide>`
+* `<acc-slideshow>`
+* `<acc-snackbar>`
+* `<acc-toggle>`
+* `<acc-tutorial>`
+
+* `<acc-radio-group>`
+* `<acc-radio>`
 
 
 ### Input Event Cycle
