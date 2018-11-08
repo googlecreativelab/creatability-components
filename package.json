@@ -5,7 +5,7 @@
   "main": "es2015/src/index.js",
   "scripts": {
     "build": "webpack --mode=production --reporter basic",
-    "docs": "rm -rf ./docs && typedoc --excludeExternals --excludePrivate --ignoreCompilerErrors --includeDeclarations --exclude \"dist/*\"  --theme \"minimal\" --out ./docs",
+    "docs": "typedoc --excludeExternals --excludePrivate --ignoreCompilerErrors --includeDeclarations --hideGenerator --exclude \"dist/*\"  --theme \"./docs/theme\" --out ./docs/api",
     "tsc": "tsc",
     "dev": "concurrently \"webpack --watch --reporter basic --mode=development\"",
     "start": "npm run dev"
@@ -32,7 +32,7 @@
     "text-loader": "0.0.1",
     "ts-loader": "4.4.2",
     "typedoc": "^0.13.0",
-    "typescript": "2.9.2",
+    "typescript": "^3.1.6",
     "uglifyjs-webpack-plugin": "^1.3.0",
     "webpack": "4.12.0",
     "webpack-bundle-analyzer": "^2.13.1",
