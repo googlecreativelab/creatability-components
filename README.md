@@ -7,7 +7,9 @@ _in active development_
 
 
 
-## Components
+## Basics
+
+Copy the packaged file in [dist/acc-components.js](https://github.com/googlecreativelab/creatability-components/raw/dev/dist/acc-components.js) into your html file and you will receive the following HTML elements:
 
 * [`<acc-button>`](https://googlecreativelab.github.io/creatability-components/docs/api/classes/_components_button_.buttonelement.html) - standard button
 * [`<acc-content>`](https://googlecreativelab.github.io/creatability-components/docs/api/classes/_components_content_.contentelement.html) - a container for main content. Easily pairs with inputs such as `<acc-pose-input>` and displays webcam for using body as cursor input.
@@ -75,29 +77,6 @@ input.addEventListener('input', (event)=>{
 input.initialize();
 
 ```
-
-## Components
-
-* `<acc-button>`
-* `<acc-content>`
-* `<acc-group>`
-* `<acc-input-mode-select>`
-* `<acc-item>`
-* `<acc-mouse-input>`
-* `<acc-optgroup>`
-* `<acc-pose-input>`
-* `<acc-range>`
-* `<acc-select>`
-* `<acc-side-panel>`
-* `<acc-slide>`
-* `<acc-slideshow>`
-* `<acc-snackbar>`
-* `<acc-toggle>`
-* `<acc-tutorial>`
-
-* `<acc-radio-group>`
-* `<acc-radio>`
-
 
 ### Input Event Cycle
 All input types dispatch the following events:
