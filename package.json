@@ -5,7 +5,7 @@
   "main": "es2015/src/index.js",
   "scripts": {
     "build": "webpack --mode=production --reporter basic",
-    "docs": "typedoc --excludeExternals --excludePrivate --ignoreCompilerErrors --includeDeclarations --hideGenerator --exclude \"dist/*\"  --theme \"default\" --out ./docs/api",
+    "docs": "typedoc --excludeExternals --excludePrivate --ignoreCompilerErrors --includeDeclarations --hideGenerator --exclude \"dist/*\"  --theme \"default\" --out ./docs",
     "tsc": "tsc",
     "dev": "concurrently \"webpack --watch --reporter basic --mode=development\"",
     "start": "npm run dev"
