@@ -6,6 +6,27 @@ _in active development_
 ![using input tracking](https://storage.googleapis.com/creatability-github/creatability-maher.gif)
 
 
+
+## Components
+
+* [`<acc-button>`](https://googlecreativelab.github.io/creatability-components/docs/api/classes/_components_button_.buttonelement.html) - standard button
+* [`<acc-content>`](https://googlecreativelab.github.io/creatability-components/docs/api/classes/_components_content_.contentelement.html) - a container for main content. Easily pairs with inputs such as `<acc-pose-input>` and displays webcam for using body as cursor input.
+* [`<acc-group>`](https://googlecreativelab.github.io/creatability-components/docs/api/classes/_components_group_.groupelement.html) - a group of UI controls
+* [`<acc-input-mode-select>`](https://googlecreativelab.github.io/creatability-components/docs/api/classes/_components_input_mode_select_.inputmodeselectelement.html) - used to select the current input method (i.e. mouse/keyboard/touch or body pose).
+* [`<acc-item>`](https://googlecreativelab.github.io/creatability-components/docs/api/classes/_components_item_.itemelement.html) - data used to populate an `<acc-select>` dropdown or an `<acc-radio-group>`.
+* [`<acc-mouse-input>`](https://googlecreativelab.github.io/creatability-components/docs/api/classes/_components_mouse_input_.mouseinputelement.html) - an input that combines mouse/keyboard/touch into one normalized input.
+* [`<acc-optgroup>`](https://googlecreativelab.github.io/creatability-components/docs/api/classes/_components_optgroup_.optgroupelement.html) - similar to `<optgroup>` a method of nesting within an `<acc-select>`
+* [`<acc-pose-input>`](https://googlecreativelab.github.io/creatability-components/docs/api/classes/_components_pose_input_.poseinputelement.html) - an element providing easy tracking of a selected body part to use as a cursor input.
+* `<acc-radio-group>` - a group of radio buttons
+* [`<acc-range>`](https://googlecreativelab.github.io/creatability-components/docs/api/classes/_components_range_.rangeelement.html) - a slider / range element
+* [`<acc-select>`](https://googlecreativelab.github.io/creatability-components/docs/api/classes/_components_select_.selectelement.html) - a select / dropdown element
+* [`<acc-side-panel>`](https://googlecreativelab.github.io/creatability-components/docs/api/classes/_components_side_panel_.sidepanel.html) - collapsable panel that you can place UI components in, also includes tabbable "skip to content" shortcut.
+* `<acc-slide>` - data to use as a slide within `<acc-slideshow>`
+* [`<acc-slideshow>`](https://googlecreativelab.github.io/creatability-components/docs/api/classes/_components_slideshow_.slideshowelement.html) - a slideshow with next/previous navigation
+* [`<acc-snackbar>`](https://googlecreativelab.github.io/creatability-components/docs/api/classes/_components_snackbar_.snackbarelement.html) - a floating temporary UI notification system. Ideal for use with ARIA-LIVE.
+* [`<acc-toggle>`](https://googlecreativelab.github.io/creatability-components/docs/api/classes/_components_toggle_.toggleelement.html) - similar to a checkbox
+
+
 ## Usage
 
 A simple example of including the library then supporting mouse/keyboard and body tracking inputs.
