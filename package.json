@@ -1,6 +1,6 @@
 {
   "name": "creatability-components",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A collection of web components to create accessible applications.",
   "main": "es2015/src/index.js",
   "scripts": {

@@ -167,7 +167,7 @@ export const parts = keypointParts;
 
 export interface PoseInputEventDetails extends InputEventDetails {
     pose:posenet.Pose;
-    part:string;
+    bodyPart:string;
 }
 
 type PoseInputEventInit = CustomEventInit<PoseInputEventDetails>;
@@ -198,7 +198,7 @@ const _tmpContentDims: [number, number] = [NaN, NaN];
  *
  * @example ```html
  *
- * <acc-pose-input amplification="2" smoothing="0.5" part="nose"></acc-pose-input>
+ * <acc-pose-input amplification="2" smoothing="0.5" bodyPart="nose"></acc-pose-input>
  * ```
  */
 export class PoseInputElement extends AbstractInputElement {
@@ -216,7 +216,7 @@ export class PoseInputElement extends AbstractInputElement {
     public amplification:number = 1;
 
     @property({ type: String })
-    public part:string = 'nose';
+    public bodyPart:string = 'nose';
 
     @property({ type: String })
     public target:string = '';
@@ -281,7 +281,7 @@ export class PoseInputElement extends AbstractInputElement {
             detail: {
                 inputType: this.inputType,
                 position: this.position,
-                part: this.part,
+                bodyPart: this.bodyPart,
                 pose:this.pose,
             },
             bubbles,
@@ -440,7 +440,7 @@ export class PoseInputElement extends AbstractInputElement {
             }
             if(this.contentElement){
                 //the source coordinate from webcam (likely 640x480)
-                const partPosition = this.getPartPosition(this.part);
+                const partPosition = this.getPartPosition(this.bodyPart);
 
                 //calculate the position projected to the target,
                 //but before any amplification has been computed
@@ -462,7 +462,7 @@ export class PoseInputElement extends AbstractInputElement {
                 }
 
             }
-            this._lastFoundPosition = this.getPartPositionNormalized(this.part);
+            this._lastFoundPosition = this.getPartPositionNormalized(this.bodyPart);
         }
 
         this._dispatchTick();
@@ -544,7 +544,7 @@ export class PoseInputElement extends AbstractInputElement {
             return;
         }
         const { __lastSourcePosition:source } = this;
-        const [x1, y1] = this.projectPosition(this.getPartPosition(this.part), ctx.canvas);
+        const [x1, y1] = this.projectPosition(this.getPartPosition(this.bodyPart), ctx.canvas);
         const [x2, y2] = this.projectPosition(source, ctx.canvas);
         ctx.strokeStyle = ctx.fillStyle = style;
         //line connecting source dot to amplified dot
@@ -621,7 +621,7 @@ export class PoseInputElement extends AbstractInputElement {
     }
 
     setCenterToCurrentPosition() {
-        this.sourceCenter = this.getPartPosition(this.part);
+        this.sourceCenter = this.getPartPosition(this.bodyPart);
     }
 
     stop(){
@@ -679,7 +679,7 @@ export class PoseInputElement extends AbstractInputElement {
                         }
                     }
                     this.amplification = evt.detail.amplification;
-                    this.part = findPartId(); //evt.detail.part;
+                    this.bodyPart = findPartId(); //evt.detail.part;
                     this.imageScaleFactor = evt.detail.imageScaleFactor;
                     this.smoothing = evt.detail.smoothing;
 
